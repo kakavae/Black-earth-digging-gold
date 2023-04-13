@@ -1,0 +1,65 @@
+.recommond__div--container {
+  flex: 1;
+  padding: 0 1.66rem;
+}
+
+/* 是否加右边框 */
+.recommond--borderright {
+  border-right: 1px solid #ccc;
+}
+
+/* 标题 */
+.recommond__div--title {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  line-height: normal;
+}
+
+.recommond__span--title {
+  font-weight: 500;
+  font-size: 1.33rem;
+  flex-grow: 1;
+}
+
+/* 标题前的图标 */
+.recommond--hot-icon {
+  width: 1.66rem;
+  height: 1.66rem;
+  margin-right: 0.66rem;
+}
+
+/* 标题后的更多 */
+path {
+  fill: var(--juejin-font-3);
+}
+
+.recommond__span--more {
+  font-size: 1rem;
+  color: var(--juejin-font-3);
+}
+
+/* ul和li */
+.recommond__ul--list {
+  display: flex;
+  flex-direction: column;
+}
+
+.recommond__ul--list>li {
+  margin-bottom: 0.66rem;
+  display: flex;
+  font-size: 1.16rem;
+  line-height: 1.83rem;
+}
+
+/* 字体123 透明，背景渐变色 */
+.recommond__div--numberfont {
+  color: #78adc7;
+  margin: 0 0.92rem 0 0.42rem;
+  font-weight: 700;
+  font-size: 1.16rem;
+  line-height: 1.83rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

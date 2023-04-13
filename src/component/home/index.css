@@ -1,0 +1,18 @@
+.Home__div--bgc {
+  background-color: #F2F3F5;
+}
+
+.Home__div--container {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.Home__div--view {
+  display: flex;
+  margin-top: 1.66rem;
+}
+
+.Home__div--maincontent--w {
+  flex: 1;
+}

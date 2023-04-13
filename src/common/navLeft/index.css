@@ -1,0 +1,47 @@
+.NavLeft__div--scroll {
+  width: 180px;
+  margin-right: 20px;
+}
+
+.NavLeft__div--container {
+  min-width: 180px;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.NavLeft__span {
+  font-size: 16px;
+}
+
+/* 给a样式，撑开盒子，a要用padding */
+.NavLeft__a--height {
+  display: flex;
+  width: 100%;
+  padding: 10px 17px;
+  align-items: center;
+  line-height: 24px;
+  border-radius: 5px;
+}
+
+.NavLeft__a--height>svg {
+  color: var(--juejin-font-3);
+  margin-right: 15px;
+}
+
+/* a和svg活跃时候的样式 */
+.NavLeft__a--active {
+  color: var(--juejin-brand-1-normal);
+  background-color: #F7F8FA;
+}
+
+.NavLeft--active {
+  color: var(--juejin-brand-1-normal) !important;
+}
+
+/* a被点击后的样式，主要是背景色和所有的内容color要修改 */
+/* 上面两个color被加上去，再单独加了背景色 */
+.NavLeft__a--bgcactive {
+  color: var(--juejin-brand-1-normal) !important;
+  background-color: #EAF2FF !important;
+}

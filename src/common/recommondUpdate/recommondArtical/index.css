@@ -1,0 +1,43 @@
+.recommondArtical__div--container {
+  display: flex;
+  padding: 12px 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.recommondArtical__div--articalmsg {
+  flex: 1;
+}
+
+.recommondArtical__div--author {
+  overflow: hidden;
+}
+
+.recommondArtical__span--float {
+  float: left;
+  font-size: 13px;
+  color: var(--juejin-font-2);
+  padding: 0 12px;
+}
+
+.recommondArtical__span--author {
+  padding-left: 0;
+}
+
+/* 标题的样式 */
+.recommondArtical__h3--title {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--juejin-font-1);
+}
+
+/* 文章简写 */
+.recommondArtical__p--artical {
+  color: var(--juejin-font-3);
+  font-size: 13px;
+}
+
+/* 图片 */
+.recommondArtical__img--artical {
+  width: 120px;
+  height: 80px;
+}
