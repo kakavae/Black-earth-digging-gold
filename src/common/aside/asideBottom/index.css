@@ -1,0 +1,25 @@
+.asidebottom__a--color,
+.asidebottom__div--container {
+  color: var(--juejin-font-3);
+}
+
+.asidebottom__div--container {
+  margin-top: 1.5rem;
+}
+
+.asidebottom__ul--flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.asidebottom__ul--flex>li {
+  margin-bottom: 1.2rem;
+}
+
+.asidebottom__a--color {
+  margin-right: 15px;
+}
+
+.asidebottom__ul--email>li {
+  margin-bottom: 1.2rem;
+}

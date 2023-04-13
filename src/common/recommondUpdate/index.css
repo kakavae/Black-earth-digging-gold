@@ -5,8 +5,9 @@
 }
 
 .recommondupdate__div--reup {
-  overflow: hidden;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #ccc;
 }
 
@@ -16,19 +17,4 @@
   padding: 1rem 2rem;
   font-size: 1.33rem;
   font-weight: 500;
-}
-
-.recommondupdate__select {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background-color: var(--juejin-gray-2);
-  border: none;
-  /* height: 22px; */
-  padding: 0.5rem 0;
-  width: 15rem;
-  margin-right: 2rem;
-  font-size: 0.66rem;
-  border-radius: 5px;
 }

@@ -1,0 +1,32 @@
+.AsideMember__div--container {
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 1.66rem;
+}
+
+.AsideMember__h3--title {
+  color: #1d2129;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 3px;
+}
+
+.AsideMember__p--light {
+  color: #8a919f;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-top: 5px;
+}
+
+.asidemember__button {
+  color: var(--juejin-brand-1-normal);
+  border: 1px solid rgba(30, 128, 255, .3);
+  background-color: rgba(30, 128, 255, .05);
+  padding: 6px 12px;
+  border-radius: 5px;
+}

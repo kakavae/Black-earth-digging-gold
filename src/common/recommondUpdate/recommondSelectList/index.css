@@ -1,0 +1,36 @@
+/* 选择框的样式 --- 相对于reup的样式*/
+.recommondupdate__input {
+  background-color: var(--juejin-gray-2);
+  border: none;
+  padding: 0.5rem 0 0.5rem 5px;
+  width: 15rem;
+  margin-right: 2rem;
+  font-size: 0.66rem;
+  border-radius: 5px;
+}
+
+.recommondupdate__input:focus {
+  outline: none;
+}
+
+.recommondupdate__div--center {
+  position: relative;
+}
+
+/* 选择的内容绝对定位 */
+.recommondupdate__ul--selectcontainer {
+  position: absolute;
+  left: 0;
+  width: 15rem;
+  height: 10rem;
+  /* 垂直方向滚动条 */
+  overflow-y: scroll;
+  background-color: #fff;
+}
+
+.recommondupdate__li--selectEle {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 500;
+  padding: 6px 5px;
+}

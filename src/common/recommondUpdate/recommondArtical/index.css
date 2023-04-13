@@ -1,6 +1,9 @@
 .recommondArtical__div--container {
-  display: flex;
   padding: 12px 20px 0;
+}
+
+.recommondArtical__div--line {
+  display: flex;
   border-bottom: 1px solid #ccc;
 }
 
