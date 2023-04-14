@@ -11,6 +11,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   --juejin-background: #f2f3f5;
   --juejin-brand-1-normal: #1e80ff;
+  --juejin-brand-2-hover: #1171ee;
+  --juejin-brand-3-click: #0060dd;
   --juejin-font-1: #252933;
   --juejin-font-2: #515767;
   --juejin-font-3: #8a919f;

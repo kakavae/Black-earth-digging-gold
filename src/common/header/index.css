@@ -1,7 +1,10 @@
+/* header的最大的容器 */
 .header__header--container {
   margin: 0 3.25rem;
   max-width: 1440px;
-  overflow: hidden;
+  width: 100%;
+  position: fixed;
+  background-color: #fff;
 }
 
 .header__a--logo {
@@ -31,6 +34,7 @@
   float: left;
 }
 
+/* 下方移动的线 */
 .header__li--bottomline {
   position: absolute;
   display: block;
@@ -49,6 +53,7 @@
   line-height: 60px;
 }
 
+/* 右侧包裹会员的右边的container */
 .header__ul--rightcontentfloat {
   float: right;
 }
@@ -59,135 +64,7 @@
   font-size: 1.1rem;
 }
 
-.header__li--formFlex {
-  display: flex;
-  padding: 0 1rem;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.header__form {
-  position: relative;
-  width: 360px;
-  height: 2.834rem;
-  border: 1px solid #c2c8d1;
-  border-radius: 4px;
-  transition: all .5s linear;
-}
-
-.header__form--active {
-  width: 42rem;
-  border: 1px solid #1e80ff;
-}
-
-.header__ul__ul--container {
-  float: right;
-  height: 60px;
-  width: 43rem;
-  overflow: hidden;
-  position: relative;
-}
-
-.header__ul__ul--container>li {
-  height: 60px;
-}
-
-.header__form>input {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  width: calc(100% - 44px);
-  color: #8a919f;
-}
-
-.header__form>input::placeholder {
-  color: #8a919f;
-}
-
-.header__form>input:focus {
-  outline: none;
-}
-
-.header__div--container--search {
-  position: absolute;
-  right: 2px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--juejin-background);
-}
-
-.header__div--searchactive {
-  background-color: #eaf2ff;
-  cursor: pointer;
-}
-
-.search-icon {
-  color: #86909c;
-  font-size: 1.167rem;
-}
-
-.search-icon>path {
-  stroke: #675153;
-}
-
-.search-icon-path--active {
-  stroke: #1e80ff !important;
-}
-
-.header__li--creator {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 11rem;
-  padding-left: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all .5s linear;
-}
-
-/* 创作者中心活跃的时候的样式 */
-.header__li--creatoractive {
-  transform: translateX(200px)
-}
-
-.header__addgroup {
-  width: 115px;
-  height: 3rem;
-  display: flex;
-}
-
-.header__addgroup>button {
-  padding: 0 1rem;
-  height: 100%;
-  border: none;
-  color: white;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  background-color: var(--juejin-brand-1-normal);
-  margin-right: 1px;
-}
-
-.header__div--more {
-  background-color: var(--juejin-brand-1-normal);
-  width: 1.667rem;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
+/* 会员 */
 .header__li--member {
   height: 100%;
   padding: 0 1rem;
@@ -205,6 +82,7 @@
   color: #86909c;
 }
 
+/* 通知 */
 .header__li--notification {
   position: relative;
   padding: 0 2rem 0 1rem;

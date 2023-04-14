@@ -1,0 +1,76 @@
+.header__ul__ul--container {
+  float: right;
+  height: 60px;
+  width: 43rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.header__ul__ul--container>li {
+  height: 60px;
+}
+
+.header__form>input {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: calc(100% - 44px);
+  color: #8a919f;
+}
+
+.header__form>input::placeholder {
+  color: #8a919f;
+}
+
+.header__form>input:focus {
+  outline: none;
+}
+
+.header__div--container--search {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--juejin-background);
+}
+
+.header__div--searchactive {
+  background-color: #eaf2ff;
+  cursor: pointer;
+}
+
+.search-icon {
+  color: #86909c;
+  font-size: 1.167rem;
+}
+
+.search-icon>path {
+  stroke: #675153;
+}
+
+.search-icon-path--active {
+  stroke: #1e80ff !important;
+}
+
+.header__li--creator {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11rem;
+  padding-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .5s linear;
+}
+
+/* 创作者中心活跃的时候的样式---直接将第二个li移出盒子然后overflow: hidden */
+.header__li--creatoractive {
+  transform: translateX(200px)
+}

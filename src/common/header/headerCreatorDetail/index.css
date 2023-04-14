@@ -1,0 +1,57 @@
+/* 汇集创作者中心所有的盒子，固定定位在这个位置 */
+.headerCreator__div--creatorContainer {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid var(--juejin-gray-1-3);
+  padding: 1rem;
+}
+
+/* 写文章等等flex布局 */
+.headerCreatorDetail__ul--container {
+  display: flex;
+  padding-bottom: 1.3rem;
+  border-bottom: 1px solid var(--juejin-gray-1-3);
+}
+
+/* 链接撑开盒子 */
+.headerCreatorDetail__a--link {
+  padding: 0.5rem 1rem;
+}
+
+/* span字体 */
+.headerCreatorDetail__a--link>span {
+  font-size: 1.2rem;
+}
+
+.headerCreatorDetail__div--more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerCreatorDetail__div--more>h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 1rem 1rem 1rem 0;
+}
+
+.headerCreatorDetail__div--more>a {
+  color: var(--juejin-font-2);
+}
+
+/* 下面活动的样式 */
+
+.headerCreatorDetail__li--activecontainer>i {
+  color: orange;
+  font-style: normal;
+  padding: 0 5px;
+  background-color: rgba(241, 227, 100, 0.3);
+}
+
+.headerCreatorDetail__li--activecontainer>a {
+  display: inline-block;
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+}

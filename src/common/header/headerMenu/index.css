@@ -1,0 +1,236 @@
+.header__ul--menubfc {
+  float: left;
+  font-size: 1.167rem;
+  position: relative;
+}
+
+.header__ul--menubfc>li {
+  float: left;
+}
+
+.header__li--bottomline {
+  position: absolute;
+  display: block;
+  top: 58px;
+  height: 2px;
+  width: 2.334rem;
+  margin: 0 1rem;
+  border-bottom: 2px solid var(--juejin-brand-1-normal);
+  z-index: 999;
+}
+
+.header__ul__a--color {
+  display: inline-block;
+  padding: 0 1rem;
+  height: 60px;
+  line-height: 60px;
+}
+
+.header__ul--rightcontentfloat {
+  float: right;
+}
+
+.header__ul--rightcontentfloat>li {
+  float: right;
+  height: 60px;
+  font-size: 1.1rem;
+}
+
+.header__li--formFlex {
+  display: flex;
+  padding: 0 1rem;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header__form {
+  position: relative;
+  width: 360px;
+  height: 2.834rem;
+  border: 1px solid #c2c8d1;
+  border-radius: 4px;
+  transition: all .5s linear;
+}
+
+.header__form--active {
+  width: 42rem;
+  border: 1px solid #1e80ff;
+}
+
+.header__ul__ul--container {
+  float: right;
+  height: 60px;
+  width: 43rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.header__ul__ul--container>li {
+  height: 60px;
+}
+
+.header__form>input {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: calc(100% - 44px);
+  color: #8a919f;
+}
+
+.header__form>input::placeholder {
+  color: #8a919f;
+}
+
+.header__form>input:focus {
+  outline: none;
+}
+
+.header__div--container--search {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--juejin-background);
+}
+
+.header__div--searchactive {
+  background-color: #eaf2ff;
+  cursor: pointer;
+}
+
+.search-icon {
+  color: #86909c;
+  font-size: 1.167rem;
+}
+
+.search-icon>path {
+  stroke: #675153;
+}
+
+.search-icon-path--active {
+  stroke: #1e80ff !important;
+}
+
+.header__li--creator {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11rem;
+  padding-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .5s linear;
+}
+
+/* 创作者中心活跃的时候的样式 */
+.header__li--creatoractive {
+  transform: translateX(200px)
+}
+
+.header__addgroup {
+  width: 115px;
+  height: 3rem;
+  display: flex;
+}
+
+.header__addgroup>button {
+  padding: 0 1rem;
+  height: 100%;
+  border: none;
+  color: white;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: var(--juejin-brand-1-normal);
+  margin-right: 1px;
+}
+
+.header__addgroup--active {
+  background-color: var(--juejin-brand-2-hover) !important;
+}
+
+.header__addgroup--rightactive {
+  background-color: var(--juejin-brand-2-hover) !important;
+}
+
+.header__div--more {
+  background-color: var(--juejin-brand-1-normal);
+  width: 1.667rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.header__li--member {
+  height: 100%;
+  padding: 0 1rem;
+}
+
+.vip--title {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vip--words {
+  margin-left: 3px;
+  color: #86909c;
+}
+
+.header__li--notification {
+  position: relative;
+  padding: 0 2rem 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* svg图加了下面的这个属性才会起效果 */
+.header__li--notification>svg>path {
+  fill: #8a919f;
+  stroke: #8a919f;
+}
+
+.header__li--notification>span {
+  position: absolute;
+  top: 0.6rem;
+  right: 1.8rem;
+  height: 16px;
+  background-color: red;
+  color: white;
+  font-size: 0.6rem;
+  border-radius: 8px;
+}
+
+.header__li--headerimg {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__div--headerimg {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  margin-right: 2rem;
+}
+
+.header__div--headerimg>img {
+  width: 3rem;
+  height: 3rem;
+}
