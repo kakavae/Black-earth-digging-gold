@@ -3,7 +3,9 @@ import './index.css'
 
 export default function AsideBottom() {
   return (
-    <div className='asidebottom__div--container'>
+    <div
+      className='asidebottom__div--container'
+    >
       <ul className='asidebottom__ul--flex'>
         <li><a href="/" className="asidebottom__a--color">用户协议</a></li>
         <li><a href="/" className="asidebottom__a--color">营业执照</a></li>
@@ -19,8 +21,6 @@ export default function AsideBottom() {
         <li>座机电话： 010-83xxxxx</li>
         <li>京ICP备1801xxx号-3©20xx 黑土掘金</li>
       </ul>
-
-
     </div>
   )
 }

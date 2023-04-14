@@ -2,3 +2,16 @@ aside {
   width: 21.66rem;
   margin-left: 20px;
 }
+
+.aside__div--fixadvertisement {
+  visibility: hidden;
+  position: fixed;
+  top: 1.66rem;
+  transition: transform .3s linear;
+  transform: translateY(100px);
+}
+
+.aside__div--fixadvertisementactive {
+  visibility: visible;
+  transform: translateY(0);
+}

@@ -5,14 +5,14 @@ import ThreeModule from '../../common/threeModule'
 import Aside from '../../common/aside'
 import RecommondUpdate from '../../common/recommondUpdate'
 
-export default function Home() {
+export default function Home({ isDisplayHeader }) {
   return (
     /* 控制版心的盒子的位置 */
     <div className='Home__div--bgc'>
       <div className="Home__div--container">
         <div className="Home__div--view">
           {/* 左侧导航区 */}
-          <NavLeft></NavLeft>
+          <NavLeft isDisplayHeader={isDisplayHeader}></NavLeft>
           {/* 中间模块 设置了flex: 1 */}
           <div className="Home__div--maincontent--w">
             {/* 三大模块 */}

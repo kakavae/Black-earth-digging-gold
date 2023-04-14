@@ -3,7 +3,9 @@ import './index.css'
 
 export default function AsideAdvertisement() {
   return (
-    <div>
+    <div
+      className={'asideAdvertisement__div--maxcontainer'}
+    >
       <div className='asideadvertisement__div--container'>
         <a href="/" target="_blank" rel="noreferrer">
           <img className='asideadvertisement__img' alt="广告" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2b578b6d8fcb46b3ab68babce69e7c66~tplv-k3u1fbpfcp-no-mark:480:400:0:0.awebp?" />

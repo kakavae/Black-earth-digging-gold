@@ -4,7 +4,9 @@
   max-width: 1440px;
   width: 100%;
   position: fixed;
+  top: 0;
   background-color: #fff;
+  transition: all 0.15s linear;
 }
 
 .header__a--logo {

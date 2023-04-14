@@ -2,7 +2,7 @@ import React from 'react'
 import './index.css'
 import { useState } from 'react'
 
-export default function NavLeft() {
+export default function NavLeft({ isDisplayHeader }) {
   const menuList = [
     { id: 1, title: '关注', dContent: 'M12.7568 1.3335C13.4239 1.3335 13.9641 1.86183 13.9983 2.52111L14 2.58746V6.34783V9.44263L13.7881 9.41059C13.6565 9.39071 13.5435 9.30673 13.4865 9.18654L11.8614 5.76125C11.7168 5.45652 11.2832 5.45652 11.1386 5.76125L9.51354 9.18654C9.45652 9.30673 9.34347 9.39071 9.21193 9.41059L5.77633 9.92991C5.45315 9.97876 5.32181 10.3736 5.55131 10.6063L8.04943 13.1394C8.13927 13.2305 8.18011 13.3591 8.1593 13.4853L7.90953 15.0002H5.42606H3.24324C2.57608 15.0002 2.03587 14.4718 2.00171 13.8125L2 13.7462V2.58746C2 1.91989 2.51869 1.37002 3.17696 1.33524L3.24324 1.3335H12.7568ZM7.33333 7.00017C7.33333 6.81608 7.18409 6.66684 7 6.66684H5C4.8159 6.66684 4.66666 6.81608 4.66666 7.00017V7.66684C4.66666 7.85093 4.8159 8.00017 5 8.00017H7C7.18409 8.00017 7.33333 7.85093 7.33333 7.66684V7.00017ZM9.66666 4.00017C9.85076 4.00017 10 4.14941 10 4.3335V5.00017C10 5.18426 9.85076 5.3335 9.66666 5.3335H5C4.8159 5.3335 4.66666 5.18426 4.66666 5.00017V4.3335C4.66666 4.14941 4.8159 4.00017 5 4.00017H9.66666Z' },
     { id: 2, title: '综合', dContent: 'M0.666016 8.00033C0.666016 12.0504 3.94926 15.3337 7.99935 15.3337C12.0494 15.3337 15.3327 12.0504 15.3327 8.00033C15.3327 3.95024 12.0494 0.666992 7.99935 0.666992C3.94926 0.666992 0.666016 3.95024 0.666016 8.00033ZM5.43709 11.0048L9.3392 9.34286L11.0037 5.43876C11.0397 5.35428 11.0393 5.25869 11.0025 5.17455C10.9288 5.00586 10.7323 4.92887 10.5636 5.00259L6.68535 6.69744L5.00087 10.565C4.96428 10.649 4.96389 10.7444 4.9998 10.8287C5.07193 10.9981 5.26772 11.0769 5.43709 11.0048Z' },
@@ -38,24 +38,28 @@ export default function NavLeft() {
   }
 
   return (
-    <div className="NavLeft__div--scroll">
-      <div className='NavLeft__div--container'>
-        <ul onMouseOut={changeActive(-1)}>
-          {menuList.map((item) => {
-            return <li key={item.id}>
-              <a
-                href='/'
-                className={'NavLeft__a--height ' + (acticeId === item.id ? 'NavLeft__a--active' : '') + ' ' + (focuseId === item.id ? 'NavLeft__a--bgcactive' : '')}
-                onMouseOver={changeActive(item.id)}
-                onClick={turnMenu(item.id)}
-              >
-                <svg className={acticeId === item.id ? 'NavLeft--active' : ''} width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-4d63e546="" ><path fillRule="evenodd" clipRule="evenodd" d={item.dContent} fill="currentColor" data-v-4d63e546=""></path></svg>
-                <span className='NavLeft__span'>{item.title}
-                </span>
-              </a>
-            </li>
-          })}
-        </ul>
+    <div className='NavLeft__div--imgbox'>
+      <div
+        className="NavLeft__div--scroll"
+        style={{ top: isDisplayHeader ? 'calc(60px + 1.66rem)' : '1.66rem' }}>
+        <div className='NavLeft__div--container'>
+          <ul onMouseOut={changeActive(-1)}>
+            {menuList.map((item) => {
+              return <li key={item.id}>
+                <a
+                  href='/'
+                  className={'NavLeft__a--height ' + (acticeId === item.id ? 'NavLeft__a--active' : '') + ' ' + (focuseId === item.id ? 'NavLeft__a--bgcactive' : '')}
+                  onMouseOver={changeActive(item.id)}
+                  onClick={turnMenu(item.id)}
+                >
+                  <svg className={acticeId === item.id ? 'NavLeft--active' : ''} width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-4d63e546="" ><path fillRule="evenodd" clipRule="evenodd" d={item.dContent} fill="currentColor" data-v-4d63e546=""></path></svg>
+                  <span className='NavLeft__span'>{item.title}
+                  </span>
+                </a>
+              </li>
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   )

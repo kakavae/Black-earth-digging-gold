@@ -22,6 +22,22 @@ export default function RecommondUpdate() {
         <RecommondArtical></RecommondArtical>
         <RecommondArtical></RecommondArtical>
         <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
+        <RecommondArtical></RecommondArtical>
       </div>
     </div>
   )

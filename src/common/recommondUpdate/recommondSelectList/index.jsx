@@ -24,20 +24,6 @@ export default function RecommondSelectList() {
 
   const input = useRef(null)
   const ul = useRef(null)
-
-  /* 显示下拉菜单 */
-  const displayEle = () => {
-    judgePosition()
-    setIsDisplay(true)
-  }
-  /* 隐藏下拉菜单 */
-  const hiddenEle = () => {
-    setTimeout(() => {
-      setIsDisplay(false)
-    }, 100)
-    // setIsDisplay(false)
-  }
-
   /* 判断是否能放在input上面的函数 */
   const judgePosition = () => {
     if (ul.current.offsetHeight < input.current.getBoundingClientRect().top) {
@@ -45,6 +31,24 @@ export default function RecommondSelectList() {
     } else {
       setIsTop(input.current.offsetHeight + 5 + 'px')  // 放在下方
     }
+  }
+  const throJudgePosition = throttle(judgePosition, 50)
+
+  /* 显示下拉菜单 */
+  const displayEle = () => {
+    judgePosition()
+    /* 节流触发scroll事件，判断ul能否放在input上面 */
+    window.addEventListener('scroll', throJudgePosition)
+    setIsDisplay(true)
+  }
+  /* 隐藏下拉菜单 */
+  const hiddenEle = () => {
+    setTimeout(() => {
+      setIsDisplay(false)
+      /* 停止触发scroll事件 */
+      window.removeEventListener('scroll', throJudgePosition)
+    }, 100)
+    // setIsDisplay(false)
   }
 
   /* 鼠标经过，修改a的背景和字体颜色 */
@@ -66,8 +70,7 @@ export default function RecommondSelectList() {
 
   /* 第二个参数是空数组，相当于第一次调用的时候在组件挂载到DOM之后执行 */
   useEffect(() => {
-    /* 节流触发scroll事件，判断ul能否放在input上面 */
-    window.addEventListener('scroll', throttle(judgePosition, 50))
+
   }, [])
 
   return (

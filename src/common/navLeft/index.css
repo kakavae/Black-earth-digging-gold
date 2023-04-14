@@ -1,4 +1,12 @@
+.NavLeft__div--imgbox {
+  width: 180px;
+  margin-right: 20px;
+}
+
+/* 盒子固定定位，滚动的时候保持不变 */
 .NavLeft__div--scroll {
+  position: fixed;
+  top: calc(60px + 1.66rem);
   width: 180px;
   margin-right: 20px;
 }

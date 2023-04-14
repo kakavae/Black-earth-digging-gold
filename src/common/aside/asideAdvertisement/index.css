@@ -1,3 +1,14 @@
+/* 控制固定定位 */
+.asideAdvertisement__div--maxcontainer {
+  top: 1.66rem;
+  right: 0;
+}
+
+.asideAdvertisement__div--maxcontainer--active {
+  position: fixed;
+}
+
+/* 控制三张图片 */
 .asideadvertisement__div--container {
   height: 120px;
   margin-bottom: 1.5rem;
