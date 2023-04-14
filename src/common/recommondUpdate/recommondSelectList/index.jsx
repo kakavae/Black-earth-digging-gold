@@ -17,6 +17,10 @@ export default function RecommondSelectList() {
   const [isDisplay, setIsDisplay] = useState(false)
   /* 设置ul的位置是在input的上下 */
   const [isTop, setIsTop] = useState('0px')
+  /* 控制a活跃的时候的样式---修改活跃的id--决定是否对当前的a添加class */
+  const [isActive, setIsActive] = useState(searchClassList[0].id)
+  /* input里面的响应式数据 */
+  const [iptContent, setIptContent] = useState('全部')
 
   const input = useRef(null)
   const ul = useRef(null)
@@ -28,7 +32,10 @@ export default function RecommondSelectList() {
   }
   /* 隐藏下拉菜单 */
   const hiddenEle = () => {
-    setIsDisplay(false)
+    setTimeout(() => {
+      setIsDisplay(false)
+    }, 100)
+    // setIsDisplay(false)
   }
 
   /* 判断是否能放在input上面的函数 */
@@ -38,6 +45,23 @@ export default function RecommondSelectList() {
     } else {
       setIsTop(input.current.offsetHeight + 5 + 'px')  // 放在下方
     }
+  }
+
+  /* 鼠标经过，修改a的背景和字体颜色 */
+  const changeBgc = (event) => {
+    setIsActive(event.target.dataset.id * 1)
+  }
+
+  /* 鼠标点击，修改input里面元素的样式 */
+  const changeIptContent = (event) => {
+    event.preventDefault()
+    setIptContent(event.target.dataset.content)
+  }
+
+  /* 输入input里面的数据，同步修改响应式的state */
+  const changeIptText = (event) => {
+    setIptContent(event.target.value)
+    console.log('拿着input的value防抖式请求服务器数据')
   }
 
   /* 第二个参数是空数组，相当于第一次调用的时候在组件挂载到DOM之后执行 */
@@ -53,7 +77,8 @@ export default function RecommondSelectList() {
       {/* select选择功能 */}
       <input
         type="text"
-        defaultValue={"全部"}
+        value={iptContent}
+        onChange={changeIptText}
         className='recommondupdate__input'
         onFocus={displayEle}
         onBlur={hiddenEle}
@@ -63,16 +88,23 @@ export default function RecommondSelectList() {
         className='recommondupdate__ul--selectcontainer'
         style={{
           visibility: isDisplay ? 'visible' : 'hidden',
+          // opacity: isDisplay ? 1 : 0,
+          // display: isDisplay ? 'block' : 'none',
           top: isTop
         }}
         ref={ul}
+        onMouseOver={changeBgc}
+        onClick={changeIptContent}
       >
         {searchClassList.map((item) => {
           return <li key={item.id}
           >
             <a
               href="/"
-              className='recommondupdate__li--selectEle'
+              className={'recommondupdate__li--selectEle' + (isActive === item.id ? ' recommondupdate__a--active' : '')}
+              /* 事件代理 */
+              data-id={item.id}
+              data-content={item.content}
             >{item.content}</a>
           </li>
         })}

@@ -22,15 +22,23 @@
   position: absolute;
   left: 0;
   width: 15rem;
-  height: 10rem;
+  height: 15rem;
   /* 垂直方向滚动条 */
   overflow-y: scroll;
   background-color: #fff;
+  border: 1px solid var(--juejin-gray-2);
+  border-radius: 5px;
+  /* box-shadow: -2px 2px #ccc; */
 }
 
 .recommondupdate__li--selectEle {
   display: block;
   font-size: 0.66rem;
   font-weight: 500;
-  padding: 6px 5px;
+  padding: 1rem 5px;
+}
+
+.recommondupdate__a--active {
+  color: var(--juejin-brand-1-normal);
+  background-color: var(--juejin-gray-2);
 }
