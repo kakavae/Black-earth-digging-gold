@@ -4,7 +4,6 @@ import './index.css'
 import NavLeft from '../../common/navLeft'
 import Aside from '../../common/aside'
 import HomeMainContent from '../../common/homeMainContent'
-import { Outlet } from 'react-router-dom'
 
 export default function Home({ isDisplayHeader }) {
   // const element = useRoutes(router)
@@ -18,7 +17,7 @@ export default function Home({ isDisplayHeader }) {
           {/* 中间模块 设置了flex: 1 */}
           <div className="Home__div--maincontent--w">
             {/* App组件，根组件\，下方有navLeft指定的所有子组件 */}
-            <Outlet></Outlet>
+            <HomeMainContent></HomeMainContent>
           </div>
           {/* 右边的aside */}
           <Aside></Aside>

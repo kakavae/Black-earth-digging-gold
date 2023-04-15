@@ -1,20 +1,21 @@
 import React from 'react'
 import './index.css'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function HeaderMenu() {
   const ACTIVEMENULENGTH = 6
   // 菜单图
   const homeMenuList = [
-    { id: 1, content: '首页' },
-    { id: 2, content: '沸点' },
-    { id: 3, content: '课程' },
-    { id: 4, content: '直播' },
-    { id: 5, content: '活动' },
-    { id: 6, content: '竞赛' },
-    { id: 7, content: '商城' },
-    { id: 8, content: 'App' },
-    { id: 9, content: '插件' },
+    { id: 1, content: '首页', url: '' },
+    { id: 2, content: '沸点', url: '/pins' },
+    { id: 3, content: '课程', url: '/pins' },
+    { id: 4, content: '直播', url: '/pins' },
+    { id: 5, content: '活动', url: '/pins' },
+    { id: 6, content: '竞赛', url: '/pins' },
+    { id: 7, content: '商城', url: '/pins' },
+    { id: 8, content: 'App', url: '/pins' },
+    { id: 9, content: '插件', url: '/pins' },
   ]
   // 下划线的定位
   const [bottomLineLeft, setBottomLineLeft] = useState('0px')
@@ -41,7 +42,7 @@ export default function HeaderMenu() {
   // 菜单跳转
   const changeMenu = (id) => {
     return (event) => {
-      event.preventDefault()
+      // event.preventDefault()
       console.log(id, ACTIVEMENULENGTH, '跳转路由')
       if (id <= ACTIVEMENULENGTH) {
         setActiveMenuId(id)
@@ -57,13 +58,13 @@ export default function HeaderMenu() {
     >
       {homeMenuList.map((item, index) => {
         return <li key={item.id}>
-          <a
-            href="/" className="header__ul__a--color"
+          <Link
+            to={item.url} className="header__ul__a--color"
             data-index={index}
             style={{ color: activeMenuId === item.id ? 'var(--juejin-brand-1-normal)' : 'var(--juejin-font-2)' }}
             onClick={changeMenu(item.id)}
           >{item.content}
-          </a></li>
+          </Link></li>
       })}
       <li
         className="header__li--bottomline"

@@ -1,6 +1,7 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import App from '../App'
-import HomeMainContent from "../common/homeMainContent";
+import Home from "../component/home";
+import Pins from "../component/pins";
 
 const router = createBrowserRouter([
   {
@@ -9,47 +10,51 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
       },
       {
         path: 'following',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
       },
       {
         path: 'recommended',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
       },
       {
         path: 'backend',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
       },
       {
         path: 'frontend',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
       },
       {
         path: 'android',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
       },
       {
         path: 'ios',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
       },
       {
         path: 'ai',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
       },
       {
         path: 'freebie',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
       },
       {
         path: 'career',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
       },
       {
         path: 'article',
-        element: <HomeMainContent></HomeMainContent>
+        element: <Home></Home>
+      },
+      {
+        path: 'pins',
+        element: <Pins></Pins>
       }
     ]
   }

@@ -1,8 +1,11 @@
 import React from 'react'
 import Header from './common/header'
-import Home from './component/home'
 import { useEffect, useState } from 'react'
 import throttle from './useFunction/throttle'
+import { Outlet } from 'react-router-dom'
+
+/* 提供context */
+import { isDisplayContext } from './context/app'
 
 export default function App() {
 
@@ -24,8 +27,11 @@ export default function App() {
 
   return (
     <div>
-      <Header isDisplayHeader={isDisplayHeader}></Header>
-      <Home isDisplayHeader={isDisplayHeader}></Home>
+      <isDisplayContext.Provider value={isDisplayHeader}>
+        <Header isDisplayHeader={isDisplayHeader}></Header>
+        {/* <Home isDisplayHeader={isDisplayHeader}></Home> */}
+        <Outlet></Outlet>
+      </isDisplayContext.Provider>
     </div>
   )
 }
