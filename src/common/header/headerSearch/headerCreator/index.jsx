@@ -26,22 +26,18 @@ export default function HeaderCreator({ setRight }) {
     return () => {
       if (flag) {
         setCreatorActiveRight('header__addgroup--rightactive')
+        console.log(111)
+        setRight(document.body.clientWidth - div.current.getBoundingClientRect().right)
       } else {
         setCreatorActiveRight('')
+        setRight(0)
       }
     }
   }
 
-  /* 给父组件传递此时创作者中心的位置 */
-  useEffect(() => {
-    // console.log(document.body.clientWidth, div.current.getBoundingClientRect().right)
-    setRight(document.body.clientWidth - div.current.getBoundingClientRect().right)
-  }, [setRight])
-
   return (
     <div
       className="header__addgroup"
-      ref={div}
     >
       <button
         onMouseOver={changeCreatorBgc(true)}
@@ -52,6 +48,7 @@ export default function HeaderCreator({ setRight }) {
         className={'header__div--more ' + creatorActiveRight}
         onMouseOver={changeArrow(true)}
         onMouseOut={changeArrow(false)}
+        ref={div}
       >
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="unfold12-icon" data-v-9fa8ab8e=""><path d="M2.45025 4.82383C2.17422 4.49908 2.40501 4 2.83122 4H9.16878C9.59499 4 9.82578 4.49908 9.54975 4.82382L6.38097 8.5518C6.1813 8.7867 5.8187 8.7867 5.61903 8.5518L2.45025 4.82383Z" fill="white"></path></svg>
       </div>

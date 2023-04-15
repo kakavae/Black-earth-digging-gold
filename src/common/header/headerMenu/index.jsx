@@ -18,6 +18,8 @@ export default function HeaderMenu() {
   ]
   // 下划线的定位
   const [bottomLineLeft, setBottomLineLeft] = useState('0px')
+  // 下划线显示与否
+  const [isDisplay, setIsDisplay] = useState(false)
   // 当前活跃的菜单
   const [activeMenuId, setActiveMenuId] = useState(homeMenuList[0].id)
 
@@ -25,15 +27,22 @@ export default function HeaderMenu() {
   const moveBootomLine = (event) => {
     const index = event.target.dataset.index
     if (index >= 0 && index <= 5) {
+      setIsDisplay(true)
       // a和li的宽度一样，所以直接用a的
       setBottomLineLeft(index * event.target.offsetWidth + 'px')
+    } else {
+      setIsDisplay(false)
     }
+  }
+  // 下划线消失
+  const changeDisplay = () => {
+    setIsDisplay(false)
   }
   // 菜单跳转
   const changeMenu = (id) => {
     return (event) => {
       event.preventDefault()
-      console.log(id, ACTIVEMENULENGTH)
+      console.log(id, ACTIVEMENULENGTH, '跳转路由')
       if (id <= ACTIVEMENULENGTH) {
         setActiveMenuId(id)
       }
@@ -41,7 +50,11 @@ export default function HeaderMenu() {
   }
 
   return (
-    <ul className="header__ul--menubfc" onMouseOver={moveBootomLine}>
+    <ul
+      className="header__ul--menubfc"
+      onMouseOver={moveBootomLine}
+      onMouseLeave={changeDisplay}
+    >
       {homeMenuList.map((item, index) => {
         return <li key={item.id}>
           <a
@@ -52,7 +65,12 @@ export default function HeaderMenu() {
           >{item.content}
           </a></li>
       })}
-      <li className="header__li--bottomline" style={{ left: bottomLineLeft }}></li>
+      <li
+        className="header__li--bottomline"
+        style={{
+          left: bottomLineLeft,
+          display: isDisplay ? 'block' : 'none'
+        }}></li>
     </ul>
   )
 }

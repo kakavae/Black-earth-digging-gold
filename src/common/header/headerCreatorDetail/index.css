@@ -1,7 +1,7 @@
 /* 汇集创作者中心所有的盒子，固定定位在这个位置 */
 .headerCreator__div--creatorContainer {
   position: absolute;
-  top: 0px;
+  top: 60px;
   right: 0;
   background-color: #fff;
   border: 1px solid var(--juejin-gray-1-3);

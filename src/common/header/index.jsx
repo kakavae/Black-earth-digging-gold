@@ -6,16 +6,18 @@ import HeaderCreatorDetail from './headerCreatorDetail'
 import { useState } from 'react'
 
 export default function Header({ isDisplayHeader }) {
-  // 获取创作者中心的div的位置，给下面新出的菜单定位用
+  // 获取创作者中心的div的位置，给下面新出的菜单定位用，控制变量存储在两个子组件的父级组件
   const [right, setRight] = useState(0)
   return (
     <div className='header__div--maxcontainer'>
       <div className="header__header--container" style={{ transform: isDisplayHeader ? '' : 'translateY(-60px)' }}>
-        <a href="/" className="header__a--logo">
-          <img src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg" alt="logo" />
-        </a>
         <div>
+          <a href="/" className="header__a--logo">
+            <img src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg" alt="logo" />
+          </a>
           <HeaderMenu></HeaderMenu>
+        </div>
+        <div>
           <ul className="header__ul--rightcontentfloat">
             <li className="header__li--headerimg">
               <div className="header__div--headerimg">

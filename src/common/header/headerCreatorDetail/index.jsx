@@ -15,13 +15,15 @@ export default function HeaderCreatorDetail({ right }) {
     { id: 2, title: '活动', content: '一起来黑土旅行吧！！！' },
     { id: 3, title: '活动', content: '一起来黑土旅行吧！！！' }
   ]
-  // useEffect(() => {
-  //   console.log(right)
-  // }, [])
+
   return (
     <div
       className='headerCreator__div--creatorContainer'
-      style={{ right: right + 'px' }}>
+      style={{
+        /* 直接利用right的是否为0显示和隐藏元素，不用再传递另外一个变量 */
+        right: right + 'px',
+        display: right ? 'block' : 'none'
+      }}>
       <ul className='headerCreatorDetail__ul--container'>
         {creatorSlect.map((item) => {
           return <li

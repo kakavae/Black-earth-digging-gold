@@ -1,11 +1,13 @@
 import React from 'react'
+// import { useRoutes } from 'react-router-dom'
 import './index.css'
 import NavLeft from '../../common/navLeft'
-import ThreeModule from '../../common/threeModule'
 import Aside from '../../common/aside'
-import RecommondUpdate from '../../common/recommondUpdate'
+import HomeMainContent from '../../common/homeMainContent'
+import { Outlet } from 'react-router-dom'
 
 export default function Home({ isDisplayHeader }) {
+  // const element = useRoutes(router)
   return (
     /* 控制版心的盒子的位置 */
     <div className='Home__div--bgc'>
@@ -15,10 +17,8 @@ export default function Home({ isDisplayHeader }) {
           <NavLeft isDisplayHeader={isDisplayHeader}></NavLeft>
           {/* 中间模块 设置了flex: 1 */}
           <div className="Home__div--maincontent--w">
-            {/* 三大模块 */}
-            <ThreeModule></ThreeModule>
-            {/* 文章模块--推荐和最新 */}
-            <RecommondUpdate></RecommondUpdate>
+            {/* App组件，根组件\，下方有navLeft指定的所有子组件 */}
+            <Outlet></Outlet>
           </div>
           {/* 右边的aside */}
           <Aside></Aside>

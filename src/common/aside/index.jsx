@@ -18,10 +18,8 @@ export default function Aside() {
     const ratio = entries[0].intersectionRatio
     if (ratio > 0) {
       setIsShow(false)
-      console.log('隐藏')
     } else {
       setIsShow(true)
-      console.log('显示')
     }
     // 如果比率从0变为1就正常显示
     // 如果比率从大于0变为小于0就固定定位广告模块

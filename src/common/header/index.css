@@ -1,6 +1,13 @@
 /* header的最大的容器 */
+.header__div--maxcontainer {
+  display: flex;
+  justify-content: center;
+}
+
 .header__header--container {
-  margin: 0 3.25rem;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
   max-width: 1440px;
   width: 100%;
   position: fixed;
@@ -126,6 +133,6 @@
 }
 
 .header__div--headerimg>img {
-  width: 3rem;
-  height: 3rem;
+  width: 100%;
+  height: 100%;
 }

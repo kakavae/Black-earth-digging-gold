@@ -1,7 +1,8 @@
 import React from 'react'
 import './index.css'
 import { useState, useRef, useEffect } from 'react'
-import throttle from '../../../useFunction/throttle'
+import throttle from '../../../../useFunction/throttle'
+import { useHref } from 'react-router-dom'
 
 export default function RecommondSelectList() {
   const searchClassList = [
@@ -22,6 +23,10 @@ export default function RecommondSelectList() {
   /* input里面的响应式数据 */
   const [iptContent, setIptContent] = useState('全部')
 
+  /* 控制当前如果是在综合页面，就不显示input框，display设置为none */
+  const isDisplayIpt = useHref()
+
+  /* 拿input和下拉选择的ul的DOM，计算动态位置 */
   const input = useRef(null)
   const ul = useRef(null)
   /* 判断是否能放在input上面的函数 */
@@ -68,14 +73,12 @@ export default function RecommondSelectList() {
     console.log('拿着input的value防抖式请求服务器数据')
   }
 
-  /* 第二个参数是空数组，相当于第一次调用的时候在组件挂载到DOM之后执行 */
-  useEffect(() => {
-
-  }, [])
-
   return (
     <div
       className="recommondupdate__div--center"
+      style={{
+        display: isDisplayIpt === '/recommended' ? 'none' : 'block'
+      }}
     >
       {/* select选择功能 */}
       <input
