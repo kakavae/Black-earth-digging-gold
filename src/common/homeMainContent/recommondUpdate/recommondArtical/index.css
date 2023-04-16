@@ -4,11 +4,14 @@
 
 .recommondArtical__div--line {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   border-bottom: 1px solid #ccc;
 }
 
 .recommondArtical__div--articalmsg {
-  flex: 1;
+  flex: 1 1 auto;
+  padding-bottom: 1.5rem;
 }
 
 .recommondArtical__div--author {
@@ -31,16 +34,29 @@
   font-weight: 600;
   font-size: 16px;
   color: var(--juejin-font-1);
+  margin: 1rem 0 0 0;
 }
 
 /* 文章简写 */
-.recommondArtical__p--artical {
-  color: var(--juejin-font-3);
-  font-size: 13px;
-}
 
 /* 图片 */
 .recommondArtical__img--artical {
+  flex: 0 0 auto;
   width: 120px;
   height: 80px;
+  margin-bottom: 1.5rem;
+}
+
+.recommondArtical__a--ellipsis {
+  color: var(--juejin-font-3);
+  font-size: 13px;
+  line-height: 22px;
+  overflow: hidden;
+  /* box盒子---盒子的高度由行高乘以实际的行数决定 */
+  display: -webkit-box;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  /* 将文本的内容限制为指定的行数，显示为指定的行数之后还会显示省略号，所以text-overflow可以省略了 */
 }

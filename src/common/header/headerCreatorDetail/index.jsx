@@ -1,7 +1,8 @@
 import React from 'react'
 import './index.css'
 
-export default function HeaderCreatorDetail({ right }) {
+/* 鼠标经过的时候显示的创作者中心 */
+export default function HeaderCreatorDetail({ isDisplay }) {
   // 创作者中心的选择
   const creatorSlect = [
     { id: 1, title: '写文章' },
@@ -17,38 +18,38 @@ export default function HeaderCreatorDetail({ right }) {
   ]
 
   return (
-    <div
-      className='headerCreator__div--creatorContainer'
-      style={{
-        /* 直接利用right的是否为0显示和隐藏元素，不用再传递另外一个变量 */
-        right: right + 'px',
-        display: right ? 'block' : 'none'
-      }}>
-      <ul className='headerCreatorDetail__ul--container'>
-        {creatorSlect.map((item) => {
-          return <li
-            key={item.id}>
-            <a
-              href="/"
-              className='headerCreatorDetail__a--link'
-            >
-              <img src="" alt="" />
-              <span>{item.title}</span>
-            </a></li>
-        })}
-      </ul>
-      <div className='headerCreatorDetail__div--more'>
-        <h3>创作灵感</h3>
-        <a href="/">查看更多</a>
+    <div className='headerCreator__div--maxpaddingtop'>
+      <div
+        className='headerCreator__div--creatorContainer'
+        style={{
+          display: isDisplay ? 'block' : 'none'
+        }}>
+        <ul className='headerCreatorDetail__ul--container'>
+          {creatorSlect.map((item) => {
+            return <li
+              key={item.id}>
+              <a
+                href="/"
+                className='headerCreatorDetail__a--link'
+              >
+                <img src="" alt="" />
+                <span>{item.title}</span>
+              </a></li>
+          })}
+        </ul>
+        <div className='headerCreatorDetail__div--more'>
+          <h3>创作灵感</h3>
+          <a href="/">查看更多</a>
+        </div>
+        <ul className="headerCreatorDetail__ul--active">
+          {active.map((item) => {
+            return <li key={item.id} className="headerCreatorDetail__li--activecontainer">
+              <i>{item.title}</i>
+              <a href='/'>{item.content}</a>
+            </li>
+          })}
+        </ul>
       </div>
-      <ul className="headerCreatorDetail__ul--active">
-        {active.map((item) => {
-          return <li key={item.id} className="headerCreatorDetail__li--activecontainer">
-            <i>{item.title}</i>
-            <a href='/'>{item.content}</a>
-          </li>
-        })}
-      </ul>
     </div>
   )
 }

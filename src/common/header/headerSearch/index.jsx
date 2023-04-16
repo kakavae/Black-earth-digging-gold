@@ -3,7 +3,7 @@ import './index.css'
 import { useState } from 'react'
 import HeaderCreator from './headerCreator'
 
-export default function HeaderSearch({ setRight }) {
+export default function HeaderSearch() {
   // 修改input的placeholde
   const [iptPlaceholder, setIptPlaceholder] = useState('探索黑土掘金')
   // 控制input活跃之后放大镜的样式
@@ -19,10 +19,10 @@ export default function HeaderSearch({ setRight }) {
   const inputFocus = () => {
     setIptPlaceholder('搜索文章/小册/标签/用户')
     setPathActiveClass('search-icon-path--active')
-    setPathBgActiveClass('header__div--searchactive')
-    setFormActive('header__form--active')
+    setPathBgActiveClass('headersearch__div--searchactive')
+    setFormActive('headersearch__form--active')
     /* 通知子组件HeaderCreator修改自己的样式 */
-    setCreatorActive('header__li--creatoractive')
+    setCreatorActive('headersearch__li--creatoractive')
   }
   const inputBlur = (event) => {
     setIptPlaceholder('探索黑土掘金')
@@ -38,16 +38,16 @@ export default function HeaderSearch({ setRight }) {
   }
 
   return (
-    <ul className='header__ul__ul--container'>
-      <li className="header__li--formFlex">
-        <form className={'header__form ' + formActive}>
+    <ul className='headersearch__ul__ul--container'>
+      <li className="headersearch__li--formFlex">
+        <form className={'headersearch__form ' + formActive}>
           <input
             type="text"
             placeholder={iptPlaceholder}
             onFocus={inputFocus}
             onBlur={inputBlur}
           />
-          <div className={'header__div--container--search ' + pathBgActiveClass}>
+          <div className={'headersearch__div--container--search ' + pathBgActiveClass}>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="search-icon">
               <path d="M12.4008 12.4008C14.744 10.0577 14.744 6.25871 12.4008 3.91556C10.0577 1.57242 6.25871 1.57242 3.91556 3.91556C1.57242 6.25871 1.57242 10.0577 3.91556 12.4008C6.25871 14.744 10.0577 14.744 12.4008 12.4008ZM12.4008 12.4008L15.5828 15.5828" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
                 className={pathActiveClass}
@@ -56,8 +56,8 @@ export default function HeaderSearch({ setRight }) {
           </div>
         </form>
       </li>
-      <li className={'header__li--creator ' + creatorActive}>
-        <HeaderCreator setRight={setRight}></HeaderCreator>
+      <li className={'headersearch__li--creator ' + creatorActive}>
+        <HeaderCreator></HeaderCreator>
       </li>
     </ul>
   )

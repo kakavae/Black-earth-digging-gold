@@ -1,8 +1,15 @@
+/* 给一个上边距，把边框挤下来 */
+.headerCreator__div--maxpaddingtop {
+  padding-top: 1rem;
+  position: absolute;
+  top: 32px;
+  right: 0;
+  width: 35rem;
+}
+
 /* 汇集创作者中心所有的盒子，固定定位在这个位置 */
 .headerCreator__div--creatorContainer {
-  position: absolute;
-  top: 60px;
-  right: 0;
+
   background-color: #fff;
   border: 1px solid var(--juejin-gray-1-3);
   padding: 1rem;

@@ -2,6 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import App from '../App'
 import Home from "../component/home";
 import Pins from "../component/pins";
+import Course from '../component/course'
+import Live from '../component/live'
+import Events from '../component/events'
+import Challenge from '../component/challenge'
 
 const router = createBrowserRouter([
   {
@@ -55,6 +59,22 @@ const router = createBrowserRouter([
       {
         path: 'pins',
         element: <Pins></Pins>
+      },
+      {
+        path: 'course',
+        element: <Course></Course>
+      },
+      {
+        path: 'live',
+        element: <Live></Live>
+      },
+      {
+        path: 'events',
+        element: <Events></Events>
+      },
+      {
+        path: 'challenge',
+        element: <Challenge></Challenge>
       }
     ]
   }

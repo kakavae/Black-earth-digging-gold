@@ -1,23 +1,11 @@
-.header__li--creator {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 11rem;
-  padding-left: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all .5s linear;
-}
-
-.header__addgroup {
+.headercreator__addgroup {
   position: relative;
   width: 115px;
   height: 3rem;
   display: flex;
 }
 
-.header__addgroup>button {
+.headercreator__addgroup>button {
   padding: 0 1rem;
   height: 100%;
   border: none;
@@ -29,16 +17,17 @@
 }
 
 /* 创作者中心鼠标经过的背景颜色 */
-.header__addgroup--active {
+.headercreator__addgroup--active {
   background-color: var(--juejin-brand-2-hover) !important;
 }
 
 /* 右侧箭头经过的时候的样式 */
-.header__addgroup--rightactive {
+.headercreator__addgroup--rightactive {
   background-color: var(--juejin-brand-2-hover) !important;
 }
 
-.header__div--more {
+.headercreator__div--more {
+  position: relative;
   background-color: var(--juejin-brand-1-normal);
   width: 1.667rem;
   height: 100%;
@@ -49,8 +38,12 @@
   border-bottom-right-radius: 5px;
 }
 
+.headercreator__div--more:hover {
+  cursor: pointer;
+}
+
 /* svg图加了下面的这个属性才会起效果 */
-.header__div--more>svg>path {
+.headercreator__div--more>svg>path {
   fill: #fcfcfc;
   stroke: #4075c9;
 }

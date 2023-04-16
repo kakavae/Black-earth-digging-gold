@@ -13,7 +13,7 @@
   position: fixed;
   top: 0;
   background-color: #fff;
-  transition: all 0.15s linear;
+  transition: all 0.25s linear;
 }
 
 .header__a--logo {
@@ -33,106 +33,17 @@
   width: 107px;
 }
 
-.header__ul--menubfc {
-  float: left;
-  font-size: 1.167rem;
-  position: relative;
-}
-
-.header__ul--menubfc>li {
-  float: left;
-}
-
-/* 下方移动的线 */
-.header__li--bottomline {
-  position: absolute;
-  display: block;
-  top: 58px;
-  height: 2px;
-  width: 2.334rem;
-  margin: 0 1rem;
-  border-bottom: 2px solid var(--juejin-brand-1-normal);
-  z-index: 999;
-}
-
-.header__ul__a--color {
-  display: inline-block;
-  padding: 0 1rem;
-  height: 60px;
-  line-height: 60px;
-}
-
-/* 右侧包裹会员的右边的container */
 .header__ul--rightcontentfloat {
-  float: right;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
+/* 右边所有的li右浮动 */
 .header__ul--rightcontentfloat>li {
-  float: right;
+  z-index: 999;
+  /* float: right; */
+  background-color: #fff;
   height: 60px;
   font-size: 1.1rem;
-}
-
-/* 会员 */
-.header__li--member {
-  height: 100%;
-  padding: 0 1rem;
-}
-
-.vip--title {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.vip--words {
-  margin-left: 3px;
-  color: #86909c;
-}
-
-/* 通知 */
-.header__li--notification {
-  position: relative;
-  padding: 0 2rem 0 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* svg图加了下面的这个属性才会起效果 */
-.header__li--notification>svg>path {
-  fill: #8a919f;
-  stroke: #8a919f;
-}
-
-.header__li--notification>span {
-  position: absolute;
-  top: 0.6rem;
-  right: 1.8rem;
-  height: 16px;
-  background-color: red;
-  color: white;
-  font-size: 0.6rem;
-  border-radius: 8px;
-}
-
-.header__li--headerimg {
-  width: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header__div--headerimg {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  margin-right: 2rem;
-}
-
-.header__div--headerimg>img {
-  width: 100%;
-  height: 100%;
 }

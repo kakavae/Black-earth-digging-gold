@@ -1,16 +1,40 @@
-.header__ul__ul--container {
+.headersearch__ul__ul--container {
   float: right;
   height: 60px;
   width: 43rem;
-  overflow: hidden;
   position: relative;
 }
 
-.header__ul__ul--container>li {
+.headersearch__ul__ul--container>li {
   height: 60px;
 }
 
-.header__form>input {
+/* 中间的form表单的样式 */
+.headersearch__li--formFlex {
+  display: flex;
+  padding: 0 1rem;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.headersearch__form {
+  position: relative;
+  width: 360px;
+  height: 2.834rem;
+  border: 1px solid #c2c8d1;
+  border-radius: 4px;
+  transition: all .1s linear;
+}
+
+.headersearch__form--active {
+  width: 42rem;
+  border: 1px solid #1e80ff;
+}
+
+.headersearch__form>input {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -19,15 +43,15 @@
   color: #8a919f;
 }
 
-.header__form>input::placeholder {
+.headersearch__form>input::placeholder {
   color: #8a919f;
 }
 
-.header__form>input:focus {
+.headersearch__form>input:focus {
   outline: none;
 }
 
-.header__div--container--search {
+.headersearch__div--container--search {
   position: absolute;
   right: 2px;
   top: 50%;
@@ -40,7 +64,7 @@
   background-color: var(--juejin-background);
 }
 
-.header__div--searchactive {
+.headersearch__div--searchactive {
   background-color: #eaf2ff;
   cursor: pointer;
 }
@@ -58,7 +82,7 @@
   stroke: #1e80ff !important;
 }
 
-.header__li--creator {
+.headersearch__li--creator {
   position: absolute;
   right: 0;
   top: 0;
@@ -67,10 +91,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all .5s linear;
+  transition: all .1s linear;
 }
 
 /* 创作者中心活跃的时候的样式---直接将第二个li移出盒子然后overflow: hidden */
-.header__li--creatoractive {
+.headersearch__li--creatoractive {
   transform: translateX(200px)
 }
