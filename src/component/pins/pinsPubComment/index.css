@@ -1,0 +1,61 @@
+/* 最大盒子flex */
+.pinspubcomment__div--container {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+}
+
+/* textarea的样式 */
+.pinspubcomment__textarea--bgc {
+  background-color: var(--juejin-background);
+  border: none;
+  outline: none;
+  max-width: 100%;
+  font-size: 16px;
+  resize: none;
+  line-height: 22px;
+}
+
+/* 下面的容器盒子flex */
+.pinspubcomment__div--bottomflex {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pinspubcomment__div--bottomflex>button {
+  padding: 0.5rem 2rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--juejin-brand-1-normal);
+}
+
+.pinspubcomment__div--bottomflex>button:hover {
+  cursor: pointer;
+}
+
+/* ul */
+.pinspubcomment__ul--flex {
+  display: flex;
+}
+
+/* a标签的样式 */
+.pinspubcomment__a--padding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem 1rem 0;
+}
+
+.pinspubcomment__a--padding>span {
+  color: #4e5969;
+  font-size: 14px;
+  line-height: 22px;
+  padding-left: 4px;
+}

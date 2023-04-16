@@ -3,7 +3,10 @@ import React from 'react'
 import './index.css'
 import NavLeft from '../../common/navLeft'
 import Aside from '../../common/aside'
-import HomeMainContent from '../../common/homeMainContent'
+
+/* 分为上下两个组件 */
+import PinsPubComment from './pinsPubComment'
+import PinsComment from './pinsComment'
 
 export default function Pins() {
   /* 左侧导航NavLeft需要显示的数据 */
@@ -33,8 +36,15 @@ export default function Pins() {
           <NavLeft menuList={menuList} inicalIndex={0} recommendationCircle={recommendationCircle}></NavLeft>
           {/* 中间模块 设置了flex: 1 */}
           <div className="pins__div--maincontent--w">
-            {/* App组件，根组件\，下方有navLeft指定的所有子组件 */}
-            <HomeMainContent></HomeMainContent>
+            <PinsPubComment></PinsPubComment>
+            <PinsComment></PinsComment>
+            <PinsComment></PinsComment>
+            <PinsComment></PinsComment>
+            <PinsComment></PinsComment>
+            <PinsComment></PinsComment>
+            <PinsComment></PinsComment>
+            <PinsComment></PinsComment>
+            <PinsComment></PinsComment>
           </div>
           {/* 右边的aside */}
           <Aside></Aside>

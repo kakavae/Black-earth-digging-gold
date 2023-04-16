@@ -1,0 +1,103 @@
+.pinscomment__div--container {
+  background-color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-top: 1rem;
+  padding: 1.5rem 1.5rem;
+}
+
+/* 顶部的盒子 */
+
+.pinscomment__div--topcontainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* 头像裁剪 */
+.pinscomment__div--imgcicle>a {
+  display: block;
+}
+
+.pinscomment__img--header {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+/* 头像右侧的flex布局，向下 */
+.pinscomment__div--comentdetail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding-left: 1.5rem;
+  font-size: 14px;
+}
+
+.pinscomment__div--comentdetail>h3 {
+  font-weight: 500;
+  margin: 0.5rem 0 1rem 0;
+}
+
+/* 职业的字体 */
+.pinscomment__div--occupationfont {
+  color: var(--juejin-font-3);
+}
+
+.pinscomment__div--occupationfont>a {
+  color: var(--juejin-font-3);
+}
+
+/* 评论的图片布局--flex */
+.pinscomment__ul--commentImg {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.pinscomment__ul--commentImg>li {
+  width: calc(20% - 2.66667px);
+}
+
+.pinscomment__img--size {
+  width: 100%;
+  height: 100%;
+}
+
+/* 下面的俱乐部层club */
+.pinscomment__div--clubflex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* club下的a--flex */
+.pinscomment__a--flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eaf2ff;
+  color: #1e80ff;
+}
+
+.pinscomment__a--flex>span {
+  padding: 0 3px;
+}
+
+.pinscomment__path--fillcolor {
+  fill: rgb(30, 128, 255);
+}
+
+.pinscomment__span--likescolor {
+  color: var(--juejin-font-3);
+  font-size: 1rem;
+}
+
+.pinscomment__span--likescolor>span {
+  color: #1e80ff;
+  background-color: rgba(130, 201, 220, 0.3);
+  border-radius: 10px;
+}

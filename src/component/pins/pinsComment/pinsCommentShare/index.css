@@ -1,0 +1,37 @@
+/* 下方的分享评论点赞 */
+.pinscommentshare__ul--bottomcontainer {
+  border-top: 1px solid #ccc;
+  display: flex;
+  background-color: #fff;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pinscommentshare__a--padding {
+  display: flex;
+  padding: 1rem 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.pinscommentshare__a--padding>span {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 3px;
+}
+
+/* span背景图片 */
+.pinscommentshare__span--bgishare {
+  background: url(https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/36d78e150182aba28d468489573a7dbf.svg);
+}
+
+.pinscommentshare__span--bgicomment {
+  background: url(https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/a9532d230b98d8920a987aafa22e9059.svg);
+}
+
+.pinscommentshare__span--bgilike {
+  background: url(https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/b63038829982183f1741af41ac12d650.svg);
+}
