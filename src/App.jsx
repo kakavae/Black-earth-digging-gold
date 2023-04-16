@@ -3,6 +3,7 @@ import Header from './common/header'
 import { useEffect, useState } from 'react'
 import throttle from './useFunction/throttle'
 import { Outlet } from 'react-router-dom'
+import './App.css'
 
 /* 提供context */
 import { isDisplayContext } from './context/app'
