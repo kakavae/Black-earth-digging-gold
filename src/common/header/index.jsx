@@ -3,11 +3,13 @@ import './index.css'
 import HeaderSearch from './headerSearch'
 import HeaderMenu from './headerMenu'
 import HeaderImgMemberNotification from './headerImgMemberNotification'
-import { useState } from 'react'
+import { useContext } from 'react'
+import { isDisplayContext } from '../../context/app'
 
-export default function Header({ isDisplayHeader }) {
+export default function Header() {
+  const isDisplayHeader = useContext(isDisplayContext)
   return (
-    <div className='header__div--maxcontainer'>
+    <>
       <div className="header__header--container" style={{ transform: isDisplayHeader ? '' : 'translateY(-60px)' }}>
         <div>
           <a href="/" className="header__a--logo">
@@ -20,6 +22,6 @@ export default function Header({ isDisplayHeader }) {
           <HeaderImgMemberNotification></HeaderImgMemberNotification>
         </ul>
       </div>
-    </div>
+    </>
   )
 }

@@ -1,0 +1,79 @@
+/* fixed 当元素祖先的 `transform`、`perspective`、`filter` 或 `backdrop-filter` 属性非 `none` 时，容器由视口改为该祖先。 */
+.courserightad__div--container {
+  width: 20rem;
+  position: fixed;
+  top: 80px;
+}
+
+/* 课程中心 */
+.courserightad__a--coursecenter {
+  background-color: #fff;
+  display: flex;
+  padding: 1.5rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.courserightad__a--coursecenter>img {
+  height: 28px;
+  width: auto;
+  margin-right: 1rem;
+}
+
+.courserightad__a--coursecenter>span {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* 推广中心 */
+.courserightad__div--extensioncenter {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+/* 掘金手册 */
+.courserightad__a--manual {
+  display: inline-block;
+}
+
+.courserightad__a--manual>img {
+  width: 240px;
+  margin-top: 1.5rem;
+}
+
+/* 手册介绍 */
+.courserightad__div--manualintroduce {
+  background-color: #fff;
+  margin-top: 1.5rem;
+}
+
+/* 关于手册 */
+.courserightad__div--aboutmanual {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 1.5rem;
+}
+
+.courserightad__div--aboutmanual>div {
+  font-size: 16px;
+}
+
+.courserightad__div--aboutmanual>p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* 关注公众号 */
+.courserightad__div--follow {
+  padding: 0 0.5rem 0 1rem;
+}
+
+.courserightad__div--follow>div {
+  width: 100%;
+  height: 95px;
+  background: url(https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/wechat-qr.f1926e7.png) no-repeat center 0;
+  background-size: auto 95px;
+}

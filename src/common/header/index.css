@@ -1,9 +1,4 @@
 /* header的最大的容器 */
-.header__div--maxcontainer {
-  display: flex;
-  justify-content: center;
-}
-
 .header__header--container {
   display: flex;
   justify-content: space-between;
@@ -14,6 +9,7 @@
   top: 0;
   background-color: #fff;
   transition: all 0.25s linear;
+  z-index: 999;
 }
 
 .header__a--logo {

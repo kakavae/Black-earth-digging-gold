@@ -29,7 +29,7 @@ export default function App() {
   return (
     <div>
       <isDisplayContext.Provider value={isDisplayHeader}>
-        <Header isDisplayHeader={isDisplayHeader}></Header>
+        <Header></Header>
         {/* <Home isDisplayHeader={isDisplayHeader}></Home> */}
         <Outlet></Outlet>
       </isDisplayContext.Provider>

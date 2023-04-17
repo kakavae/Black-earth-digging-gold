@@ -1,0 +1,14 @@
+.coursebook__div--container {
+  padding: 2rem 0;
+  display: flex;
+}
+
+.coursebook__div--container>img {
+  width: 103px;
+  height: 147px;
+}
+
+.coursebook__div--container>div {
+  font-size: 14px;
+  margin-left: 2rem;
+}

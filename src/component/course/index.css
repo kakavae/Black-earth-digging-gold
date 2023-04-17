@@ -1,0 +1,26 @@
+.course__div--bgc {
+  background-color: #F2F3F5;
+}
+
+.course__div--container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-top: 60px;
+  overflow: hidden;
+}
+
+.course__div--view {
+  display: flex;
+  position: relative;
+  margin-top: 1.66rem;
+}
+
+/* 让右边的固定定位根据自己的位置来变化 */
+.course__div--transform {
+  transition: all .3s linear;
+  position: absolute;
+  width: 20rem;
+  right: 0;
+  top: 0;
+  /* margin-left: 1.5rem;  这样不行 */
+}
