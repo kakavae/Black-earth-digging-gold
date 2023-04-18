@@ -1,6 +1,6 @@
 /* 处理get方法 */
 /* 函数调用返回的是Promise对象 */
-const requestGET = ({ method, url, params = [], query = {} }) => {
+const requestGET = ({ method, url, params = [], query = {}, useBefore = () => { } }) => {
 
   /* 输入校验 */
   if (!method || !url) {
@@ -65,6 +65,8 @@ const requestGET = ({ method, url, params = [], query = {} }) => {
           msg: '请求被打断，用户取消接收'
         })
       })
+
+      useBefore(xhr)
 
       xhr.send()
     })

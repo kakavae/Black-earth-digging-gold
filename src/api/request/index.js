@@ -6,20 +6,23 @@
   4.post数据，暂定
 */
 import requestGET from "./requestGET"
-const mainURL = 'http://127.0.0.1:8090/api/'
+import requestPOST from "./requestPost"
+const mainURL = 'http://127.0.0.1:8090'
 
-const request = ({ method, url, params = [], query = {} }) => {
+const request = ({ method, url, params = [], query = {}, data = null }) => {
 
   url = mainURL + url  // 拼接主路径
 
   /* 给每一个请求都配置服务器对应的请求路径 */
   if (method === 'get' || method === 'GET') {
-    return requestGET({ method, url, params, query })
+    return requestGET({ method, url, params, query, useBefore: request.useBefore })
   } else if (method === 'post' || method === 'POST') {
-    return 'post'
+    return requestPOST({ method, url, data, useBefore: request.useBefore })
   } else {
     throw new Error('This request method is not supported !!!')
   }
 }
+
+/* 接收一个配置函数，在每次请求之前调用 */
 
 export default request

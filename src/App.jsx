@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import throttle from './useFunction/throttle'
 import { Outlet } from 'react-router-dom'
 import './App.css'
+import LoginRegister from './common/loginRegister'
 
 /* 提供context */
 import { isDisplayContext } from './context/app'
@@ -30,9 +31,9 @@ export default function App() {
     <div>
       <isDisplayContext.Provider value={isDisplayHeader}>
         <Header></Header>
-        {/* <Home isDisplayHeader={isDisplayHeader}></Home> */}
         <Outlet></Outlet>
       </isDisplayContext.Provider>
+      <LoginRegister></LoginRegister>
     </div>
   )
 }

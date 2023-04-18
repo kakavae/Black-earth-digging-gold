@@ -1,0 +1,77 @@
+.headerimgmembernotification__li--notification {
+  position: relative;
+  padding: 0 2rem 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 通知详情鼠标经过的时候显示的那个绝对定位块 */
+.headerimgmembernotification__div--notificationdetail {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 12rem;
+  top: 60px;
+  right: 2rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: -1px -1px rgba(195, 179, 179, 0.3);
+}
+
+.headerimgmembernotification__a--notificationdetail {
+  display: inline-block;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+}
+
+.headerimgmembernotification__a--notificationdetail:hover {
+  background-color: var(--juejin-background);
+}
+
+/* svg图加了下面的这个属性才会起效果 */
+.headerimgmembernotification__li--notification>svg>path {
+  fill: #8a919f;
+  stroke: #8a919f;
+}
+
+/* 鼠标经过li的时候svg背景变化 */
+.headerimgmembernotification__li--notification:hover>svg>path {
+  fill: #44474d;
+  stroke: #44474d;
+}
+
+.headerimgmembernotification__li--notification>span {
+  position: absolute;
+  top: 0.6rem;
+  right: 1.8rem;
+  height: 16px;
+  background-color: red;
+  color: white;
+  font-size: 0.6rem;
+  border-radius: 8px;
+}
+
+/* 头像 */
+.headerimgmembernotification__li--headerimg {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerimgmembernotification__div--headerimg {
+  margin-right: 2rem;
+}
+
+.headerimgmembernotification__div--headerimg>img {
+  width: 3rem;
+  height: 3rem;
+  border: 50%;
+}
+
+/* 头像区域相位定位--方便个人中心绝对定位 */
+.headerimgmembernotification__div--headerimg {
+  position: relative;
+}

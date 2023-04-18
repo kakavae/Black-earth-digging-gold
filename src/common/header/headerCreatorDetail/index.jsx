@@ -18,12 +18,13 @@ export default function HeaderCreatorDetail({ isDisplay }) {
   ]
 
   return (
-    <div className='headerCreator__div--maxpaddingtop'>
+    <div className='headerCreator__div--maxpaddingtop'
+      style={{
+        display: isDisplay ? 'block' : 'none'
+      }}>
       <div
         className='headerCreator__div--creatorContainer'
-        style={{
-          display: isDisplay ? 'block' : 'none'
-        }}>
+      >
         <ul className='headerCreatorDetail__ul--container'>
           {creatorSlect.map((item) => {
             return <li

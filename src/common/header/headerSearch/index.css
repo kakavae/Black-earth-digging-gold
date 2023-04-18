@@ -30,7 +30,7 @@
 }
 
 .headersearch__form--active {
-  width: 42rem;
+  width: 40rem;
   border: 1px solid #1e80ff;
 }
 
@@ -96,5 +96,5 @@
 
 /* 创作者中心活跃的时候的样式---直接将第二个li移出盒子然后overflow: hidden */
 .headersearch__li--creatoractive {
-  transform: translateX(200px)
+  transform: translateX(180px)
 }
