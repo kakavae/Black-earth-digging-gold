@@ -7,6 +7,9 @@ import Live from '../component/live'
 import Events from '../component/events'
 import Challenge from '../component/challenge'
 
+/* 文章组件 */
+import Artical, { loader as articalLoader } from "../component/artical";
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -16,6 +19,7 @@ const router = createBrowserRouter([
         path: '',
         element: <Home></Home>
       },
+      // home主页的所有组件
       {
         path: 'following',
         element: <Home></Home>
@@ -56,6 +60,7 @@ const router = createBrowserRouter([
         path: 'article',
         element: <Home></Home>
       },
+      // 上方header点击之后显示不同的组件
       {
         path: 'pins',
         element: <Pins></Pins>
@@ -75,6 +80,12 @@ const router = createBrowserRouter([
       {
         path: 'challenge',
         element: <Challenge></Challenge>
+      },
+      // 文章组件
+      {
+        path: 'post/:id',
+        element: <Artical></Artical>,
+        loader: articalLoader,
       }
     ]
   }

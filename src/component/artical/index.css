@@ -1,0 +1,15 @@
+.artical__div--bgc {
+  background-color: #F2F3F5;
+}
+
+.artical__div--container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 60px;
+  overflow: hidden;
+}
+
+.artical__div--view {
+  display: flex;
+  margin-top: 1.66rem;
+}

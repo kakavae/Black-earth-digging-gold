@@ -26,7 +26,13 @@ code {
     monospace;
 }
 
-* {
+div,
+p,
+header,
+span,
+a,
+aside,
+h3 {
   box-sizing: border-box;
 }
 

@@ -1,0 +1,71 @@
+.articalrightnav__nav--rightabsolute {
+  width: 25rem;
+}
+
+/* 装着头像和点赞信息的盒子 */
+.articalrightnav__div--articleinfo {
+  background-color: #fff;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* 头像和名字 */
+.articalrightnav__div--authorflex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.articalrightnav__div--authorflex>img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+
+.articalrightnav__div--authorflex>span {
+  font-size: 16px;
+}
+
+/* 两个按钮 */
+.articalrightnav__div--buttoncontainer {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.articalrightnav__div--buttoncontainer>button {
+  padding: 0.5rem 3rem;
+  border: none;
+  background-color: #1d7dfa;
+  color: #fff;
+  border-radius: 5px;
+  margin-right: 2rem;
+}
+
+/* 获得点赞 */
+.articalrightnav__div--likes {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.167rem;
+  color: #252933;
+  font-weight: 400;
+}
+
+.articalrightnav__div--likes>span:first-child {
+  margin-bottom: 1rem;
+}
+
+/* 限时领取会员 */
+.articalrightnav__a--membercontainer {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.articalrightnav__a--membercontainer>img {
+  width: 300px;
+}
+
+.articalrightnav__div--group>img {
+  aspect-ratio: 971/805;
+  width: 100%;
+}

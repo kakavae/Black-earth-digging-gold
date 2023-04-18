@@ -1,0 +1,15 @@
+.articleleftlike__ul--container {
+  /* width: 4rem; */
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+.articleleftlike__ul--container>li>a {
+  display: block;
+  padding: 2rem 2rem;
+  font-size: 14px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}

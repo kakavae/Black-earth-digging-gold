@@ -30,7 +30,7 @@ export default function Aside() {
   })
 
   return (
-    <aside>
+    <aside className='aside__aside--container'>
       <div ref={aside}>
         <AsideMember></AsideMember>
         {/* 广告 */}
