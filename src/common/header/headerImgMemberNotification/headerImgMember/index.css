@@ -30,19 +30,27 @@
   background-color: var(--juejin-background);
 }
 
+/* svg居中 */
+.headerimgmembernotification__div--svgflex {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 /* svg图加了下面的这个属性才会起效果 */
-.headerimgmembernotification__li--notification>svg>path {
+.headerimgmembernotification__div--svgflex>svg>path {
   fill: #8a919f;
   stroke: #8a919f;
 }
 
 /* 鼠标经过li的时候svg背景变化 */
-.headerimgmembernotification__li--notification:hover>svg>path {
+.headerimgmembernotification__div--svgflex:hover>svg>path {
   fill: #44474d;
   stroke: #44474d;
 }
 
-.headerimgmembernotification__li--notification>span {
+.headerimgmembernotification__div--svgflex>span {
   position: absolute;
   top: 0.6rem;
   right: 1.8rem;
@@ -56,22 +64,20 @@
 /* 头像 */
 .headerimgmembernotification__li--headerimg {
   width: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.headerimgmembernotification__div--headerimg {
-  margin-right: 2rem;
-}
-
-.headerimgmembernotification__div--headerimg>img {
-  width: 3rem;
-  height: 3rem;
-  border: 50%;
 }
 
 /* 头像区域相位定位--方便个人中心绝对定位 */
 .headerimgmembernotification__div--headerimg {
+  margin-right: 2rem;
   position: relative;
+  height: 100%;
+}
+
+.headerimgmembernotification__div--headerimg>img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
 }

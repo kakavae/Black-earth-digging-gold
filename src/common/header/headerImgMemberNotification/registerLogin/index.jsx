@@ -48,7 +48,7 @@ export default function RegisterLogin() {
             <li>提升成长等级</li>
           </ul>
           <div className='registerLogin__div--loginNowflex'>
-            <button>立即登录</button>
+            <button onClick={publishDisplay}>立即登录</button>
             <div>首次使用？<a href="/">点我注册</a></div>
           </div>
         </div>

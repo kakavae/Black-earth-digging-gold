@@ -2,21 +2,27 @@ import React, { useEffect, useState } from 'react'
 import PubSub from 'pubsub-js'
 import './index.css'
 import { reqUserInfo } from '../../../../../api'
+import { getToken, setToken, removeToken } from '../../../../../useFunction/token'
 
 export default function IndividualCenter() {
   const [userInfo, setUserInfo] = useState({ userName: '', imgUrl: '' })
   /* 拿着token请求服务器，服务器根据token返回用户名---还有其他数据 */
   useEffect(() => {
-    if (window.localStorage.getItem('token')) {
+    // console.log(getToken())
+    if (getToken()) {
       const getUserInfo = async () => {
         try {
           const data = await reqUserInfo()
+          console.log(data)
           if (data.code === 200) {
             /* 修改当前组件的用户名 */
             const userName = data.data.userName
             setUserInfo({ ...userInfo, userName: userName })
             /* 修改HeaderImgMemberNotification组件维护的isLogin与否 */
             PubSub.publish('setIslogin', true)
+          } else if (data.code === 208) {
+            /* token过期，需要重新登录，清除存储的localStorage里面的token */
+            removeToken()
           }
         } catch (e) {
           console.log(e)
