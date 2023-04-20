@@ -75,6 +75,17 @@ const reqPublishArtical = (articalInfo) => {
   })
 }
 
+/* 搜索文章的接口 */
+const reqSearchArticalList = (keyword) => {
+  return request({
+    method: 'GET',
+    url: '/api/list/artical',
+    query: {
+      keyword
+    }
+  })
+}
+
 export {
   getArticalDetail,
   getArticleRecommendList,
@@ -82,5 +93,6 @@ export {
   reqRequestLogin,
   reqUserInfo,
   reqLogout,
-  reqPublishArtical
+  reqPublishArtical,
+  reqSearchArticalList
 }
