@@ -7,6 +7,9 @@ import Course from '../component/course'
 import Live from '../component/live'
 import Events from '../component/events'
 import Challenge from '../component/challenge'
+import Creator from "../component/creator";
+import CreatorHome from "../component/creator/creatorHome";
+import Editor from "../component/editor";
 
 /* 文章组件 */
 import Artical, { loader as articalLoader } from "../component/artical";
@@ -72,7 +75,7 @@ const router = createBrowserRouter([
         loader: homeArticleListLoader,
         element: <Home></Home>
       },
-      // 上方header点击之后显示不同的组件
+      // 上方header点击之后显示不同的组件--课程 直播 沸点
       {
         path: 'pins',
         element: <Pins></Pins>
@@ -96,8 +99,24 @@ const router = createBrowserRouter([
       // 文章组件
       {
         path: 'post/:id',
-        element: <Artical></Artical>,
         loader: articalLoader,
+        element: <Artical></Artical>,
+      },
+      /* 创作者中心 */
+      {
+        path: 'creator',
+        element: <Creator></Creator>,
+        children: [
+          {
+            path: 'home',
+            element: <CreatorHome></CreatorHome>
+          }
+        ]
+      },
+      /* 写文章 */
+      {
+        path: 'editor',
+        element: <Editor></Editor>
       }
     ]
   }

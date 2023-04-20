@@ -25,6 +25,10 @@ const requestPOST = ({ method, url, data = null, useBefore = () => { } }) => {
 
     /* 添加请求拦截器 */
     useBefore(xhr)  // 你传入的那个函数在形参的位置就能收到xhr对象
+    const token = window.localStorage.getItem('token')
+    if (token) {
+      xhr.setRequestHeader('Authorization', token)
+    }
 
     /* 如果是字符串就url-encoded格式的数据 */
     if (typeof data === 'string') {

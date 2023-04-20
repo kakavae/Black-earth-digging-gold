@@ -57,10 +57,30 @@ const reqUserInfo = () => {
   })
 }
 
+/* 退出登录使用的接口 */
+const reqLogout = (...params) => {
+  return request({
+    method: 'GET',
+    url: '/api/user/passport/logout',
+    params: params
+  })
+}
+
+/* 发表文章的接口 */
+const reqPublishArtical = (articalInfo) => {
+  return request({
+    method: 'POST',
+    url: '/artical/publish',
+    data: articalInfo
+  })
+}
+
 export {
   getArticalDetail,
   getArticleRecommendList,
   reqRegisterCode,
   reqRequestLogin,
-  reqUserInfo
+  reqUserInfo,
+  reqLogout,
+  reqPublishArtical
 }

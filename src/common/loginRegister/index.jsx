@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './index.css'
 import useNotifacationList from '../../useHooks/headerImgMemberNotifacation'
 import PubSub from 'pubsub-js'
 import { reqRegisterCode, reqRequestLogin } from '../../api'
 import { Form } from 'react-router-dom'
+import { isDisplayContext } from '../../context/app'
+import { setToken } from '../../useFunction/token'
 
 export default function LoginRegister() {
+  /* 接收父级组件传递的用户信息，或者修改这个信息 */
+  const { userInfo, setUserInfo } = useContext(isDisplayContext)
+
+  /* 是否显示当前组件 */
   const { isDisplay, display, noDisplay } = useNotifacationList()
 
   /* 保存邮箱数据 */
@@ -34,19 +40,21 @@ export default function LoginRegister() {
   const login = async () => {
     /* 规则校验 */
     if (code && email) {
-      const loginData = await reqRequestLogin({ email, code })
-      console.log(loginData, '登陆成功隐藏当前组件，渲染头像用户名，存储token')
-      /* 隐藏当前组件，渲染头像用户名，存储token */
-      if (loginData.code === 200) {
-        noDisplay()
-        /* 修改是否登录状态 */
-        PubSub.publish('setIslogin', true)
-        /* 渲染用户名和头像 */
-        PubSub.publish('setUserInfo', loginData.data)
-        /* 修改本地存储的token */
-        window.localStorage.setItem('token', loginData.data.token)
-      } else {
-        alert('请重新登录')
+      try {
+        const loginData = await reqRequestLogin({ email, code })
+        /* 隐藏当前组件，渲染头像用户名，存储token */
+        if (loginData.code === 200) {
+          console.log(loginData, '登陆成功隐藏当前组件，渲染头像用户名，存储token')
+          noDisplay()
+          /* 渲染用户名和头像---修改全局的userinfo context */
+          setUserInfo({ ...userInfo, ...loginData.data })
+          /* 修改本地存储的token */
+          setToken(loginData.data.token)
+        } else {
+          alert('请重新登录')
+        }
+      } catch (e) {
+        console.log(e)
       }
     }
   }

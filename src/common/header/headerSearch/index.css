@@ -76,6 +76,7 @@
 
 .search-icon>path {
   stroke: #675153;
+  fill: none;
 }
 
 .search-icon-path--active {

@@ -7,7 +7,7 @@ import { useContext } from 'react'
 import { isDisplayContext } from '../../context/app'
 
 export default function Header() {
-  const isDisplayHeader = useContext(isDisplayContext)
+  const { isDisplayHeader } = useContext(isDisplayContext)
   return (
     <>
       <div className="header__header--container" style={{ transform: isDisplayHeader ? '' : 'translateY(-60px)' }}>

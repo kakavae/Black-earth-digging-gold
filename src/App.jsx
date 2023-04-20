@@ -11,6 +11,9 @@ import { isDisplayContext } from './context/app'
 
 export default function App() {
 
+  /* 管理全局的用户登录信息 */
+  const [userInfo, setUserInfo] = useState({})
+
   const [isDisplayHeader, setIsDisplayHeader] = useState(true)
 
   /* 监听scroll事件，隐藏头部，还有更改右侧栏目中广告的位置 */
@@ -29,11 +32,17 @@ export default function App() {
 
   return (
     <div>
-      <isDisplayContext.Provider value={isDisplayHeader}>
+      <isDisplayContext.Provider
+        value={{
+          isDisplayHeader,
+          setIsDisplayHeader,
+          userInfo,
+          setUserInfo
+        }}>
         <Header></Header>
         <Outlet></Outlet>
+        <LoginRegister></LoginRegister>
       </isDisplayContext.Provider>
-      <LoginRegister></LoginRegister>
     </div>
   )
 }

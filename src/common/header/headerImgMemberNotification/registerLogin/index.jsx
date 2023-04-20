@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
 import { useContext } from 'react'
-import { isLoginContext } from '../../../../context/headerImgmember.js'
+import { isDisplayContext } from '../../../../context/app'
 import useNotifacationList from '../../../../useHooks/headerImgMemberNotifacation'
 import PubSub from 'pubsub-js'
 
@@ -14,7 +14,7 @@ export default function RegisterLogin() {
   } = useNotifacationList()
 
   /* 是否显示组件自身 */
-  const { isLogin } = useContext(isLoginContext)
+  const { userInfo } = useContext(isDisplayContext)
 
   /* 发布消息，通知LoginRegister组件显示自身 */
   const publishDisplay = () => {
@@ -27,7 +27,7 @@ export default function RegisterLogin() {
       onClick={publishDisplay}
       className='registerLogin__div--container'
       style={{
-        display: isLogin ? 'none' : 'block'
+        display: userInfo.id ? 'none' : 'block'
       }}>
       <button>登录</button>
       <button>注册</button>

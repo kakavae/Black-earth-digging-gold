@@ -9,14 +9,19 @@ import { useLoaderData } from 'react-router-dom'
 export const loader = async () => {
   try {
     let articalList = await getArticleRecommendList()
-    articalList = articalList.map((item) => {
-      /* 分类分开 */
-      item.classification = item.classification.split(' ')
-      /* 添加url */
-      item.url = '/post/' + item.id
-      return item
-    })
-    return articalList
+    if (articalList.code === 200) {
+      const articalListData = articalList.data.map((item) => {
+        /* 分类分开 */
+        item.classification = item.classification.split(' ')
+        /* 添加url */
+        item.url = '/post/' + item.id
+        return item
+      })
+      return articalListData
+    } else {
+      return []
+    }
+
   } catch (e) {
     console.log(e)
   }

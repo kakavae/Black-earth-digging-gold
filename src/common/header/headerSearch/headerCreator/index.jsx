@@ -3,6 +3,7 @@ import './index.css'
 import { useState } from 'react'
 import HeaderCreatorDetail from '../../headerCreatorDetail'
 import useNotifacationList from '../../../../useHooks/headerImgMemberNotifacation'
+import { Link, redirect } from 'react-router-dom'
 
 export default function HeaderCreator() {
   // 控制创作者中心经过的背景颜色类----CSS就能解决
@@ -40,11 +41,11 @@ export default function HeaderCreator() {
     <div
       className="headercreator__addgroup"
     >
-      <button
+      <Link to={'/creator'}
         onMouseOver={changeCreatorBgc(true)}
         onMouseOut={changeCreatorBgc(false)}
         className={creatorActiveBgc}
-      >创作者中心</button>
+      >创作者中心</Link>
       <div
         className={'headercreator__div--more ' + creatorActiveRight}
         onMouseOver={changeArrow(true)}

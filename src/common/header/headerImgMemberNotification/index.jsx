@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './index.css'
 import HeaderImgMember from './headerImgMember'
 import RegisterLogin from './registerLogin'
-import { isLoginContext } from '../../../context/headerImgmember.js'
-import PubSub from 'pubsub-js'
 
 export default function HeaderImgMemberNotification() {
-  /* 控制登录和未登录的状态显示不同的组件 */
-  const [isLogin, setIsLogin] = useState(false)
-  useEffect(() => {
-    PubSub.subscribe('setIslogin', (msg, data) => {
-      setIsLogin(data)
-    })
-  })
+
   return (
     <>
       {/* 会员区域 */}
@@ -24,10 +16,8 @@ export default function HeaderImgMemberNotification() {
           <div className="vip--words">会员</div>
         </div>
       </li>
-      <isLoginContext.Provider value={{ isLogin, setIsLogin }}>
-        <HeaderImgMember></HeaderImgMember>
-        <RegisterLogin></RegisterLogin>
-      </isLoginContext.Provider>
+      <HeaderImgMember></HeaderImgMember>
+      <RegisterLogin></RegisterLogin>
     </>
   )
 }

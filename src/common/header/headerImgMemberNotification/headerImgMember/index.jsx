@@ -2,7 +2,7 @@ import React from 'react'
 import './index.css'
 import useNotifacationList from '../../../../useHooks/headerImgMemberNotifacation'
 import { useContext } from 'react'
-import { isLoginContext } from '../../../../context/headerImgmember.js'
+import { isDisplayContext } from '../../../../context/app'
 import IndividualCenter from './individualCenter'
 
 export default function HeaderImgMember() {
@@ -16,8 +16,22 @@ export default function HeaderImgMember() {
 
   /* 是否显示通知栏目下拉菜单 */
   const { isDisplay, display, noDisplay } = useNotifacationList()
+
   /* s是否显示组件自身 */
-  const { isLogin } = useContext(isLoginContext)
+  const { userInfo } = useContext(isDisplayContext)
+
+  /* 点击头像之后是否显示个人中心的下拉框 */
+  const { isDisplay: isDisplayIndividualCenter,
+    display: displayIndividualCenter,
+    noDisplay: noDisplayIndividualCenter } = useNotifacationList()
+
+  const displayIndividualCenterOrNot = () => {
+    if (isDisplayIndividualCenter) {
+      noDisplayIndividualCenter()
+    } else {
+      displayIndividualCenter()
+    }
+  }
   return (
     <>
       {/* 通知区域 */}
@@ -27,7 +41,7 @@ export default function HeaderImgMember() {
         onMouseEnter={display}
         onMouseLeave={noDisplay}
         style={{
-          display: isLogin ? 'block' : 'none'
+          display: userInfo.id ? 'block' : 'none'
         }}
       >
         <div className='headerimgmembernotification__div--svgflex'>
@@ -55,12 +69,17 @@ export default function HeaderImgMember() {
       <li
         className="headerimgmembernotification__li--headerimg"
         style={{
-          display: isLogin ? 'block' : 'none'
+          display: userInfo.id ? 'block' : 'none'
         }}
       >
         <div className="headerimgmembernotification__div--headerimg">
-          <img src="https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3131589739~100x100.awebp" alt="头像" />
-          <IndividualCenter></IndividualCenter>
+          <img
+            onClick={displayIndividualCenterOrNot}
+            src="https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3131589739~100x100.awebp" alt="头像" />
+          <IndividualCenter
+            isDisplayIndividualCenter={isDisplayIndividualCenter}
+            noDisplayIndividualCenter={noDisplayIndividualCenter}
+          ></IndividualCenter>
         </div>
       </li>
     </>
