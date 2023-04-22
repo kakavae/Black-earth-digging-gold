@@ -31,7 +31,6 @@ export default function HeaderSearch() {
     setCreatorActive('headersearch__li--creatoractive')
   }
   const inputBlur = (event) => {
-    console.log(event.target)
     setIptPlaceholder('探索黑土掘金')
     setPathActiveClass('')
     setPathBgActiveClass('')
@@ -39,6 +38,7 @@ export default function HeaderSearch() {
     /* 通知子组件HeaderCreator修改自己的样式 */
     setCreatorActive('')
   }
+
   // 获取搜索内容，发送搜索信息
   const inputSearch = async () => {
     try {

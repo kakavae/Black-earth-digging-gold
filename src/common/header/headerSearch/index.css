@@ -22,7 +22,7 @@
 
 .headersearch__form {
   position: relative;
-  width: 360px;
+  width: 30rem;
   height: 2.834rem;
   border: 1px solid #c2c8d1;
   border-radius: 4px;
@@ -39,7 +39,7 @@
   top: 50%;
   transform: translateY(-50%);
   border: none;
-  width: calc(100% - 44px);
+  /* width: calc(100% - 44px); */
   color: #8a919f;
 }
 

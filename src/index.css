@@ -49,3 +49,143 @@ a {
   text-decoration: none;
   color: #515767;
 }
+
+/* 媒体查询不显示某组件 */
+/* 最大宽度满足这个的时候里面的样式才会生效，所以最大宽度比较大的放在上面，下面的宽度比较小，可以样式覆盖 */
+@media screen and (max-width: 1350px) {
+
+  /* 搜索框变小 */
+  .headersearch__form {
+    width: 20rem !important;
+  }
+
+  /* 包裹搜索框的ul也要配合着变小 */
+  .headersearch__ul__ul--container {
+    width: 32rem !important;
+  }
+}
+
+@media screen and (max-width: 1220px) {
+
+  /* 小于1220px隐藏左侧菜单 */
+  .NavLeft__div--imgbox {
+    display: none;
+  }
+
+  /* 同时显示顶部的NavTop菜单 */
+  .NavTop__div--container {
+    /* 为什么这里需要加Important？ */
+    display: flex !important
+  }
+
+  /* 同时中间板块的margin要再下来一点 */
+  .Home__div--view {
+    margin-top: 2.66rem !important;
+  }
+
+}
+
+@media screen and (max-width: 1150px) {
+
+  /* 小于1150px，首页菜单栏变为下拉菜单栏 */
+  .headermenu__ul--menubfc {
+    display: none;
+  }
+
+  /* 下拉菜单显示 */
+  .headerMenuDown__div--container {
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  /* 小于1000px隐藏右侧广告 */
+  .aside__aside--container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 960px) {
+
+  /* 小于960px的时候隐藏会员和标签管理 */
+  .headerimgmembernotification__li--member {
+    display: none;
+  }
+
+  .NavTop__a--display {
+    display: none !important;
+  }
+
+  /* 顶部菜单的容器不必再用flex */
+  .NavTop__div--container {
+    display: block !important;
+    padding: 0 !important
+  }
+}
+
+@media screen and (max-width: 800px) {
+
+  /* 小于800px的时候隐藏创作者中心 */
+  .headersearch__li--creator {
+    display: none !important;
+  }
+
+  /* 包裹搜索框的ul变得更小 */
+  /* 包裹搜索框的ul也要配合着变小 */
+  .headersearch__ul__ul--container {
+    width: 22rem !important;
+  }
+
+}
+
+/* 小于650px的时候顶部菜单栏变为可以滚动 */
+@media screen and (max-width: 650px) {
+  .NavTop__div--container {
+    overflow-x: auto;
+  }
+
+  /* 禁止flex的子元素缩小 */
+  .NavTop__ul--container>li {
+    flex-shrink: 0;
+  }
+
+  /* a的padding变小以放下滚动条 */
+  .NavTop__ul--container>li>a {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+@media screen and (max-width: 640px) {
+
+  /* 小于640px的时候稀土掘金logo消失 */
+  .header__a--logo {
+    display: none;
+  }
+
+  /* 搜索框的输入宽度也变窄 */
+  /* 搜索框变小 */
+  .headersearch__form {
+    width: 15rem !important;
+  }
+
+  /* 包裹搜索框的ul也要配合着变小 */
+  .headersearch__ul__ul--container {
+    width: 17rem !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  /* 小于600px的时候三大模块的子元素不再缩小 */
+  .recommond__div--container {
+    flex-grow: 0 !important;
+    flex-shrink: 0;
+  }
+
+  /* span添加外边距挤开更多 */
+  .recommond__span--title {
+    margin-right: 5rem;
+  }
+}

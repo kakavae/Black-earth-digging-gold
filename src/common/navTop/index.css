@@ -1,0 +1,40 @@
+/* 顶部定位 */
+/* 固定定位，位置随着header的消失变化 */
+/* 宽度应该跟随父元素变化，但是目前没有找到合适的父元素 */
+.NavTop__div--container {
+  transition: all 0.3s linear;
+  padding: 0 2rem;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  position: fixed;
+  top: 60px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.NavTop__div--container-active {
+  top: 0;
+}
+
+.NavTop__ul--container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.NavTop__ul--container>li>a {
+  padding: 1rem;
+  display: inline-block;
+}
+
+/* 最右边的a标签 */
+.NavTop__div--container>a {
+  padding: 1rem;
+  font-size: 1.116rem;
+  display: inline-block;
+}
+
+.NavTop__ul--container>li>a:hover {
+  color: #007fff;
+}

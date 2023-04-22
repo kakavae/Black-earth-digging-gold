@@ -18,7 +18,7 @@ export default function NavLeft({ menuList, recommendationCircle = [], inicalInd
   const { acticeId, focuseId, changeActive, turnMenu } = useMenuList(menuList, inicalIndex)
 
   /* 接收context数据--showheader的时候定位留出header位置，否则不留 */
-  const isDisplayHeader = useContext(isDisplayContext)
+  const { isDisplayHeader } = useContext(isDisplayContext)
 
   return (
     <div className='NavLeft__div--imgbox'>

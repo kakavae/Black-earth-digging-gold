@@ -1,6 +1,7 @@
 import React from 'react'
 import './index.css'
 import { Link } from 'react-router-dom'
+import HeaderMenuDown from './headerMenuDown'
 
 /* 导入导航栏的hooks */
 /* 导入headerMenu的hooks--其中又导入了导航栏的hooks */
@@ -24,28 +25,31 @@ export default function HeaderMenu() {
   const { focuseId, turnMenu, bottomLineLeft, isDisplay, moveBootomLine, noDisplay } = useHeaderList(homeMenuList, 0)
 
   return (
-    <ul
-      className="headermenu__ul--menubfc"
-      onMouseOver={moveBootomLine}
-      onMouseLeave={noDisplay}
-    >
-      {homeMenuList.map((item, index) => {
-        return <li key={item.id}>
-          <Link
-            to={item.url} className="headermenu__ul__a--color"
-            data-index={index}
-            style={{ color: focuseId === item.id ? 'var(--juejin-brand-1-normal)' : 'var(--juejin-font-2)' }}
-            onClick={turnMenu(item.id)}
-          >{item.title}
-          </Link>
-        </li>
-      })}
-      <li
-        className="headermenu__li--bottomline"
-        style={{
-          left: bottomLineLeft,
-          display: isDisplay ? 'block' : 'none'
-        }}></li>
-    </ul>
+    <>
+      <ul
+        className="headermenu__ul--menubfc"
+        onMouseOver={moveBootomLine}
+        onMouseLeave={noDisplay}
+      >
+        {homeMenuList.map((item, index) => {
+          return <li key={item.id}>
+            <Link
+              to={item.url} className="headermenu__ul__a--color"
+              data-index={index}
+              style={{ color: focuseId === item.id ? 'var(--juejin-brand-1-normal)' : 'var(--juejin-font-2)' }}
+              onClick={turnMenu(item.id)}
+            >{item.title}
+            </Link>
+          </li>
+        })}
+        <li
+          className="headermenu__li--bottomline"
+          style={{
+            left: bottomLineLeft,
+            display: isDisplay ? 'block' : 'none'
+          }}></li>
+      </ul>
+      <HeaderMenuDown homeMenuList={homeMenuList}></HeaderMenuDown>
+    </>
   )
 }

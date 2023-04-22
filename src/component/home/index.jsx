@@ -4,6 +4,7 @@ import './index.css'
 import NavLeft from '../../common/navLeft'
 import Aside from '../../common/aside'
 import HomeMainContent from '../../common/homeMainContent'
+import NavTop from '../../common/navTop'
 
 export default function Home() {
   /* 左侧导航NavLeft需要显示的数据 */
@@ -24,6 +25,8 @@ export default function Home() {
     /* 控制版心的盒子的位置 */
     <div className='Home__div--bgc'>
       <div className="Home__div--container">
+        {/* 媒体查询控制的左侧菜单栏变为顶部菜单栏 */}
+        <NavTop menuList={menuList}></NavTop>
         <div className="Home__div--view">
           {/* 左侧导航区 */}
           <NavLeft menuList={menuList}></NavLeft>
