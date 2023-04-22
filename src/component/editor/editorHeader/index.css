@@ -1,0 +1,54 @@
+.editorheader__div--containermargintop {
+  margin-top: 80px;
+}
+
+/* 标题 */
+.editorheader__div--titleflex {
+  display: flex;
+  align-items: center;
+  width: 100%
+}
+
+/* 左侧输入框 */
+.editorheader__div--flexgrow {
+  flex: 1;
+  padding: 0 2rem 1rem;
+  border-bottom: 1px solid #f3efef;
+}
+
+.editorheader__ipt--font {
+  outline: none;
+  border: none;
+  font-size: 25px;
+  width: 100%;
+}
+
+/* 右侧的发表 */
+.editorheader__div--leftwidth {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.editorheader__div--leftwidth>img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+/* 右侧的草稿箱等 */
+.editorheader__btn--bgc {
+  background-color: #1d7dfa;
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+}
+
+/* 草稿箱按钮 */
+.editorheader__btn--font {
+  background-color: #fff;
+  color: #1d7dfa;
+  border: 1px solid #1d7dfa;
+  padding: 1rem 2rem;
+  margin-right: 1rem;
+}

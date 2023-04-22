@@ -1,0 +1,30 @@
+/* 左侧最大的盒子 */
+.creatorLeft__div--containerbgc {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  position: fixed;
+  padding: 1rem 0.8rem;
+  max-height: 600px;
+}
+
+/* 写文章按钮 */
+.creatorLeft__a--bgc {
+  background-color: var(--juejin-brand-1-normal);
+  color: #fff;
+  font-size: 14px;
+  padding: 1rem 6rem;
+  display: inline-block;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+/* 展示滚动条 */
+.creatorLeft__ul--overflowauto {
+  transition: all .3s linear;
+  height: calc(100% - 195px);
+  overflow: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}

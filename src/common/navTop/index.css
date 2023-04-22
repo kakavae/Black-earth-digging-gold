@@ -15,7 +15,7 @@
 }
 
 .NavTop__div--container-active {
-  top: 0;
+  top: 0 !important;
 }
 
 .NavTop__ul--container {

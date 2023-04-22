@@ -19,6 +19,7 @@ export async function loader({ params }) {
   } catch (e) {
     console.log(e, '跳转到错误页面')
   }
+  return {}
 }
 
 export default function Home() {

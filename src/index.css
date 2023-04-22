@@ -150,10 +150,15 @@ a {
     flex-shrink: 0;
   }
 
-  /* a的padding变小以放下滚动条 */
-  .NavTop__ul--container>li>a {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+  /* header的padding变小以放下滚动条 */
+  .headersearch__ul__ul--container>li,
+  .header__ul--rightcontentfloat>li,
+  .headersearch__ul__ul--container {
+    height: 40px !important;
+  }
+
+  .NavTop__div--container {
+    top: 40px !important;
   }
 }
 
@@ -182,6 +187,10 @@ a {
   .recommond__div--container {
     flex-grow: 0 !important;
     flex-shrink: 0;
+  }
+
+  .threeModule__div--container {
+    overflow-x: auto;
   }
 
   /* span添加外边距挤开更多 */

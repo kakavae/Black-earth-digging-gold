@@ -1,0 +1,9 @@
+.editor__div--containermargintop {
+  margin-top: 80px;
+}
+
+/* 标题 */
+.editor__div--titleflex {
+  display: felx;
+  width: 100%
+}

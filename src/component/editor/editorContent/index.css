@@ -1,0 +1,12 @@
+.editorcontent__div--flex {
+  display: flex;
+}
+
+.editorcontent__div--editor,
+.editorcontent__div--show {
+  flex: 1
+}
+
+.editorcontent__div--editor {
+  background-color: #faf7f7;
+}

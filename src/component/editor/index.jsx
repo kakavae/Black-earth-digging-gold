@@ -3,14 +3,15 @@ import './index.css'
 import { useContext } from 'react'
 import { isDisplayContext } from '../../context/app'
 import { reqPublishArtical } from '../../api'
-import PubSub from 'pubsub-js'
+import EditorHeader from './editorHeader'
+import EditorContent from './editorContent'
 
 export default function Editor() {
   const { setIsDisplayHeader, userInfo } = useContext(isDisplayContext)
   /* 当前组件不显示header部分 */
-  useEffect(() => {
-    setIsDisplayHeader(false)
-  })
+  // useEffect(() => {
+  //   setIsDisplayHeader(false)
+  // })
 
   /* 存储文章标题，存储文章体内容 */
   const [title, setTitle] = useState('')
@@ -41,29 +42,9 @@ export default function Editor() {
   }
 
   return (
-    <div>
-      <div>
-        <input
-          value={title}
-          onChange={(event) => {
-            setTitle(event.target.value)
-          }}
-          placeholder='输入文章标题' />
-        <button onClick={publish}>发布</button>
-      </div>
-      <div>
-        <div>
-          <textarea
-            type='text'
-            placeholder='在这里输入文章内容'
-            value={content}
-            onChange={(event) => {
-              setContent(event.target.value)
-            }}
-          />
-        </div>
-        <div>同步显示区域</div>
-      </div>
+    <div className='editor__div--containermargintop'>
+      <EditorHeader title={title} setTitle={setTitle} publish={publish}></EditorHeader>
+      <EditorContent setContent={setContent} content={content}></EditorContent>
     </div>
   )
 }

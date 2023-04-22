@@ -1,0 +1,52 @@
+/* 下拉框flex */
+.creatorLeftDown__div--flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 15px;
+  padding: 1rem;
+}
+
+.creatorLeftDown__div--flex>span {
+  margin-right: 5rem;
+}
+
+/* ul的样式 */
+.creatorLeftDown__ul--container {
+  transition: all .3s ease-in-out
+}
+
+.creatorLeftDown__ul--container>li {
+  display: flex;
+  justify-content: center;
+}
+
+.creatorLeftDown__ul--container>li>a {
+  padding: 1rem;
+  width: 100%;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 鼠标经过div和a的样式 */
+.creatorLeftDown__ul--container>li>a:hover,
+.creatorLeftDown__div--flex:hover {
+  color: #1e80ff;
+  background-color: #f3f5f9;
+}
+
+/* ul被折叠的样式 */
+.creatorLeftDown__ul--deactive {
+  /* transform: translateY(-300px); */
+  display: none;
+}
+
+.creatorLeftDown__svg {
+  transition: all .3s ease-in-out
+}
+
+/* svg也就是下拉箭头活跃的样式 */
+.creatorLeftDown__svg--active {
+  transform: rotate(-180deg);
+}

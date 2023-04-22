@@ -1,13 +1,9 @@
 import React from 'react'
 import './index.css'
 import ArticalMiddleCodeContent from './articalMiddleCodeContent'
-export default function ArticleMiddleContent({ articalInfo: {
-  title,
-  author,
-  time,
-  reading,
-  content
-} }) {
+export default function ArticleMiddleContent({
+  articalInfo = {} }) {
+  const { title, author, time, reading, content } = articalInfo
   return (
     <article className="articlemiddlecontent__article--maincontent--w">
       <h1>{title}</h1>
