@@ -1,0 +1,121 @@
+.eidtorheadermenudown__div--absolute {
+  position: absolute;
+  top: 50px;
+  right: -40px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* 隐藏当前组件 */
+.eidtorheadermenudown__div {
+  display: none;
+}
+
+/* 下拉的箭头 */
+.eidtorheadermenudown__div--arrow {
+  position: absolute;
+  top: -13px;
+  right: 57px;
+  border: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+}
+
+/* 白色覆盖 */
+.eidtorheadermenudown__div--arrowfff {
+  position: absolute;
+  top: -12px;
+  right: 57px;
+  border: 7px solid transparent;
+  border-bottom: 7px solid #fff;
+}
+
+.eidtorheadermenudown__div--absolute>h3 {
+  width: 50rem;
+  font-size: 24px;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+  padding: 2rem
+}
+
+/* 下方的大盒子 */
+.eidtorheadermenudown__div--container {
+  padding: 2rem 2rem 0 2rem;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.eidtorheadermenudown__div--container>div {
+  margin-bottom: 2rem;
+}
+
+/* 分类 */
+.eidtorheadermenudown__div--classfication {
+  display: flex;
+}
+
+.eidtorheadermenudown__div--classfication>div {
+  margin-right: 1rem;
+  padding: 0.3rem 0;
+}
+
+.eidtorheadermenudown__div--classfication>ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.eidtorheadermenudown__div--classfication>ul>li {
+  width: 24%;
+  border-radius: 3px;
+  text-align: center;
+  padding: 0.3rem 0;
+  margin-bottom: 5px;
+  color: #86909c;
+  background-color: #f4f5f5;
+}
+
+.eidtorheadermenudown__div--classfication>ul>li:hover {
+  background-color: #e2e2e2;
+  cursor: pointer;
+}
+
+/* li被点击之后活跃的样式 */
+.eidtorheadermenudown__li--active {
+  color: #1d7dfa !important;
+  background-color: #e8f3ff !important;
+}
+
+/* 添加标签 */
+.eidtorheadermenudown__div--tagflex {
+  display: flex;
+  align-items: center;
+}
+
+.eidtorheadermenudown__div--tagflex>div {
+  margin-right: 1rem;
+}
+
+/* 最下方的取消和确定发布 */
+.eidtorheadermenudown__div--topline {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ccc;
+  padding: 1.5rem 2rem;
+}
+
+/* 编辑摘要 */
+.eidtorheadermenudown_textarea--size {
+  resize: none;
+  color: #1d2129;
+  background: #fafafa;
+  border: 1px solid #e6e8eb;
+  border-radius: 2px;
+  width: 100%;
+  outline: none;
+  height: auto;
+  padding: 6px 10px;
+  font-size: 14px;
+  margin-top: 1rem;
+}

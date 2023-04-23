@@ -1,19 +1,18 @@
 import React from 'react'
 import './index.css'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import throttle from '../../../../useFunction/throttle'
 import { useHref } from 'react-router-dom'
 
-export default function RecommondSelectList() {
-  const searchClassList = [
-    { id: 1, content: '全部' },
-    { id: 2, content: '前端' },
-    { id: 3, content: '后端' },
-    { id: 4, content: 'Vue.js' },
-    { id: 5, content: 'React' },
-    { id: 6, content: 'Node.js' },
-    { id: 7, content: 'MySql' },
-  ]
+export default function RecommondSelectList({
+  searchClassList,
+  iptClassName = 'recommondupdate__input',
+  ulClassNameWidth = '',
+  /* 下面两个是发表文章组件收集文章分类信息的响应式数据 */
+  articalInfo,
+  setArticalInfo
+}) {
+
   /* 控制是否显示下拉菜单的值，控制行内visibility */
   const [isDisplay, setIsDisplay] = useState(false)
   /* 设置ul的位置是在input的上下 */
@@ -29,6 +28,7 @@ export default function RecommondSelectList() {
   /* 拿input和下拉选择的ul的DOM，计算动态位置 */
   const input = useRef(null)
   const ul = useRef(null)
+
   /* 判断是否能放在input上面的函数 */
   const judgePosition = () => {
     if (ul.current.offsetHeight < input.current.getBoundingClientRect().top) {
@@ -39,38 +39,50 @@ export default function RecommondSelectList() {
   }
   const throJudgePosition = throttle(judgePosition, 50)
 
-  /* 显示下拉菜单 */
+  /* 1.js写CSS行为 */
+  /* 1.1显示下拉菜单 */
   const displayEle = () => {
     judgePosition()
     /* 节流触发scroll事件，判断ul能否放在input上面 */
     window.addEventListener('scroll', throJudgePosition)
     setIsDisplay(true)
   }
-  /* 隐藏下拉菜单 */
+  /* 1.2隐藏下拉菜单 */
   const hiddenEle = () => {
-    setTimeout(() => {
-      setIsDisplay(false)
-      /* 停止触发scroll事件 */
-      window.removeEventListener('scroll', throJudgePosition)
-    }, 100)
-    // setIsDisplay(false)
+    setIsDisplay(false)
+    /* 停止触发scroll事件 */
+    window.removeEventListener('scroll', throJudgePosition)
   }
 
-  /* 鼠标经过，修改a的背景和字体颜色 */
+  /* 1.3鼠标经过，修改a的背景和字体颜色 */
   const changeBgc = (event) => {
     setIsActive(event.target.dataset.id * 1)
+  }
+
+  /* 根据是否向下传递文章信息来修改文章信息 */
+  const changeArticalInfo = (name) => {
+    if (setArticalInfo && articalInfo) {
+      setArticalInfo({
+        ...articalInfo,
+        classification: [
+          ...articalInfo.classification,
+          name
+        ]
+      })
+    }
   }
 
   /* 鼠标点击，修改input里面元素的样式 */
   const changeIptContent = (event) => {
     event.preventDefault()
     setIptContent(event.target.dataset.content)
+    changeArticalInfo(event.target.dataset.content)
   }
 
   /* 输入input里面的数据，同步修改响应式的state */
   const changeIptText = (event) => {
     setIptContent(event.target.value)
-    console.log('拿着input的value防抖式请求服务器数据')
+    changeArticalInfo(event.target.value)
   }
 
   return (
@@ -85,22 +97,24 @@ export default function RecommondSelectList() {
         type="text"
         value={iptContent}
         onChange={changeIptText}
-        className='recommondupdate__input'
+        className={iptClassName}
         onFocus={displayEle}
         onBlur={hiddenEle}
         ref={input}
       />
       <ul
-        className='recommondupdate__ul--selectcontainer'
+        className={'recommondupdate__ul--selectcontainer ' + ulClassNameWidth}
         style={{
-          visibility: isDisplay ? 'visible' : 'hidden',
+          // visibility: isDisplay ? 'visible' : 'hidden',
           // opacity: isDisplay ? 1 : 0,
-          // display: isDisplay ? 'block' : 'none',
+          display: isDisplay ? 'block' : 'none',
           top: isTop
         }}
         ref={ul}
         onMouseOver={changeBgc}
         onClick={changeIptContent}
+        /* 防止input失去焦点触发，拿不到当前DOM */
+        onMouseDown={(event) => { event.preventDefault() }}
       >
         {searchClassList.map((item) => {
           return <li key={item.id}

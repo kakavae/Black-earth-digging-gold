@@ -1,0 +1,15 @@
+/* ipt的样式规定 */
+.editorheadermenusel__ipt--border {
+  color: #5a5b5c;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 400px;
+  outline: none;
+  padding: 1rem 0.5rem;
+}
+
+/* ul的大小以及宽度 */
+.editorheadermenusel__ul--width {
+  width: 400px;
+}

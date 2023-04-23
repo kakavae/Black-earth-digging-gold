@@ -1,30 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import './index.css'
-import useNotifacationList from '../../../../useHooks/headerImgMemberNotifacation'
+import useMenu from '../../../../useHooks/headerMenuDown'
 
 export default function HeaderMenuDown({ homeMenuList }) {
-  const menu = useRef()
-  /* 鼠标点击控制下拉菜单的显示与隐藏 */
-  const { isDisplay, display, noDisplay } = useNotifacationList()
+  const { isDisplay, changeDisplay, menu } = useMenu()
 
-  const changeDisplay = () => {
-    if (isDisplay) {
-      noDisplay()
-    } else {
-      display()
-    }
-  }
-
-  useEffect(() => {
-    document.addEventListener('click', (event) => {
-      /* 只要当前组件里面最大的盒子不包含触发事件的那个节点，就说明鼠标点击的是盒子外面 */
-      if (menu.current) {
-        if (!menu.current.contains(event.target)) {
-          noDisplay()
-        }
-      }
-    })
-  }, [])
   return (
     <div
       className='headerMenuDown__div--container'

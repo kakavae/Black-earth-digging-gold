@@ -42,7 +42,15 @@ export default function RecommondUpdate({ isDisplay }) {
           <a href="/" className='recommondupdate__a--re'>推荐</a>
           <a href="/" className='recommondupdate__a--up'>最新</a>
         </div>
-        <RecommondSelectList></RecommondSelectList>
+        <RecommondSelectList searchClassList={[
+          { id: 1, content: '全部' },
+          { id: 2, content: '前端' },
+          { id: 3, content: '后端' },
+          { id: 4, content: 'Vue.js' },
+          { id: 5, content: 'React' },
+          { id: 6, content: 'Node.js' },
+          { id: 7, content: 'MySql' },
+        ]}></RecommondSelectList>
       </div>
       {/* 文章详情部分 */}
       <div>

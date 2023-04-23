@@ -30,6 +30,11 @@
   margin-right: 2rem;
 }
 
+/* 装着button按钮和下拉菜单的盒子，相对定位 */
+.editorheader__div--relative {
+  position: relative;
+}
+
 .editorheader__div--leftwidth>img {
   width: 3rem;
   height: 3rem;
@@ -41,7 +46,8 @@
   background-color: #1d7dfa;
   color: #fff;
   border: none;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
+  border-radius: 5px;
 }
 
 /* 草稿箱按钮 */
@@ -49,6 +55,7 @@
   background-color: #fff;
   color: #1d7dfa;
   border: 1px solid #1d7dfa;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   margin-right: 1rem;
+  border-radius: 5px;
 }

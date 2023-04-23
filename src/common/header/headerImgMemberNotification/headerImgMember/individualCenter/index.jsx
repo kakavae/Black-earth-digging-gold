@@ -19,6 +19,7 @@ export default function IndividualCenter({ isDisplayIndividualCenter, noDisplayI
         try {
           const data = await reqUserInfo()
           console.log('@拿着token请求数据，这时候在服务器没启动的时候好像会报错', data, getToken())
+
           if (data.code === 200) {
             console.log('indivaidual', data)
             /* 修改当前组件的用户名 ---- 全局的context用户名需要根据回来的数据渲染*/

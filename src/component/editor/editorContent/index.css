@@ -10,3 +10,8 @@
 .editorcontent__div--editor {
   background-color: #faf7f7;
 }
+
+/* 覆盖md编辑文档的样式 */
+.bytemd {
+  height: calc(100vh - 120px) !important;
+}

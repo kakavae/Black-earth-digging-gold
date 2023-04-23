@@ -66,7 +66,12 @@ const requestGET = ({ method, url, params = [], query = {}, useBefore = () => { 
         })
       })
 
-      useBefore(xhr)
+      // useBefore(xhr)
+      const token = window.localStorage.getItem('token')
+      if (token) {
+        xhr.setRequestHeader('Authorization', token)
+        /* Authorization */
+      }
 
       xhr.send()
     })
