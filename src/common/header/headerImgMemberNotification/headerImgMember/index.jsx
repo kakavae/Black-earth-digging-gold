@@ -4,6 +4,7 @@ import useNotifacationList from '../../../../useHooks/headerImgMemberNotifacatio
 import { useContext } from 'react'
 import { isDisplayContext } from '../../../../context/app'
 import IndividualCenter from './individualCenter'
+import useMenu from '../../../../useHooks/headerMenuDown'
 
 export default function HeaderImgMember() {
   const selectList = [
@@ -20,18 +21,19 @@ export default function HeaderImgMember() {
   /* s是否显示组件自身 */
   const { userInfo } = useContext(isDisplayContext)
 
-  /* 点击头像之后是否显示个人中心的下拉框 */
-  const { isDisplay: isDisplayIndividualCenter,
-    display: displayIndividualCenter,
-    noDisplay: noDisplayIndividualCenter } = useNotifacationList()
+  /* 点击头像之后是否显示个人中心的下拉框 --- 点击其他地方下拉主页消失 */
+  const { isDisplay: isDisplayIndividualMenu, changeDisplay, menu } = useMenu()
+  // const { isDisplay: isDisplayIndividualCenter,
+  //   display: displayIndividualCenter,
+  //   noDisplay: noDisplayIndividualCenter } = useNotifacationList()
 
-  const displayIndividualCenterOrNot = () => {
-    if (isDisplayIndividualCenter) {
-      noDisplayIndividualCenter()
-    } else {
-      displayIndividualCenter()
-    }
-  }
+  // const displayIndividualCenterOrNot = () => {
+  //   if (isDisplayIndividualCenter) {
+  //     noDisplayIndividualCenter()
+  //   } else {
+  //     displayIndividualCenter()
+  //   }
+  // }
   return (
     <>
       {/* 通知区域 */}
@@ -72,13 +74,18 @@ export default function HeaderImgMember() {
           display: userInfo.id ? 'block' : 'none'
         }}
       >
-        <div className="headerimgmembernotification__div--headerimg">
+        <div
+          className="headerimgmembernotification__div--headerimg"
+          ref={menu}
+        >
           <img
-            onClick={displayIndividualCenterOrNot}
+            onClick={changeDisplay}
             src="https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3131589739~100x100.awebp" alt="头像" />
           <IndividualCenter
-            isDisplayIndividualCenter={isDisplayIndividualCenter}
-            noDisplayIndividualCenter={noDisplayIndividualCenter}
+            // isDisplayIndividualCenter={isDisplayIndividualCenter}
+            // noDisplayIndividualCenter={noDisplayIndividualCenter}
+            isDisplayIndividualMenu={isDisplayIndividualMenu}
+            changeDisplay={changeDisplay}
           ></IndividualCenter>
         </div>
       </li>

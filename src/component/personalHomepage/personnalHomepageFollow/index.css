@@ -1,0 +1,33 @@
+/* 右侧的关注 */
+.personalhomepagefollow__div--userright {
+  width: 200px;
+  margin-left: 2rem;
+  border-radius: 5px;
+}
+
+.personalhomepagefollow__div--followflex {
+  display: flex;
+  padding-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.personalhomepagefollow__div--followflex>div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+/* 收藏集 */
+.personalhomepagefollow__ul--collection>li {
+  font-size: 15px;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.personalhomepagefollow__ul--collection>li:first-child {
+  border-top: 1px solid #ccc;
+}

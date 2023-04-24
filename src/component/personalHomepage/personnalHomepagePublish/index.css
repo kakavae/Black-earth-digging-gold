@@ -1,0 +1,41 @@
+/* 左侧下部 */
+.personalhomepagepublish__div--leftbottom {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+/* 顶部盒子list */
+.personalhomepagepublish__div--listflex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.personalhomepagepublish__ul--list {
+  display: flex;
+}
+
+.personalhomepagepublish__ul--list>li>a {
+  font-size: 16px;
+  display: inline-block;
+  padding: 1rem 1.5rem;
+}
+
+.personalhomepagepublish__ul--list>li>a:hover {
+  color: #bbbaba
+}
+
+/* 右侧的放大镜 */
+.personalhomepagepublish__div--listflex {
+  margin-right: 1rem;
+}
+
+.personalhomepagepublish__div--listflex:hover {
+  cursor: pointer;
+}
+
+/* 展示区 */
+.personalhomepagepublish__div--publishlist {
+  min-height: 200px;
+}

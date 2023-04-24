@@ -31,10 +31,12 @@ export default function RecommondSelectList({
 
   /* 判断是否能放在input上面的函数 */
   const judgePosition = () => {
-    if (ul.current.offsetHeight < input.current.getBoundingClientRect().top) {
-      setIsTop(- ul.current.offsetHeight - 5 + 'px') // 放在上方
-    } else {
-      setIsTop(input.current.offsetHeight + 5 + 'px')  // 放在下方
+    if (ul.current) {
+      if (ul.current.offsetHeight < input.current.getBoundingClientRect().top) {
+        setIsTop(- ul.current.offsetHeight - 5 + 'px') // 放在上方
+      } else {
+        setIsTop(input.current.offsetHeight + 5 + 'px')  // 放在下方
+      }
     }
   }
   const throJudgePosition = throttle(judgePosition, 50)

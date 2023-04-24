@@ -25,6 +25,12 @@
 .individualcenter__div--container>ul>li {
   padding: 1rem 0;
   font-size: 14px;
+  border-radius: 5px;
+}
+
+.individualcenter__div--container>ul>li:hover {
+  background-color: #eeecec;
+  cursor: pointer;
 }
 
 .individualcenter__div--logout>button {
@@ -33,4 +39,8 @@
   border: none;
   border-radius: 8px;
   color: #fff;
+}
+
+.individualcenter__div--logout>button:hover {
+  cursor: pointer;
 }

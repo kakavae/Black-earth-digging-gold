@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import './index.css'
 import { getArticalDetail } from '../../api'
@@ -24,6 +24,10 @@ export async function loader({ params }) {
 
 export default function Home() {
   const { articalInfo } = useLoaderData()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     /* 控制版心的盒子的位置 */
     <div className='artical__div--bgc'>

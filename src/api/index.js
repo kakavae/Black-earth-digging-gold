@@ -86,6 +86,14 @@ const reqSearchArticalList = (keyword) => {
   })
 }
 
+/* 获取某个用户的文章列表 */
+const reqUserArticalList = (id) => {
+  return request({
+    method: 'GET',
+    url: '/my/user/artical/' + id
+  })
+}
+
 export {
   getArticalDetail,
   getArticleRecommendList,
@@ -94,5 +102,6 @@ export {
   reqUserInfo,
   reqLogout,
   reqPublishArtical,
-  reqSearchArticalList
+  reqSearchArticalList,
+  reqUserArticalList
 }

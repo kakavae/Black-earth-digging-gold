@@ -2,6 +2,7 @@ import React from 'react'
 import './index.css'
 import useMenuFocuse from '../../../../useHooks/editorHeaderMenuDown'
 import EditorHeaderMenuSel from './editorHeaderMenuSel'
+import { Form } from 'react-router-dom'
 
 export default function EditorHeaderMenuDown({ isDisplay, publish, articalInfo, setArticalInfo }) {
   const classfication = [
@@ -79,6 +80,7 @@ export default function EditorHeaderMenuDown({ isDisplay, publish, articalInfo, 
       <div className='eidtorheadermenudown__div--topline'>
         <button className='editorheader__btn--font'>取消</button>
         <button
+          type='submit'
           className='editorheader__btn--bgc'
           onClick={publish}
         >确定并发布</button>

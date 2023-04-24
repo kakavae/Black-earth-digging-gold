@@ -3,13 +3,14 @@ import './index.css'
 import { reqUserInfo, reqLogout } from '../../../../../api'
 import { getToken, removeToken } from '../../../../../useFunction/token'
 import { isDisplayContext } from '../../../../../context/app'
+import { Link, redirect } from 'react-router-dom'
 
 /* 使用loader在根组件挂载的时候的路由上面使用，这样每次只要刷新页面就会用token请求资源 */
 /* 但是这样请求的资源次数太多了，可以在本地保存一个登录状态，第一次请求成功之后修改登录状态之后便不再请求 */
 
 export const loader = () => { }
 
-export default function IndividualCenter({ isDisplayIndividualCenter, noDisplayIndividualCenter }) {
+export default function IndividualCenter({ isDisplayIndividualMenu, changeDisplay }) {
   const { userInfo, setUserInfo } = useContext(isDisplayContext)
 
   /* 拿着token请求服务器，服务器根据token返回用户名---还有其他数据---把这个的逻辑改为loader */
@@ -50,16 +51,17 @@ export default function IndividualCenter({ isDisplayIndividualCenter, noDisplayI
       /* 设置当前组件的登录状态 --- 清空全局的用户信息*/
       setUserInfo({ id: null, userName: '', imgUrl: '' })
       /* 设置当前组件的显示状态 */
-      noDisplayIndividualCenter()
+      changeDisplay()
     } else {
       alert('退出失败，请重试')
     }
   }
+
   return (
     <div
       className='individualcenter__div--container'
       style={{
-        display: isDisplayIndividualCenter ? 'block' : 'none'
+        display: isDisplayIndividualMenu ? 'block' : 'none'
       }}
     >
       <h3>用户名：{userInfo.userName}</h3>
@@ -69,15 +71,15 @@ export default function IndividualCenter({ isDisplayIndividualCenter, noDisplayI
 
       <p>关注0
         赞过0 收藏36</p>
-      <ul>
-        <li>我的主页</li>
-        <li>成长福利</li>
-        <li>闪念笔记</li>
-        <li>会员中心</li>
-        <li>课程中心</li>
-        <li>我的优惠</li>
-        <li>我的报名</li>
-        <li>我的足迹</li>
+      <ul className='individualcenter__ul--myhomelist'>
+        <li><Link onClick={() => { changeDisplay() }} to={'/user/' + userInfo.id}>我的主页</Link></li>
+        <li><a href="/">成长福利</a></li>
+        <li><a href="/">闪念笔记</a></li>
+        <li><a href="/">会员中心</a></li>
+        <li><a href="/">课程中心</a></li>
+        <li><a href="/">我的优惠</a></li>
+        <li><a href="/">我的报名</a></li>
+        <li><a href="/">我的足迹</a></li>
       </ul>
       <div className='individualcenter__div--logout'>
         <button>我的设置</button>

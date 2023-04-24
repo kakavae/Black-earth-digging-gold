@@ -1,0 +1,16 @@
+.personalhomepage__div--bgc {
+  background-color: #F2F3F5;
+  min-height: 100vh;
+}
+
+.personalhomepage__div--margin {
+  padding-top: 80px;
+  margin: 0 20rem 0;
+  display: flex;
+}
+
+/* 左侧最大的盒子--装两个盒子 */
+.personalhomepage__div--user {
+  flex: 1;
+  font-size: 14px;
+}

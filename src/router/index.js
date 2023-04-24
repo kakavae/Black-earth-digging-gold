@@ -9,7 +9,8 @@ import Events from '../component/events'
 import Challenge from '../component/challenge'
 import Creator from "../component/creator";
 import CreatorHome from "../component/creator/creatorHome";
-import Editor from "../component/editor";
+import Editor, { action as publishAction } from "../component/editor";
+import PersonalHomepage, { loader as personalHomepageLoader } from "../component/personalHomepage";
 
 /* 文章组件 */
 import Artical, { loader as articalLoader } from "../component/artical";
@@ -116,7 +117,14 @@ const router = createBrowserRouter([
       /* 写文章 */
       {
         path: 'editor',
+        action: publishAction,
         element: <Editor></Editor>
+      },
+      /* 跳转到个人主页 */
+      {
+        path: 'user/:userId',
+        loader: personalHomepageLoader,
+        element: <PersonalHomepage></PersonalHomepage>
       }
     ]
   }

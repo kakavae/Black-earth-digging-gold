@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './index.css'
 
 export default function RecommondArtical({
@@ -28,12 +29,12 @@ export default function RecommondArtical({
             </span>
           </div>
           {/* 这个跳转如何控制打开新的页面标签，而不是覆盖原来的标签？？ */}
-          <a href={url}>
+          <Link to={url}>
             <h3 className='recommondArtical__h3--title'>{title}</h3>
-          </a>
-          <a href={url} className='recommondArtical__a--ellipsis'>
+          </Link>
+          <Link to={url} className='recommondArtical__a--ellipsis'>
             <p className='recommondArtical__p--artical'>{content}</p>
-          </a>
+          </Link>
         </div>
         <img className='recommondArtical__img--artical' src={imgurl} alt={imgalt} />
       </div>

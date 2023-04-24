@@ -1,0 +1,56 @@
+/* 左侧上部 */
+.personalhomepageheader__div--padding {
+  padding: 1.5rem 2rem 0;
+  margin-bottom: 1.5rem;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.personalhomepageheader__div--headerimg {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.personalhomepageheader__div--headerimg>img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+
+/* 头像右边的盒子 */
+.personalhomepageheader__div--flexgrow {
+  flex: 1
+}
+
+/* 编辑资料 */
+.personalhomepageheader__div--editorflex {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*  */
+.personalhomepageheader__btn--bgc {
+  background-color: #fff;
+  border: 1px solid #007fff;
+  border-radius: 5px;
+  color: #007fff;
+  padding: 0.5rem 1.5rem;
+}
+
+.personalhomepageheader__btn--bgc:hover {
+  cursor: pointer;
+}
+
+/* 徽章部分 */
+.personalhomepageheader__div--bordertop {
+  border-top: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.personalhomepageheader__div--headerimg>div>h3 {
+  margin-top: 0
+}
