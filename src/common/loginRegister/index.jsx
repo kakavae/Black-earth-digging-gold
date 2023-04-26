@@ -19,8 +19,37 @@ export default function LoginRegister() {
   /* 保存验证码数据 */
   const [code, setCode] = useState('')
 
+  /* 点击获取验证码之后30s倒计时开启*/
+  const [countDown, setCountDown] = useState(30)
+  /* 如果设置为true就是显示获取成功 */
+  const [isSuccess, setIsSuccess] = useState(false)
+
+  const countDownFun = (countInit, setCount, setIsSuccess, btnDom) => {
+    const maxCount = countInit
+    /* 成功，开始计时之前，修改btn警用 */
+    btnDom.disabled = true
+    /* 修改布尔值，发送成功，1.控制显示发送成功，2.鼠标禁用样式，3.显示倒计时文字 */
+    setIsSuccess(true)
+    let timer = setInterval(() => {
+      countInit--
+      setCount(countInit)
+      if (countInit === 0) {
+        window.clearInterval(timer)
+        timer = null
+        /* 倒计时结束，恢复初始样式，恢复btn使用 */
+        setCount(maxCount)
+        setIsSuccess(false)
+        btnDom.disabled = false
+      }
+    }, 1000)
+  }
+
   /* 点击鼠标获取验证码 */
   const getCode = async (event) => {
+    console.log('等待30s再获取验证码---提示验证码获取成功')
+    /* 成功：等待30s再获取验证码---30s后启用按钮---失败，等待30s之后再重新由用户尝试 */
+    countDownFun(countDown, setCountDown, setIsSuccess, event.target)
+
     try {
       const codeData = await reqRegisterCode(email)
       console.log(123)
@@ -102,9 +131,21 @@ export default function LoginRegister() {
             />
             <button
               type='submit'
-              className='LoginRegister__button--bgc'
+              /* 是否添加禁用样式 */
+              className={
+                'LoginRegister__button--bgc ' + (isSuccess ? 'LoginRegister__button--bgcactive' : '')
+              }
               onClick={getCode}
-            >获取验证码</button>
+            >
+              {isSuccess ? `${countDown}之后再获取` : '获取验证码'}
+            </button>
+            <span
+              className={
+                'LoginRegister__span--display ' + (isSuccess ? 'LoginRegister__span--active' : '')
+              }
+            >
+              获取成功
+            </span>
           </div>
           <button
             type="submit"

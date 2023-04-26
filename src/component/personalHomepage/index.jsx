@@ -9,12 +9,17 @@ import PersonnalHomepageFollow from './personnalHomepageFollow'
 /* 写一个loader，跳转到当前页面的时候，就拿着用户的id去后台拿数据----好像拿着用户的email去拿数据更合理，这样用户在取消登录第二次登录用户名变了之后拿到的id就是不一样的，岂不是拿不到之前的信息了？ */
 /* 好像数据库的设计里面userId也可以选？ */
 export const loader = async ({ params }) => {
-  const res = await reqUserArticalList(params.userId)
-  if (res && res.code === 200) {
-    return res.data
-  } else {
-    return [{}]
+  try {
+    const res = await reqUserArticalList(params.userId)
+    if (res && res.code === 200) {
+      return res.data
+    } else {
+      return [{}]
+    }
+  } catch (e) {
+    console.log('请求服务器出错，个人主页', e)
   }
+  return [{}]
 }
 
 export default function PersonalHomepage() {

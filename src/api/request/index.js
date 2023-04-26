@@ -8,6 +8,8 @@
 import requestGET from "./requestGET"
 import requestPOST from "./requestPost"
 const mainURL = 'http://127.0.0.1:8090'
+/* 服务器接口地址--上传到服务器的时候使用这个接口地址 */
+// const mainURL = 'http://101.42.32.142:80/blog'
 
 const request = ({ method, url, params = [], query = {}, data = null }) => {
 

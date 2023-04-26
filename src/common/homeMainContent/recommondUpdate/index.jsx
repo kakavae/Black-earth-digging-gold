@@ -21,10 +21,10 @@ export const loader = async () => {
     } else {
       return []
     }
-
   } catch (e) {
-    console.log(e)
+    console.log('请求服务器出错', e)
   }
+  return []
 }
 
 export default function RecommondUpdate({ isDisplay }) {

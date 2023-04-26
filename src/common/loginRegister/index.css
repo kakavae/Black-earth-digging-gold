@@ -60,7 +60,7 @@
   margin: 0.5rem 0 1.5rem 0;
   width: 30rem;
   outline: none;
-  border: 1px solid transparent;
+  border: 1px solid #ccc;
   background-color: #f7f2f2;
   padding: 0.5rem;
   border-radius: 8px;
@@ -77,14 +77,32 @@
   font-size: 16px;
 }
 
+/* 获取验证码 */
 .LoginRegister__button--bgc {
   color: var(--juejin-brand-1-normal);
   background-color: #fff;
-  border: none;
+  border: 1px solid var(--juejin-brand-1-normal);
+  border-radius: 5px;
+  margin: 0 1rem;
 }
 
 .LoginRegister__button--bgc:hover {
   cursor: pointer;
+}
+
+/* 获取验证码被点击之后的样式 */
+.LoginRegister__button--bgcactive:hover {
+  cursor: not-allowed;
+}
+
+/* 登录button之后的弹窗提示成功或者失败 */
+.LoginRegister__span--display {
+  display: none;
+  color: red;
+}
+
+.LoginRegister__span--active {
+  display: inline;
 }
 
 /* 登录button */
