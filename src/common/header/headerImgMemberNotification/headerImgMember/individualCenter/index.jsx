@@ -17,15 +17,18 @@ export const action = async ({ request }) => {
   /* 因为登录的时候还要修改组件的显示状态，所以请求在组件自身发出，只不过触发了一个只有type的action */
   /* action就是一个函数，会根据submit或者form的action匹配对应的路径然后触发对应的声明的action */
   if (data.type === 'logout') {
-    const logoutData = await reqLogout(data.id)
-    if (logoutData.code === 200) {
-      /* logout触发action, 里面清除了token，所有的loader都要重新加载一次，
-      获取用户信息的loader加载的结果依赖于token，所以可以直接获取到用户到底有没有登录的结果而渲染页面 */
-      removeToken()
-      return logoutData
-    } else {
-      return { msg: '退出登录失败' }
-    }
+    /* 退出登录好像只需要清除本地的token就可以了？？？？ */
+    // const logoutData = await reqLogout(data.id)
+    // if (logoutData.code === 200) {
+    //   /* logout触发action, 里面清除了token，所有的loader都要重新加载一次，
+    //   获取用户信息的loader加载的结果依赖于token，所以可以直接获取到用户到底有没有登录的结果而渲染页面 */
+    //   removeToken()
+    //   return logoutData
+    // } else {
+    //   return { msg: '退出登录失败' }
+    // }
+    removeToken()
+    return redirect('/')
   } else if (data.type === 'login') {
     return redirect('/')
   } else {
