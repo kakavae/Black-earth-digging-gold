@@ -94,6 +94,18 @@ const reqUserArticalList = (id) => {
   })
 }
 
+/* 修改个人信息 */
+/* 不用携带id，id可以从token中获取 */
+const changePersonalMsg = (data) => {
+  return request({
+    method: 'POST',
+    url: '/my/user/edituserinfo',
+    data: {
+      ...data
+    }
+  })
+}
+
 export {
   getArticalDetail,
   getArticleRecommendList,
@@ -103,5 +115,6 @@ export {
   reqLogout,
   reqPublishArtical,
   reqSearchArticalList,
-  reqUserArticalList
+  reqUserArticalList,
+  changePersonalMsg
 }

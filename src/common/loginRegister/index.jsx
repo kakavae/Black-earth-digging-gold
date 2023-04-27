@@ -3,13 +3,36 @@ import './index.css'
 import useNotifacationList from '../../useHooks/headerImgMemberNotifacation'
 import PubSub from 'pubsub-js'
 import { reqRegisterCode, reqRequestLogin } from '../../api'
-import { Form } from 'react-router-dom'
+import { Form, useSubmit } from 'react-router-dom'
 import { isDisplayContext } from '../../context/app'
 import { setToken } from '../../useFunction/token'
 
+export const action = async ({ request }) => {
+  const formData = await request.formData()
+
+  console.log(Object.fromEntries(formData))
+  /* 规则校验 */
+  // if (code && email) {
+  //   try {
+  //     const loginData = await reqRequestLogin({ email, code })
+  //     /* 隐藏当前组件，渲染头像用户名，存储token */
+  //     if (loginData.code === 200) {
+  //       console.log(loginData, '登陆成功隐藏当前组件，渲染头像用户名，存储token')
+  //       noDisplay()
+  //       /* 渲染用户名和头像---修改全局的userinfo context */
+  //       setUserInfo({ ...userInfo, ...loginData.data })
+  //       /* 修改本地存储的token */
+  //       setToken(loginData.data.token)
+  //     } else {
+  //       alert('请重新登录')
+  //     }
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
+}
+
 export default function LoginRegister() {
-  /* 接收父级组件传递的用户信息，或者修改这个信息 */
-  const { userInfo, setUserInfo } = useContext(isDisplayContext)
 
   /* 是否显示当前组件 */
   const { isDisplay, display, noDisplay } = useNotifacationList()
@@ -52,8 +75,6 @@ export default function LoginRegister() {
 
     try {
       const codeData = await reqRegisterCode(email)
-      console.log(123)
-      console.log(codeData)
       if (codeData.code === 200) {
         console.log('获取验证码成功')
         console.log('30s之后再次获取')
@@ -66,8 +87,8 @@ export default function LoginRegister() {
   }
 
   /* 拿着验证码和邮箱登录 */
+  const submit = useSubmit()
   const login = async () => {
-    /* 规则校验 */
     if (code && email) {
       try {
         const loginData = await reqRequestLogin({ email, code })
@@ -76,9 +97,15 @@ export default function LoginRegister() {
           console.log(loginData, '登陆成功隐藏当前组件，渲染头像用户名，存储token')
           noDisplay()
           /* 渲染用户名和头像---修改全局的userinfo context */
-          setUserInfo({ ...userInfo, ...loginData.data })
+          // setUserInfo({ ...userInfo, ...loginData.data })
           /* 修改本地存储的token */
           setToken(loginData.data.token)
+          submit({
+            type: 'login'
+          }, {
+            method: 'post',
+            action: '/'
+          })
         } else {
           alert('请重新登录')
         }
@@ -116,6 +143,7 @@ export default function LoginRegister() {
           <span>邮箱登录</span>
           <input
             type="email"
+            name='email'
             className='LoginRegister__ipt--email'
             onChange={(event) => {
               setEmail(event.target.value)
@@ -124,6 +152,7 @@ export default function LoginRegister() {
           <div>
             <input
               type="number"
+              name='code'
               className='LoginRegister__ipt--email LoginRegister__ipt--codewidth'
               onChange={(event) => {
                 setCode(event.target.value)

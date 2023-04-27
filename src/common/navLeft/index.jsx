@@ -13,7 +13,8 @@ import NavLeftRecommendation from './navLeftRecommendation'
 import useMenuList from '../../useHooks/navLeft'
 
 /* NavLeft接收数据从而复用当前的组件 */
-export default function NavLeft({ menuList, recommendationCircle = [], inicalIndex = 1 }) {
+/* 接收一个类名样式决定当前组件是固定定位还是标准流 */
+export default function NavLeft({ menuList, recommendationCircle = [], inicalIndex = 1, classNamePosition = '' }) {
   /* 鼠标移动和点击后修改列表的样式 */
   const { acticeId, focuseId, changeActive, turnMenu } = useMenuList(menuList, inicalIndex)
 
@@ -23,7 +24,7 @@ export default function NavLeft({ menuList, recommendationCircle = [], inicalInd
   return (
     <div className='NavLeft__div--imgbox'>
       <div
-        className="NavLeft__div--scroll"
+        className={'NavLeft__div--scroll ' + classNamePosition}
         style={{ top: isDisplayHeader ? 'calc(60px + 1.66rem)' : '1.66rem' }}>
         <div className='NavLeft__div--container'>
           <ul onMouseOut={changeActive(-1)}>

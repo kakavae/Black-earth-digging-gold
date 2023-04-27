@@ -19,6 +19,7 @@ export default function HeaderImgMember() {
   const { isDisplay, display, noDisplay } = useNotifacationList()
 
   /* s是否显示组件自身 */
+  /* 当app组件在loader之后获取的userInfo是空的时候，这个组件就不会被渲染 */
   const { userInfo } = useContext(isDisplayContext)
 
   /* 点击头像之后是否显示个人中心的下拉框 --- 点击其他地方下拉主页消失 */

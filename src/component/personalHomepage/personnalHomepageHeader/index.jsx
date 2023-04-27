@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import './index.css'
 import { isDisplayContext } from '../../../context/app'
+import { Link } from 'react-router-dom'
 
 export default function PersonalhomepageheaderHeader() {
 
@@ -18,7 +19,10 @@ export default function PersonalhomepageheaderHeader() {
               掘友等级<br></br>
               你从事什么职业？<br></br>
             </div>
-            <button className='personalhomepageheader__btn--bgc'>编辑个人资料</button>
+            <Link
+              className='personalhomepageheader__btn--bgc'
+              to='/user/settings/profile'
+            >编辑个人资料</Link>
           </div>
         </div>
       </div>

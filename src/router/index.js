@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from '../App'
+import App, { loader as appLoader } from '../App'
 import Home from "../component/home";
 import { loader as homeArticleListLoader } from '../common/homeMainContent/recommondUpdate'
 import Pins from "../component/pins";
@@ -11,6 +11,9 @@ import Creator from "../component/creator";
 import CreatorHome from "../component/creator/creatorHome";
 import Editor, { action as publishAction } from "../component/editor";
 import PersonalHomepage, { loader as personalHomepageLoader } from "../component/personalHomepage";
+import EditorPersonalMsg, { action as editorPersonalMsgAction } from "../component/personalHomepage/editorPersonalMsg";
+import { action as logoutAction } from "../common/header/headerImgMemberNotification/headerImgMember/individualCenter";
+import { action as loginAction } from "../common/loginRegister";
 
 /* 文章组件 */
 import Artical, { loader as articalLoader } from "../component/artical";
@@ -18,6 +21,8 @@ import Artical, { loader as articalLoader } from "../component/artical";
 const router = createBrowserRouter([
   {
     path: '/',
+    loader: appLoader,
+    action: logoutAction,
     element: <App></App>,
     children: [
       {
@@ -124,7 +129,16 @@ const router = createBrowserRouter([
       {
         path: 'user/:userId',
         loader: personalHomepageLoader,
-        element: <PersonalHomepage></PersonalHomepage>
+        element: <PersonalHomepage></PersonalHomepage>,
+        children: [
+
+        ]
+      },
+      /* 修改个人信息 */
+      {
+        path: 'user/settings/profile',
+        action: editorPersonalMsgAction,
+        element: <EditorPersonalMsg></EditorPersonalMsg>
       }
     ]
   }

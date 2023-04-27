@@ -1,0 +1,147 @@
+.editorpersonalmsg__div--bgc {
+  background-color: #F2F3F5;
+  min-height: 100vh;
+}
+
+.editorpersonalmsg__div--margin {
+  padding-top: 80px;
+  margin: 0 12rem 0;
+}
+
+/* 返回个人主页 */
+.editorpersonalmsg__div--return {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.editorpersonalmsg__div--return>a {
+  color: #7c7c7c;
+  padding: 1rem;
+}
+
+.editorpersonalmsg__div--return>a:hover {
+  color: var(--juejin-brand-2-hover)
+}
+
+/* 左侧菜单 右侧个人资料区域 */
+.editorpersonalmsg__div--user {
+  font-size: 14px;
+  display: flex;
+}
+
+/* 左侧菜单标准流组件复用样式重置 */
+.editorpersonalmsg__div--menuposition {
+  position: inherit;
+}
+
+/* 右侧编辑界面 */
+.editorpersonalmsg__div--contentedit {
+  background-color: #fff;
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+}
+
+.editorpersonalmsg__div--leftflex {
+  flex: 1
+}
+
+.editorpersonalmsg__div--leftflex>h3 {
+  font-size: 20px;
+  padding-left: 1rem;
+}
+
+.editorpersonalmsg__form--margin {
+  margin-left: 2rem;
+  font-size: 15px;
+}
+
+/* Form表单里面的P */
+.editorpersonalmsg__p--border {
+  margin: 0;
+  padding: 1rem 0;
+  /* height: 24px; */
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.editorpersonalmsg__form--margin>p:first-child {
+  border-top: 1px solid #ccc;
+}
+
+
+.editorpersonalmsg__p--border>input {
+  float: right;
+  margin-right: 10px;
+  width: 40rem;
+  background-color: #f7f5f5;
+  outline: none;
+  border: 1px solid #ccc;
+  height: 30px;
+  border-radius: 5px;
+  padding: 0 1rem;
+  transition: all 0.3 ease-in-out;
+}
+
+.editorpersonalmsg__p--border>textarea {
+  padding: 1rem 1rem;
+  float: right;
+  margin-right: 10px;
+  background-color: #f7f5f5;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  transition: all 0.3 ease-in-out;
+}
+
+.editorpersonalmsg__p--border>input:hover,
+.editorpersonalmsg__p--border>textarea:hover {
+  background-color: #e8e9e9;
+}
+
+.editorpersonalmsg__p--border>input:focus,
+.editorpersonalmsg__p--border>textarea:focus {
+  background-color: #ffffff;
+}
+
+/* placeholder的字体 */
+.editorpersonalmsg__p--border>input::-webkit-input-placeholder,
+.editorpersonalmsg__p--border>textarea::-webkit-input-placeholder {
+  color: #ccc;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.editorpersonalmsg__p--border>span {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+}
+
+.editorpersonalmsg__form--margin>button {
+  float: right;
+  margin: 2rem 2rem 0 0;
+  border: none;
+  background-color: var(--juejin-brand-2-hover);
+  padding: 1rem 2rem;
+  color: #fff;
+  border-radius: 5px;
+}
+
+/* 右侧装头像的大盒子 */
+.editorpersonalmsg__div--width {
+  width: 400px;
+  padding-left: 8rem;
+  padding-top: 5rem;
+}
+
+.editorpersonalmsg__div--width>img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}

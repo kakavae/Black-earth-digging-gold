@@ -1,60 +1,83 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import './index.css'
-import { reqUserInfo, reqLogout } from '../../../../../api'
-import { getToken, removeToken } from '../../../../../useFunction/token'
+import { reqLogout } from '../../../../../api'
+import { removeToken } from '../../../../../useFunction/token'
 import { isDisplayContext } from '../../../../../context/app'
-import { Link, redirect } from 'react-router-dom'
+import { Link, redirect, useSubmit } from 'react-router-dom'
 
 /* 使用loader在根组件挂载的时候的路由上面使用，这样每次只要刷新页面就会用token请求资源 */
 /* 但是这样请求的资源次数太多了，可以在本地保存一个登录状态，第一次请求成功之后修改登录状态之后便不再请求 */
+export const action = async ({ request }) => {
+  /* 获取表单或者submit提交的数据 */
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData)
 
-export const loader = () => { }
+  /* 和登录公用一个action，所以需要判断类型 */
+  /* 因为只要触发了action就会让所有的loader再走一次，为了让每一个组件都拿到最新的用户数据，所以注册和登录都要走action */
+  /* 因为登录的时候还要修改组件的显示状态，所以请求在组件自身发出，只不过触发了一个只有type的action */
+  /* action就是一个函数，会根据submit或者form的action匹配对应的路径然后触发对应的声明的action */
+  if (data.type === 'logout') {
+    const logoutData = await reqLogout(data.id)
+    if (logoutData.code === 200) {
+      /* logout触发action, 里面清除了token，所有的loader都要重新加载一次，
+      获取用户信息的loader加载的结果依赖于token，所以可以直接获取到用户到底有没有登录的结果而渲染页面 */
+      removeToken()
+      return logoutData
+    } else {
+      return { msg: '退出登录失败' }
+    }
+  } else if (data.type === 'login') {
+    return redirect('/')
+  } else {
+    return {
+      msg: '无效action的type'
+    }
+  }
+}
 
 export default function IndividualCenter({ isDisplayIndividualMenu, changeDisplay }) {
-  const { userInfo, setUserInfo } = useContext(isDisplayContext)
+  const { userInfo } = useContext(isDisplayContext)
+
+  let submit = useSubmit();
 
   /* 拿着token请求服务器，服务器根据token返回用户名---还有其他数据---把这个的逻辑改为loader */
-  useEffect(() => {
-    if (getToken()) {
-      const getUserInfo = async () => {
-        try {
-          const data = await reqUserInfo()
-          console.log('@拿着token请求数据，这时候在服务器没启动的时候好像会报错', data, getToken())
+  // useEffect(() => {
+  //   if (getToken()) {
+  //     const getUserInfo = async () => {
+  //       try {
+  //         const data = await reqUserInfo()
+  //         console.log('@拿着token请求数据，这时候在服务器没启动的时候好像会报错', data, getToken())
 
-          if (data.code === 200) {
-            console.log('indivaidual', data)
-            /* 修改当前组件的用户名 ---- 全局的context用户名需要根据回来的数据渲染*/
-            const { userName, id, email } = data.data
-            setUserInfo({ ...userInfo, userName, id, email })
-          } else if (data.code === 208) {
-            console.log('token过期')
-            /* token过期，需要重新登录，清除存储的localStorage里面的token */
-            removeToken()
-          } else {
-            console.log(data)
-          }
-        } catch (e) {
-          console.log(e)
-        }
-      }
-      getUserInfo()
-    }
-  }, [])
+  //         if (data.code === 200) {
+  //           console.log('indivaidual', data)
+  //           /* 修改当前组件的用户名 ---- 全局的context用户名需要根据回来的数据渲染*/
+  //           const { userName, id, email } = data.data
+  //           setUserInfo({ ...userInfo, userName, id, email })
+  //         } else if (data.code === 208) {
+  //           console.log('token过期')
+  //           /* token过期，需要重新登录，清除存储的localStorage里面的token */
+  //           removeToken()
+  //         } else {
+  //           console.log(data)
+  //         }
+  //       } catch (e) {
+  //         console.log(e)
+  //       }
+  //     }
+  //     getUserInfo()
+  //   }
+  // }, [])
 
   /* 退出登录 ---- 以params参数的形式发送用户数据*/
+  /* 这个logout也应该以loader的形式发送出去数据，这样app的action才能检测到action了一个新的数据，才会loader新的数据 */
   const logout = async () => {
-    const logoutData = await reqLogout(userInfo.id)
-    console.log('退出后收到返回数据', logoutData)
-    if (logoutData.code === 200) {
-      /* 删除本地token */
-      removeToken()
-      /* 设置当前组件的登录状态 --- 清空全局的用户信息*/
-      setUserInfo({ id: null, userName: '', imgUrl: '' })
-      /* 设置当前组件的显示状态 */
-      changeDisplay()
-    } else {
-      alert('退出失败，请重试')
-    }
+    submit({
+      type: 'logout',
+      id: userInfo.id
+    }, {
+      action: "/",
+      method: 'post'
+    })
   }
 
   return (
