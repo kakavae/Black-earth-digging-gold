@@ -1,20 +1,33 @@
 import React from 'react'
 import './index.css'
 import ArticalMiddleCodeContent from './articalMiddleCodeContent'
+import ArticalComment from './articalComment'
 export default function ArticleMiddleContent({
   articalInfo = {} }) {
-  const { title, author, time, reading, content } = articalInfo
+  const { title, author, time, reading, content, comments } = articalInfo
+
+  let newCommentsList
+  if (comments) {
+    newCommentsList = JSON.parse(comments.replace(/\//g, ''))
+    if (!Array.isArray(newCommentsList)) {
+      newCommentsList = [newCommentsList]
+    }
+  }
+
   return (
-    <article className="articlemiddlecontent__article--maincontent--w">
-      <h1>{title}</h1>
-      <div className='articlemiddlecontent__div--headerflex'>
-        <img src="https://p3-passport.byteimg.com/img/user-avatar/29691c255dda6a7de9a4e6fb6f5724eb~100x100.awebp" alt="头像" />
-        <div>
-          <a href="/">{author}</a>
-          <span>{time}&nbsp;·&nbsp;阅读&nbsp;{reading}</span>
+    <div className='articlemiddlecontent__div--maxcontainerflex'>
+      <article className="articlemiddlecontent__article--maincontent--w">
+        <h1>{title}</h1>
+        <div className='articlemiddlecontent__div--headerflex'>
+          <img src="https://p3-passport.byteimg.com/img/user-avatar/29691c255dda6a7de9a4e6fb6f5724eb~100x100.awebp" alt="头像" />
+          <div>
+            <a href="/">{author}</a>
+            <span>{time}&nbsp;·&nbsp;阅读&nbsp;{reading}</span>
+          </div>
         </div>
-      </div>
-      <ArticalMiddleCodeContent content={content}></ArticalMiddleCodeContent>
-    </article>
+        <ArticalMiddleCodeContent content={content}></ArticalMiddleCodeContent>
+      </article>
+      <ArticalComment commentsList={newCommentsList}></ArticalComment>
+    </div>
   )
 }

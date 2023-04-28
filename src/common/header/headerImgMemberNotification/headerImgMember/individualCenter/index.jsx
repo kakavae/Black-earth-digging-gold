@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import './index.css'
-import { reqLogout } from '../../../../../api'
 import { removeToken } from '../../../../../useFunction/token'
 import { isDisplayContext } from '../../../../../context/app'
 import { Link, redirect, useSubmit } from 'react-router-dom'
@@ -30,6 +29,7 @@ export const action = async ({ request }) => {
     removeToken()
     return redirect('/')
   } else if (data.type === 'login') {
+    console.log('触发登录的action')
     return redirect('/')
   } else {
     return {

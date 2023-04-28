@@ -1,0 +1,34 @@
+.articalcomment__div--containerbgc {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  border-radius: 5px;
+  padding: 1rem 1.5rem 0 1.5rem;
+}
+
+/* 头像变为 */
+.articalcomment__img--header {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+/* 头像和输入框 */
+.articalcomment__div--iptflex {
+  display: flex;
+  align-items: flex-start;
+}
+
+.articalcomment__div--iptflex>textarea {
+  background-color: #f2f2f2;
+  height: 50px;
+  font-size: 14px;
+  flex: 1;
+  outline: none;
+  resize: none;
+  border-radius: 5px;
+  margin: 0 1rem
+}
+
+.articalcomment__div--iptflex>textarea:focus {
+  background-color: #fff;
+}

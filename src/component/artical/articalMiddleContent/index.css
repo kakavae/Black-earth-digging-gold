@@ -1,6 +1,10 @@
-.articlemiddlecontent__article--maincontent--w {
+/* 最大的盒子，装着文章内容和评论 */
+.articlemiddlecontent__div--maxcontainerflex {
   flex: 1;
   margin-right: 1.5rem;
+}
+
+.articlemiddlecontent__article--maincontent--w {
   background-color: #fff;
   padding: 3rem 2.5rem;
 }

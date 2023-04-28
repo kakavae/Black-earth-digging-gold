@@ -1,0 +1,16 @@
+.articalcommentitem__div--commentcontainer {
+  border-top: 1px solid rgba(55, 63, 69, 0.694);
+  font-size: 15px;
+}
+
+.articalcommentitem__div--user>a {
+  font-size: 20px;
+  color: rgba(26, 138, 230, 0.694);
+  padding: 1rem 0;
+  display: inline-block;
+}
+
+.articalcommentitem__div--content {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
