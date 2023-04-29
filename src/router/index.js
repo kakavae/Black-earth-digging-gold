@@ -14,6 +14,7 @@ import PersonalHomepage, { loader as personalHomepageLoader } from "../component
 import EditorPersonalMsg, { action as editorPersonalMsgAction } from "../component/personalHomepage/editorPersonalMsg";
 import { action as logoutAction } from "../common/header/headerImgMemberNotification/headerImgMember/individualCenter";
 import { action as loginAction } from "../common/loginRegister";
+import { action as commentAction } from '../component/artical/articalMiddleContent/articalComment'
 
 /* 文章组件 */
 import Artical, { loader as articalLoader } from "../component/artical";
@@ -106,6 +107,7 @@ const router = createBrowserRouter([
       {
         path: 'post/:id',
         loader: articalLoader,
+        action: commentAction,
         element: <Artical></Artical>,
       },
       /* 创作者中心 */

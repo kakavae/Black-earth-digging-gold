@@ -31,4 +31,33 @@
 
 .articalcomment__div--iptflex>textarea:focus {
   background-color: #fff;
+  border: 1px solid #1e80ff;
+}
+
+/* 发表评论 */
+.articalcomment__div--publishcomment {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.articalcomment__div--publishcomment>button {
+  width: 92px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 36px;
+  background: #1e80ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.articalcomment__div--publishcomment>span {
+  margin-right: 1rem;
+  font-size: 14px;
+}
+
+.articalcomment__div--publishcomment>button:hover {
+  cursor: pointer;
 }

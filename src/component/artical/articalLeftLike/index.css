@@ -6,10 +6,20 @@
 }
 
 .articleleftlike__ul--container>li>a {
-  display: block;
+  display: flex;
   padding: 2rem 2rem;
   font-size: 14px;
   background-color: #fff;
   border-radius: 5px;
   margin-bottom: 1rem;
+}
+
+/* 当前用户点赞后的样式 */
+.articleleftlike__span--like {
+  color: #1e80ff;
+}
+
+/* path的填充 */
+.articleleftlike__path--like {
+  fill: #1e80ff;
 }

@@ -15,7 +15,11 @@ export async function loader({ params }) {
   // console.log(getArticalDetail)
   try {
     const articalInfo = await getArticalDetail(params.id)
-    return { articalInfo }
+    if (articalInfo.code === 200) {
+      return articalInfo.data
+    } else {
+      return {}
+    }
   } catch (e) {
     console.log(e, '跳转到错误页面')
   }
@@ -23,7 +27,7 @@ export async function loader({ params }) {
 }
 
 export default function Home() {
-  const { articalInfo } = useLoaderData()
+  const articalInfo = useLoaderData()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -34,11 +38,11 @@ export default function Home() {
       <div className="artical__div--container">
         <div className="artical__div--view">
           {/* 左侧点赞区 */}
-          <ArticalLeftLike></ArticalLeftLike>
+          <ArticalLeftLike articalInfo={articalInfo}></ArticalLeftLike>
           {/* 中间模块 设置了flex: 1 */}
-          <ArticleMiddleContent articalInfo={articalInfo[0]}></ArticleMiddleContent>
+          <ArticleMiddleContent articalInfo={articalInfo}></ArticleMiddleContent>
           {/* 右边的aside */}
-          <ArticalRightNav articalInfo={articalInfo[0]}></ArticalRightNav>
+          <ArticalRightNav articalInfo={articalInfo}></ArticalRightNav>
         </div>
       </div>
     </div>

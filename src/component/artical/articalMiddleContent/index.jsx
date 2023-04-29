@@ -4,15 +4,12 @@ import ArticalMiddleCodeContent from './articalMiddleCodeContent'
 import ArticalComment from './articalComment'
 export default function ArticleMiddleContent({
   articalInfo = {} }) {
-  const { title, author, time, reading, content, comments } = articalInfo
+  const { id, title, author, time, reading, content, comments } = articalInfo
 
-  let newCommentsList
-  if (comments) {
-    newCommentsList = JSON.parse(comments.replace(/\//g, ''))
-    if (!Array.isArray(newCommentsList)) {
-      newCommentsList = [newCommentsList]
-    }
-  }
+  /* 数组里面村的是JSON对象，但是对象还没有JSON化出来这是为什么？ */
+  /* 前后台传输数据浏览器只会JSON化一层？ */
+  const newCommentList = comments.length <= 0 ? [] : JSON.parse(comments)
+  // console.log(newCommentList)
 
   return (
     <div className='articlemiddlecontent__div--maxcontainerflex'>
@@ -27,7 +24,7 @@ export default function ArticleMiddleContent({
         </div>
         <ArticalMiddleCodeContent content={content}></ArticalMiddleCodeContent>
       </article>
-      <ArticalComment commentsList={newCommentsList}></ArticalComment>
+      <ArticalComment id={id} commentsList={newCommentList}></ArticalComment>
     </div>
   )
 }

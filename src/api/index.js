@@ -106,6 +106,25 @@ const changePersonalMsg = (data) => {
   })
 }
 
+/* 发表评论 */
+const sendComment = (data) => {
+  return request({
+    method: 'POST',
+    url: '/artical/commentartical',
+    data: {
+      ...data
+    }
+  })
+}
+
+/* 点赞文章 */
+const likeArtical = (id) => {
+  return request({
+    method: 'GET',
+    url: `/artical/likeartical/${id}`
+  })
+}
+
 export {
   getArticalDetail,
   getArticleRecommendList,
@@ -116,5 +135,7 @@ export {
   reqPublishArtical,
   reqSearchArticalList,
   reqUserArticalList,
-  changePersonalMsg
+  changePersonalMsg,
+  sendComment,
+  likeArtical
 }
