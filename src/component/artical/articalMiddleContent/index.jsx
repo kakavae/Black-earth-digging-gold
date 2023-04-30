@@ -3,7 +3,9 @@ import './index.css'
 import ArticalMiddleCodeContent from './articalMiddleCodeContent'
 import ArticalComment from './articalComment'
 export default function ArticleMiddleContent({
-  articalInfo = {} }) {
+  articalInfo = {},
+  commentRef
+}) {
   const { id, title, author, time, reading, content, comments } = articalInfo
 
   /* 数组里面村的是JSON对象，但是对象还没有JSON化出来这是为什么？ */
@@ -24,7 +26,7 @@ export default function ArticleMiddleContent({
         </div>
         <ArticalMiddleCodeContent content={content}></ArticalMiddleCodeContent>
       </article>
-      <ArticalComment id={id} commentsList={newCommentList}></ArticalComment>
+      <ArticalComment id={id} commentsList={newCommentList} commentRef={commentRef}></ArticalComment>
     </div>
   )
 }

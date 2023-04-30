@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import './index.css'
 import { getArticalDetail } from '../../api'
@@ -29,6 +29,12 @@ export async function loader({ params }) {
 export default function Home() {
   const articalInfo = useLoaderData()
 
+  /* 点击评论后跳转到指定的位置 */
+  const commentRef = useRef()
+  const turnComment = () => {
+    window.scrollTo(0, commentRef.current.offsetTop - 100)
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -38,9 +44,9 @@ export default function Home() {
       <div className="artical__div--container">
         <div className="artical__div--view">
           {/* 左侧点赞区 */}
-          <ArticalLeftLike articalInfo={articalInfo}></ArticalLeftLike>
+          <ArticalLeftLike articalInfo={articalInfo} turnComment={turnComment}></ArticalLeftLike>
           {/* 中间模块 设置了flex: 1 */}
-          <ArticleMiddleContent articalInfo={articalInfo}></ArticleMiddleContent>
+          <ArticleMiddleContent articalInfo={articalInfo} commentRef={commentRef}></ArticleMiddleContent>
           {/* 右边的aside */}
           <ArticalRightNav articalInfo={articalInfo}></ArticalRightNav>
         </div>

@@ -13,7 +13,6 @@ import Editor, { action as publishAction } from "../component/editor";
 import PersonalHomepage, { loader as personalHomepageLoader } from "../component/personalHomepage";
 import EditorPersonalMsg, { action as editorPersonalMsgAction } from "../component/personalHomepage/editorPersonalMsg";
 import { action as logoutAction } from "../common/header/headerImgMemberNotification/headerImgMember/individualCenter";
-import { action as loginAction } from "../common/loginRegister";
 import { action as commentAction } from '../component/artical/articalMiddleContent/articalComment'
 
 /* 文章组件 */

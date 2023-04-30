@@ -13,3 +13,19 @@
   display: flex;
   margin-top: 1.66rem;
 }
+
+/* 控制文章页面的媒体查询 */
+/* 缩小到1000px的时候右边组件消失 */
+/* 最大宽度小于1000px的时候下面的样式生效 */
+@media screen and (max-width: 1000px) {
+  .articalrightnav__nav--rightabsolute {
+    display: none;
+  }
+}
+
+/* 600px的时候左边组件消失 */
+@media screen and (max-width: 600px) {
+  .articleleftlike__ul--container {
+    display: none !important;
+  }
+}

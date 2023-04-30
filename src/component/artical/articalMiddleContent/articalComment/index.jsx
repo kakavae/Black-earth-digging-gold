@@ -33,7 +33,7 @@ export const action = async ({ request }) => {
   return null
 }
 
-export default function ArticalComment({ id, commentsList }) {
+export default function ArticalComment({ id, commentsList, commentRef }) {
 
   commentsList = commentsList.filter((item) => {
     return Object.keys(item).length > 0
@@ -55,7 +55,7 @@ export default function ArticalComment({ id, commentsList }) {
 
   }
   return (
-    <div className='articalcomment__div--containerbgc'>
+    <div ref={commentRef} className='articalcomment__div--containerbgc'>
       <div>
         <h3>评论</h3>
         <div>
