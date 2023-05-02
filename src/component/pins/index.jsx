@@ -48,62 +48,6 @@ export default function Pins() {
 
   const [pinsListPlus, setPinsListPlus] = useState(pinsList)
 
-  /* 评论区的数据 */
-  const commentInfo = [
-    {
-      userId: 1,
-      userName: '张三的歌',
-      headerImgUrl: 'https://p3-passport.byteimg.com/img/user-avatar/0daadbcfcbeb871f3c075c37d21752de~100x100.awebp',
-      commentUrl: '/',
-      occupation: 'web开发',
-      time: '17分钟前',
-      contentInfo: {
-        content: '理财，先投资自己，除了外在的物品，精神的需求，最重要的是健康的身体，好好调理，健康是最大的财富，没有健康，其他都是浮云~~拥有健康，才能积累更多的财富！！',
-        club: '理财交流圈',
-        likes: '17',
-        commentTimes: '5',
-        commentImg: [
-          {
-            id: 1,
-            url: 'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10c1ed6a8b72438c88ac8711905761c3~tplv-k3u1fbpfcp-zoom-mark-crop-v2:240:240:0:0.awebp?',
-            alt: '键盘'
-          },
-          {
-            id: 2,
-            url: 'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/05b159d50080480587adaa5c3112bdc8~tplv-k3u1fbpfcp-zoom-mark-crop-v2:240:240:0:0.awebp?',
-            alt: 'chatGPT'
-          }
-        ]
-      }
-    },
-    {
-      userId: 2,
-      userName: '张三的歌',
-      headerImgUrl: 'https://p3-passport.byteimg.com/img/user-avatar/0daadbcfcbeb871f3c075c37d21752de~100x100.awebp',
-      commentUrl: '/',
-      occupation: 'web开发',
-      time: '17分钟前',
-      contentInfo: {
-        content: '理财，先投资自己，除了外在的物品，精神的需求，最重要的是健康的身体，好好调理，健康是最大的财富，没有健康，其他都是浮云~~拥有健康，才能积累更多的财富！！',
-        club: '理财交流圈',
-        likes: '17',
-        commentTimes: '5',
-        commentImg: [
-          {
-            id: 1,
-            url: 'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10c1ed6a8b72438c88ac8711905761c3~tplv-k3u1fbpfcp-zoom-mark-crop-v2:240:240:0:0.awebp?',
-            alt: '键盘'
-          },
-          {
-            id: 2,
-            url: 'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/05b159d50080480587adaa5c3112bdc8~tplv-k3u1fbpfcp-zoom-mark-crop-v2:240:240:0:0.awebp?',
-            alt: 'chatGPT'
-          }
-        ]
-      }
-    },
-  ]
-
   return (
     /* 控制版心的盒子的位置 */
     <div className='pins__div--bgc'>
