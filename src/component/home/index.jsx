@@ -6,6 +6,10 @@ import Aside from '../../common/aside'
 import HomeMainContent from '../../common/homeMainContent'
 import NavTop from '../../common/navTop'
 
+export const loader = (obj) => {
+  console.log()
+}
+
 export default function Home() {
   /* 左侧导航NavLeft需要显示的数据 */
   const menuList = [

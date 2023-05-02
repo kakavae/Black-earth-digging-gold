@@ -7,6 +7,20 @@
   flex-direction: column;
   justify-content: space-around;
   margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* 未登录的情况下遮罩textarea */
+.pinspubcomment__div--loginmask {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: calc(100% - 3rem);
+  height: 110px;
+}
+
+.pinspubcomment__div--display {
+  display: none;
 }
 
 /* textarea的样式 */

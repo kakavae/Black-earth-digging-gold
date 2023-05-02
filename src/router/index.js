@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import App, { loader as appLoader } from '../App'
-import Home from "../component/home";
+import Home, { loader as homeLoader } from "../component/home";
 import { loader as homeArticleListLoader } from '../common/homeMainContent/recommondUpdate'
-import Pins from "../component/pins";
+import Pins, { loader as pinsLoader } from "../component/pins";
 import Course from '../component/course'
 import Live from '../component/live'
 import Events from '../component/events'
@@ -17,6 +17,11 @@ import { action as commentAction } from '../component/artical/articalMiddleConte
 
 /* 文章组件 */
 import Artical, { loader as articalLoader } from "../component/artical";
+
+/* Pins组件的子组件 */
+import PinsHotContent from "../component/pins/pinsHotContent";
+import PinsFollowing from "../component/pins/pinsFollowing";
+import PinsMyClub from "../component/pins/pinsMyClub";
 
 const router = createBrowserRouter([
   {
@@ -84,7 +89,34 @@ const router = createBrowserRouter([
       // 上方header点击之后显示不同的组件--课程 直播 沸点
       {
         path: 'pins',
-        element: <Pins></Pins>
+        loader: pinsLoader,
+        element: <Pins></Pins>,
+        children: [
+          {
+            path: '',
+            element: <PinsHotContent></PinsHotContent>
+          },
+          {
+            path: 'new',
+            element: <PinsHotContent></PinsHotContent>
+          },
+          {
+            path: 'hot',
+            element: <PinsHotContent></PinsHotContent>
+          },
+          {
+            path: 'following',
+            element: <PinsFollowing></PinsFollowing>
+          },
+          {
+            path: 'myclub',
+            element: <PinsMyClub></PinsMyClub>
+          },
+          {
+            path: 'club',
+            element: <PinsMyClub></PinsMyClub>
+          }
+        ]
       },
       {
         path: 'course',

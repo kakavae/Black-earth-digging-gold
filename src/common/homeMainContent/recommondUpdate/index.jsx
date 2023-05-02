@@ -4,7 +4,7 @@ import RecommondArtical from './recommondArtical'
 import RecommondSelectList from './recommondSelectList'
 import { getArticleRecommendList } from '../../../api/index.js'
 import { useLoaderData } from 'react-router-dom'
-import throttle from '../../../useFunction/throttle'
+// import throttle from '../../../useFunction/throttle'
 
 const processArticalList = (articalList = []) => {
   const newList = []
@@ -24,6 +24,7 @@ export const loader = async () => {
     let articalList = await getArticleRecommendList()
     if (articalList.code === 200) {
       const articalListData = processArticalList(articalList.data)
+      /* 每次重新加载home组件的时候都会loader不同的数据，但是这个数据为什么没有被渲染到页面上 */
       return articalListData
     } else {
       return []
@@ -37,13 +38,18 @@ export const loader = async () => {
 export default function RecommondUpdate({ isDisplay }) {
   /* 维护一个响应式列表，如果下拉到底部，就触发loader，重新向列表里面添加新的十条数据 */
   const articalList = useLoaderData()
+  /* 思路是下面的列表维护需要articalListPlus，但是articalListPlus不会随着上面的articalList同步更新数据 */
+  /* 所以使用useEffect钩子让articalList的值更新的时候立马更新articalListPlus */
   const [articalListPlus, setArticalListPlus] = useState([...articalList])
+  useEffect(() => {
+    setArticalListPlus([...articalList])
+  }, [articalList])
 
   /* 需要取消监听的函数 */
   const addList = () => {
     window.addEventListener('scroll', async () => {
       /* 滚上去的高度，整个页面的高度，可视区域的高度 */
-      console.log(parseInt(document.body.clientHeight - window.scrollY), window.innerHeight)
+      // console.log(parseInt(document.body.clientHeight - window.scrollY), window.innerHeight)
       if (parseInt(document.body.clientHeight - window.scrollY) <= window.innerHeight) {
         /* 滚下来的时候会触发多次，导致多个请求任务积攒在一起，因为达到上面的条件在滚动过程中会有很多次 */
         const newListData = await getArticleRecommendList()

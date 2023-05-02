@@ -1,13 +1,56 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './index.css'
+import { getToken } from '../../../useFunction/token'
+import { isDisplayContext } from '../../../context/app'
+import PubSub from 'pubsub-js'
+import { pinsPublish as pinsPublishAPI } from '../../../api'
+import { proPinsList } from '../../../useFunction/processData/processPins'
 
-export default function PinsPubComment() {
+export default function PinsPubComment({ setPinsListPlus }) {
+  /* 如果当前的状态是已经登陆，那就直接隐藏遮罩层 */
+  const { userInfo } = useContext(isDisplayContext)
+
+  /* 如果点击了loginMask,在未登录的状态下直接弹出登陆框 */
+  const alertLogin = () => {
+    if (!getToken()) {
+      PubSub.publish('displayLoginRegister', true)
+    }
+  }
+
+  /* textarea的全部内容 */
+  const [publishContent, setPublishContent] = useState('')
+
+
+  const pinsPublish = async () => {
+    try {
+      const resData = await pinsPublishAPI({
+        content: publishContent
+      })
+      if (resData.code === 200) {
+        console.log(resData.data.selData)
+        proPinsList(resData.data.selData)
+        setPinsListPlus((preValue) => {
+          return [...proPinsList(resData.data.selData), ...preValue]
+        })
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
   return (
     <div className='pinspubcomment__div--container'>
+      <div
+        onClick={alertLogin}
+        className={
+          Object.keys(userInfo).length <= 0 ? 'pinspubcomment__div--loginmask' : 'pinspubcomment__div--loginmask pinspubcomment__div--display'
+        }
+      ></div>
       <textarea
         name="" id="" cols="30" rows="5"
         className='pinspubcomment__textarea--bgc'
         placeholder='#新人报道#'
+        value={publishContent}
+        onChange={(event) => { setPublishContent(event.target.value) }}
       ></textarea>
       <div className='pinspubcomment__div--bottomflex'>
         <ul className='pinspubcomment__ul--flex'>
@@ -30,7 +73,7 @@ export default function PinsPubComment() {
           <li><a href="/" className='pinspubcomment__a--padding'><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M1.99609 2C1.44381 2 0.996094 2.44772 0.996094 3V13.2826C0.996094 13.8348 1.44381 14.2826 1.99609 14.2826H14.0046C14.5569 14.2826 15.0046 13.8348 15.0046 13.2826V3C15.0046 2.44772 14.5569 2 14.0046 2H1.99609ZM2.19609 4.30625V3.2H13.8046V4.30625L2.19609 4.30625ZM2.19609 5.50625V13.0826H13.8046V5.50625L2.19609 5.50625Z"></path><path fillRule="evenodd" clipRule="evenodd" d="M8.27574 6.53784C8.36302 6.24676 8.67775 6.09457 8.95969 6.20712C9.21346 6.30842 9.34895 6.58938 9.27039 6.85139L7.7554 11.9037C7.66811 12.1948 7.35338 12.347 7.07144 12.2344C6.81767 12.1331 6.68218 11.8521 6.76075 11.5901L8.27574 6.53784ZM4.4349 9.36762L5.68763 8.0884C5.8856 7.88625 5.8856 7.55849 5.68763 7.35634C5.48966 7.15419 5.1687 7.15419 4.97073 7.35634L3.39565 8.96474C3.38341 8.97723 3.37194 8.9902 3.36121 9.00359C3.1634 9.20576 3.16345 9.5334 3.36137 9.7355L4.93645 11.3439C5.13441 11.5461 5.45538 11.5461 5.65335 11.3439C5.85131 11.1417 5.85131 10.814 5.65335 10.6118L4.4349 9.36762ZM10.3444 8.04934L11.5972 9.32856L10.3787 10.5728C10.1808 10.7749 10.1808 11.1027 10.3787 11.3048C10.5767 11.507 10.8977 11.507 11.0956 11.3048L12.6707 9.69644C12.8686 9.49434 12.8687 9.1667 12.6709 8.96453C12.6601 8.95114 12.6487 8.93817 12.6364 8.92567L11.0613 7.31728C10.8634 7.11512 10.5424 7.11513 10.3444 7.31728C10.1465 7.51943 10.1465 7.84719 10.3444 8.04934Z" data-v-13614db5=""></path></svg>
             <span>代码</span></a></li>
         </ul>
-        <button>发布</button>
+        <button onClick={pinsPublish}>发布</button>
       </div>
     </div>
   )

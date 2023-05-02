@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import { useRoutes } from 'react-router-dom'
 import './index.css'
 import NavLeft from '../../common/navLeft'
 import Aside from '../../common/aside'
-
+import { getPinsList } from '../../api'
 /* 分为上下两个组件 */
 import PinsPubComment from './pinsPubComment'
-import PinsComment from './pinsComment'
+import { proPinsList } from '../../useFunction/processData/processPins'
+import { Outlet, useLoaderData } from 'react-router-dom'
+import { pinsContext } from '../../context/pins'
+
+export const loader = async () => {
+  try {
+    const resData = await getPinsList()
+    if (resData.code === 200) {
+      return proPinsList(resData.data.selData)
+    } else {
+      console.log('pins获取失败，loader返回[]')
+      return []
+    }
+  } catch (e) {
+    console.log(e)
+  }
+  return []
+}
 
 export default function Pins() {
   /* 左侧导航NavLeft需要显示的数据 */
@@ -27,6 +44,66 @@ export default function Pins() {
     { id: 6, title: '更多', url: '' },
   ]
 
+  const pinsList = useLoaderData()
+
+  const [pinsListPlus, setPinsListPlus] = useState(pinsList)
+
+  /* 评论区的数据 */
+  const commentInfo = [
+    {
+      userId: 1,
+      userName: '张三的歌',
+      headerImgUrl: 'https://p3-passport.byteimg.com/img/user-avatar/0daadbcfcbeb871f3c075c37d21752de~100x100.awebp',
+      commentUrl: '/',
+      occupation: 'web开发',
+      time: '17分钟前',
+      contentInfo: {
+        content: '理财，先投资自己，除了外在的物品，精神的需求，最重要的是健康的身体，好好调理，健康是最大的财富，没有健康，其他都是浮云~~拥有健康，才能积累更多的财富！！',
+        club: '理财交流圈',
+        likes: '17',
+        commentTimes: '5',
+        commentImg: [
+          {
+            id: 1,
+            url: 'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10c1ed6a8b72438c88ac8711905761c3~tplv-k3u1fbpfcp-zoom-mark-crop-v2:240:240:0:0.awebp?',
+            alt: '键盘'
+          },
+          {
+            id: 2,
+            url: 'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/05b159d50080480587adaa5c3112bdc8~tplv-k3u1fbpfcp-zoom-mark-crop-v2:240:240:0:0.awebp?',
+            alt: 'chatGPT'
+          }
+        ]
+      }
+    },
+    {
+      userId: 2,
+      userName: '张三的歌',
+      headerImgUrl: 'https://p3-passport.byteimg.com/img/user-avatar/0daadbcfcbeb871f3c075c37d21752de~100x100.awebp',
+      commentUrl: '/',
+      occupation: 'web开发',
+      time: '17分钟前',
+      contentInfo: {
+        content: '理财，先投资自己，除了外在的物品，精神的需求，最重要的是健康的身体，好好调理，健康是最大的财富，没有健康，其他都是浮云~~拥有健康，才能积累更多的财富！！',
+        club: '理财交流圈',
+        likes: '17',
+        commentTimes: '5',
+        commentImg: [
+          {
+            id: 1,
+            url: 'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10c1ed6a8b72438c88ac8711905761c3~tplv-k3u1fbpfcp-zoom-mark-crop-v2:240:240:0:0.awebp?',
+            alt: '键盘'
+          },
+          {
+            id: 2,
+            url: 'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/05b159d50080480587adaa5c3112bdc8~tplv-k3u1fbpfcp-zoom-mark-crop-v2:240:240:0:0.awebp?',
+            alt: 'chatGPT'
+          }
+        ]
+      }
+    },
+  ]
+
   return (
     /* 控制版心的盒子的位置 */
     <div className='pins__div--bgc'>
@@ -36,15 +113,15 @@ export default function Pins() {
           <NavLeft menuList={menuList} inicalIndex={0} recommendationCircle={recommendationCircle}></NavLeft>
           {/* 中间模块 设置了flex: 1 */}
           <div className="pins__div--maincontent--w">
-            <PinsPubComment></PinsPubComment>
-            <PinsComment></PinsComment>
-            <PinsComment></PinsComment>
-            <PinsComment></PinsComment>
-            <PinsComment></PinsComment>
-            <PinsComment></PinsComment>
-            <PinsComment></PinsComment>
-            <PinsComment></PinsComment>
-            <PinsComment></PinsComment>
+            <PinsPubComment setPinsListPlus={setPinsListPlus}></PinsPubComment>
+            <pinsContext.Provider
+              value={
+                {
+                  pinsListPlus
+                }
+              }>
+              <Outlet></Outlet>
+            </pinsContext.Provider>
           </div>
           {/* 右边的aside */}
           <Aside></Aside>

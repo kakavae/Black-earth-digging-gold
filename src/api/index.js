@@ -125,6 +125,23 @@ const likeArtical = (id) => {
   })
 }
 
+/* 发表沸点 */
+const pinsPublish = (data) => {
+  return request({
+    method: 'POST',
+    url: '/pins/publish',
+    data
+  })
+}
+
+/* 获取沸点列表 */
+const getPinsList = () => {
+  return request({
+    method: 'GET',
+    url: '/pins/pinslist'
+  })
+}
+
 export {
   getArticalDetail,
   getArticleRecommendList,
@@ -137,5 +154,7 @@ export {
   reqUserArticalList,
   changePersonalMsg,
   sendComment,
-  likeArtical
+  likeArtical,
+  pinsPublish,
+  getPinsList
 }
