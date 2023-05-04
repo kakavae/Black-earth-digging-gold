@@ -106,6 +106,15 @@ const changePersonalMsg = (data) => {
   })
 }
 
+/* 修改头像的请求 */
+const changeHeaderImg = (formData) => {
+  return request({
+    method: 'POST',
+    url: '/my/user/edituserinfo/header',
+    data: formData
+  })
+}
+
 /* 发表评论 */
 const sendComment = (data) => {
   return request({
@@ -156,5 +165,6 @@ export {
   sendComment,
   likeArtical,
   pinsPublish,
-  getPinsList
+  getPinsList,
+  changeHeaderImg
 }

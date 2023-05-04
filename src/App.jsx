@@ -50,12 +50,14 @@ export default function App() {
   const [isDisplayHeader, setIsDisplayHeader] = useState(true)
 
   const userInfo = useLoaderData()
-  // setUserInfo({})
 
   /* 监听scroll事件，隐藏头部，还有更改右侧栏目中广告的位置 */
+  /* 向下滚一段距离就隐藏头部，再向上滚的时候显示头部 */
   /* 监听scroll事件---或者说，利用IntersectionObserver API，移动广告组件 */
+  const [flag, setFlag] = useState(500);
   const throttleHidden = throttle(() => {
-    if (window.scrollY >= 500) {
+    if (window.scrollY >= flag) {
+      setFlag(window.scrollY)
       setIsDisplayHeader(false)
     } else {
       setIsDisplayHeader(true)

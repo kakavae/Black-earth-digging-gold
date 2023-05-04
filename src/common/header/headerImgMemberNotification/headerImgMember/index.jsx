@@ -81,7 +81,7 @@ export default function HeaderImgMember() {
         >
           <img
             onClick={changeDisplay}
-            src="https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3131589739~100x100.awebp" alt="头像" />
+            src={userInfo.imgUrl ? userInfo.imgUrl : 'https://p3-passport.byteimg.com/img/user-avatar/9d6fb3cc6b313cc6aff6a2fa7da8ff65~100x100.awebp'} alt="头像" />
           <IndividualCenter
             // isDisplayIndividualCenter={isDisplayIndividualCenter}
             // noDisplayIndividualCenter={noDisplayIndividualCenter}

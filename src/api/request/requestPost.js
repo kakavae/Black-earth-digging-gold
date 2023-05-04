@@ -35,6 +35,11 @@ const requestPOST = ({ method, url, data = null, useBefore = () => { } }) => {
     if (typeof data === 'string') {
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
       xhr.send(data)
+    } else if (data instanceof FormData) {
+      /* 奇怪，这里还不能自己加请求头，要让浏览器自己加，自己加了之后会有boundary */
+      /* Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryj7NnTUknoHsBXkMt */
+      // xhr.setRequestHeader('Content-Type', 'multipart/form-data')
+      xhr.send(data)
     } else if (typeof data === 'object' && data) {
       xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
       xhr.send(JSON.stringify(data))

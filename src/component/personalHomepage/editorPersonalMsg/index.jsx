@@ -1,18 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import './index.css'
 import { Link, Form, redirect } from 'react-router-dom'
 import NavLeft from '../../../common/navLeft'
 import { isDisplayContext } from '../../../context/app'
-import { changePersonalMsg } from '../../../api'
+import { changePersonalMsg, changeHeaderImg as changeHeaderAPI } from '../../../api'
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const updates = Object.fromEntries(formData);
-  const res = await changePersonalMsg(updates)
-  console.log(res)
-  if (res.code === 200) {
-    return redirect('/')
-  }
+  // const res = await changePersonalMsg(updates)
+  // console.log(res)
+  // if (res.code === 200) {
+  //   return redirect('/')
+  // }
 
   return null
 }
@@ -30,6 +30,33 @@ export default function EditorPersonalMsg() {
 
   const { userInfo } = useContext(isDisplayContext)
 
+  const fileIpt = useRef()
+
+  /* 更换头像 */
+  const changeHeaderImg = () => {
+    console.log(123)
+  }
+
+  /* 提交头像的修改信息 -- 该方法和表单的提交会同时触发，不影响之前的接口*/
+  const publishImg = async () => {
+    const imgFile = fileIpt.current.files[0]  // input只上传一张照片，这个照片就是列表的第一个
+    const formData = new FormData()
+
+    // 格式校验
+    if (!imgFile || !imgFile.type.match('image.*')) {
+      alert('请上传正确的图片格式')
+      return
+    }
+
+    formData.append('headerImg', imgFile, 'test.jpg')
+    console.log('@', userInfo.id + '_headerImg' + imgFile.name)
+
+    const resData = await changeHeaderAPI(formData)
+    console.log(resData)
+    /* 修改图片之后，服务器返回的还是相同的url地址，怎么更新页面里面的url地址 */
+
+  }
+
   return (
     <div className='editorpersonalmsg__div--bgc'>
       <div className='editorpersonalmsg__div--margin'>
@@ -39,9 +66,11 @@ export default function EditorPersonalMsg() {
         <div className='editorpersonalmsg__div--user'>
           <NavLeft menuList={menuList} inicalIndex={0} classNamePosition='editorpersonalmsg__div--menuposition'></NavLeft>
           <div className='editorpersonalmsg__div--contentedit'>
+
             <div className='editorpersonalmsg__div--leftflex'>
-              <h3>个人资料</h3>
               <Form method='post' id='personInfo-form' className='editorpersonalmsg__form--margin'>
+
+                <h3>个人资料</h3>
                 <p className='editorpersonalmsg__p--border'>
                   <span>用户名</span>
                   <input type="text" placeholder='填写你的用户名' name='userName' defaultValue={userInfo.userName} />
@@ -62,11 +91,14 @@ export default function EditorPersonalMsg() {
                   <span>个人介绍</span>
                   <textarea placeholder='填写你的个人爱好等' rows="5" cols="64" type="text" name='userIntroduce' defaultValue={userInfo.userIntroduce} />
                 </p>
-                <button type='submit'>保存修改</button>
+                <button onClick={publishImg} type='submit'>保存修改</button>
               </Form>
             </div>
             <div className='editorpersonalmsg__div--width'>
-              <img src="https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3131589739~100x100.awebp" alt="" />
+              <img onClick={changeHeaderImg} src={userInfo.imgUrl} alt="" />
+              <Form method="post" encType="multipart/form-data">
+                <input ref={fileIpt} name='headerImg' type="file" />
+              </Form>
               <div>我的头像</div>
               <div>支持jpg,png</div>
             </div>
