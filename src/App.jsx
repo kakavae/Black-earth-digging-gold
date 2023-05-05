@@ -68,6 +68,10 @@ export default function App() {
     window.addEventListener('scroll', throttleHidden)
   }, [throttleHidden])
 
+  /* 管理首页文章列表的添加 */
+  /* 这两个数据传递给了header组件的搜索模块用于添加新的数据，以及recommondUpdate组件用于下拉更新数据 */
+  const [articalListPlus, setArticalListPlus] = useState([])
+
   return (
     <div>
       <isDisplayContext.Provider
@@ -75,7 +79,10 @@ export default function App() {
           isDisplayHeader,
           setIsDisplayHeader,
           userInfo,
-          setUserInfo: () => { }
+          /* setUserInfo不需要了 */
+          setUserInfo: () => { },
+          articalListPlus,
+          setArticalListPlus
         }}>
         <Header></Header>
         <Outlet></Outlet>

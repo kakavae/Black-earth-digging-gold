@@ -1,22 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './index.css'
 import RecommondArtical from './recommondArtical'
 import RecommondSelectList from './recommondSelectList'
 import { getArticleRecommendList } from '../../../api/index.js'
 import { useLoaderData } from 'react-router-dom'
-// import throttle from '../../../useFunction/throttle'
+import { isDisplayContext } from '../../../context/app'
+import { default as processArticalList } from '../../../useHooks/recommondUpdate'
 
-const processArticalList = (articalList = []) => {
-  const newList = []
-  articalList.forEach((item) => {
-    newList.push({
-      ...item,
-      classification: item.classification.split(' '),
-      url: '/post/' + item.id
-    })
-  })
-  return newList
-}
+// const processArticalList = (articalList = []) => {
+//   const newList = []
+//   articalList.forEach((item) => {
+//     newList.push({
+//       ...item,
+//       classification: item.classification.split(' '),
+//       url: '/post/' + item.id
+//     })
+//   })
+//   return newList
+// }
 
 /* 获取一个数组，根据返回的数组值渲染不同数量的组件，同时将渲染对象值传递给子组件 */
 export const loader = async () => {
@@ -36,14 +37,17 @@ export const loader = async () => {
 }
 
 export default function RecommondUpdate({ isDisplay }) {
+
+  const { articalListPlus, setArticalListPlus } = useContext(isDisplayContext)
+
   /* 维护一个响应式列表，如果下拉到底部，就触发loader，重新向列表里面添加新的十条数据 */
   const articalList = useLoaderData()
   /* 思路是下面的列表维护需要articalListPlus，但是articalListPlus不会随着上面的articalList同步更新数据 */
   /* 所以使用useEffect钩子让articalList的值更新的时候立马更新articalListPlus */
-  const [articalListPlus, setArticalListPlus] = useState([...articalList])
+  // const [articalListPlus, setArticalListPlus] = useState([...articalList])
   useEffect(() => {
     setArticalListPlus([...articalList])
-  }, [articalList])
+  }, [articalList, setArticalListPlus])
 
   /* 需要取消监听的函数 */
   const addList = () => {

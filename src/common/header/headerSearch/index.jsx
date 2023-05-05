@@ -1,8 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext } from 'react'
 import './index.css'
 import { useState } from 'react'
 import HeaderCreator from './headerCreator'
 import { reqSearchArticalList } from '../../../api'
+import { Form } from 'react-router-dom'
+import { isDisplayContext } from '../../../context/app'
+import { default as processData } from '../../../useHooks/recommondUpdate'
 
 export default function HeaderSearch() {
   // 修改input的placeholde
@@ -20,6 +23,9 @@ export default function HeaderSearch() {
 
   // 放大镜DOM记录，排除在失去焦点改变样式之外
   const glass = useRef()
+
+  /* home的文章列表 */
+  const { setArticalListPlus } = useContext(isDisplayContext)
 
   // 搜索内容focus之后改变两个样式
   const inputFocus = () => {
@@ -44,15 +50,33 @@ export default function HeaderSearch() {
     try {
       const queryRes = await reqSearchArticalList(iptValue)
       console.log('获取到搜索结果，展示搜索列表，input失去焦点，路由切换', queryRes)
+      if (queryRes.code === 200) {
+        return queryRes.data
+      } else {
+        return []
+      }
     } catch (e) {
       console.log(e)
+    }
+  }
+
+  /* 按下enter键，触发搜索事件 */
+  const getIptRes = async (event) => {
+    if (event.code === 'Enter') {
+      const articaList = await inputSearch()
+      /* 搜索到的结果添加到页面当中 */
+      setArticalListPlus([...processData(articaList)])
     }
   }
 
   return (
     <ul className='headersearch__ul__ul--container'>
       <li className="headersearch__li--formFlex">
-        <form className={'headersearch__form ' + formActive}>
+        <Form
+          onSubmit={(event) => {
+            event.preventDefault()
+          }}
+          className={'headersearch__form ' + formActive}>
           <input
             type="text"
             placeholder={iptPlaceholder}
@@ -60,6 +84,7 @@ export default function HeaderSearch() {
             onChange={(event) => { setIptValue(event.target.value) }}
             onFocus={inputFocus}
             onBlur={inputBlur}
+            onKeyUp={getIptRes}
           />
           <div
             ref={glass}
@@ -73,7 +98,7 @@ export default function HeaderSearch() {
               ></path>
             </svg>
           </div>
-        </form>
+        </Form>
       </li>
       <li className={'headersearch__li--creator ' + creatorActive}>
         <HeaderCreator></HeaderCreator>

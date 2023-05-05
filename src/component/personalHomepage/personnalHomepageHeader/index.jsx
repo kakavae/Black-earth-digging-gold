@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 
 export default function PersonalhomepageheaderHeader() {
 
-  const { userInfo: { userName, email } } = useContext(isDisplayContext)
+  const { userInfo: { userName, email, imgUrl } } = useContext(isDisplayContext)
 
   return (
     <div className='personalhomepageheader__div--padding'>
       <div className='personalhomepageheader__div--headerimg'>
-        <img src="https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3131589739~180x180.awebp" alt="" />
+        <img src={imgUrl ? imgUrl : 'https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3131589739~180x180.awebp'} alt="" />
         <div className='personalhomepageheader__div--flexgrow'>
           <h3>{userName}</h3>
           <div className='personalhomepageheader__div--editorflex'>
