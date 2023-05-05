@@ -43,12 +43,13 @@ export default function Editor() {
   /* 发表文章 */
   /* 收集下级组件的所有文章相关信息，发表文章 */
   const publish = async () => {
-    const { userName: author, id: userId } = userInfo
+    const { userName: author, id: userId, imgUrl } = userInfo
     /* 这里确保拿到用户名和id之后再上传信息 */
     const res = await reqPublishArtical({
       ...articalInfo,
       author,
-      userId
+      userId,
+      imgUrl,
     })
     if (res.code === 200) {
       console.log('发表成功，跳转到个人中心已发表文章的界面', res)

@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import './index.css'
 import { Link, Form, redirect } from 'react-router-dom'
 import NavLeft from '../../../common/navLeft'
@@ -32,9 +32,32 @@ export default function EditorPersonalMsg() {
 
   const fileIpt = useRef()
 
+  const [isDisplayImg, setIsDisplayImg] = useState(true)
+
   /* 更换头像 */
-  const changeHeaderImg = () => {
-    console.log(123)
+  /* 监听文件input改变的事件，拿到节点的files，发起上传的请求 */
+  const changeHeaderImg = async (event) => {
+    /* 先删除头像节点 */
+    setIsDisplayImg(false)
+
+    const imgFile = event.target.files[0]
+    const formData = new FormData()
+
+    // 格式校验
+    if (!imgFile || !imgFile.type.match('image.*')) {
+      alert('请上传正确的图片格式')
+      return
+    }
+
+    formData.append('headerImg', imgFile, 'test.jpg')
+
+    const resData = await changeHeaderAPI(formData)
+    console.log(resData)
+    /* 修改图片之后，服务器返回的还是相同的url地址，怎么更新页面里面的url地址 */
+    /* 修改成功，那么头像换为原来的节点 */
+    if (resData.code === 200) {
+      setIsDisplayImg(true)
+    }
   }
 
   /* 提交头像的修改信息 -- 该方法和表单的提交会同时触发，不影响之前的接口*/
@@ -95,12 +118,29 @@ export default function EditorPersonalMsg() {
               </Form>
             </div>
             <div className='editorpersonalmsg__div--width'>
-              <img onClick={changeHeaderImg} src={userInfo.imgUrl} alt="" />
-              <Form method="post" encType="multipart/form-data">
-                <input ref={fileIpt} name='headerImg' type="file" />
-              </Form>
-              <div>我的头像</div>
-              <div>支持jpg,png</div>
+              <div className='editorpersonalmsg__div--headerflex'>
+                {isDisplayImg ? <img src={userInfo.imgUrl} alt="头像" /> : <img src='/' alt='头像'></img>}
+                {/* <img src={userInfo.imgUrl} alt="" /> */}
+                <Form
+                  method="post"
+                  encType="multipart/form-data"
+                >
+                  <input
+                    onChange={changeHeaderImg}
+                    ref={fileIpt}
+                    id='img-ipt' name='headerImg' type="file"
+                    className='editorpersonalmsg__img--opacity'
+                  />
+                  <label
+                    htmlFor="img-ipt"
+                    className='editorpersonalmsg__label--mask'
+                  >
+                    <span>点击修改头像</span>
+                  </label>
+                </Form>
+                <div>我的头像</div>
+                <div>支持jpg,png</div>
+              </div>
             </div>
           </div>
         </div>

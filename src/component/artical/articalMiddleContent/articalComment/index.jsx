@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './index.css'
 import ArticalCommentItem from './articalCommentItem'
 import { sendComment as sendCommentMsg, likeArtical } from '../../../../api'
 import { useSubmit } from 'react-router-dom'
+import { isDisplayContext } from '../../../../context/app'
 
 export const action = async ({ request }) => {
   const formData = await request.formData()
@@ -35,6 +36,7 @@ export const action = async ({ request }) => {
 
 export default function ArticalComment({ id, commentsList, commentRef }) {
 
+  /* 去掉空白的评论 */
   commentsList = commentsList.filter((item) => {
     return Object.keys(item).length > 0
   })
@@ -43,6 +45,7 @@ export default function ArticalComment({ id, commentsList, commentRef }) {
 
   const submit = useSubmit()
 
+  /* 以action的形式提交评论 */
   const sendComment = async () => {
     console.log(commentContent)
     submit({
@@ -52,15 +55,17 @@ export default function ArticalComment({ id, commentsList, commentRef }) {
       method: 'post',
       action: 'post/' + id
     })
-
   }
+
+  /* 用户信息 */
+  const { userInfo: { imgUrl } } = useContext(isDisplayContext)
   return (
     <div ref={commentRef} className='articalcomment__div--containerbgc'>
       <div>
         <h3>评论</h3>
         <div>
           <div className='articalcomment__div--iptflex'>
-            <img className='articalcomment__img--header' src="https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3131589739~100x100.awebp" alt="" />
+            <img className='articalcomment__img--header' src={imgUrl ? imgUrl : 'https://p3-passport.byteimg.com/img/mosaic-legacy/3793/3131589739~100x100.awebp'} alt="" />
             <textarea type="text" placeholder='输入评论' onChange={(event) => {
               setCommentContent(event.target.value)
             }} />
