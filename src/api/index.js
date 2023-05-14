@@ -147,7 +147,7 @@ const pinsPublish = (data) => {
 const getPinsList = () => {
   return request({
     method: 'GET',
-    url: '/pins/pinslist'
+    url: '/api/pinslist'
   })
 }
 

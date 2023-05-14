@@ -15,9 +15,11 @@ export default function Header() {
           <a href="/" className="header__a--logo">
             <img src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/e08da34488b114bd4c665ba2fa520a31.svg" alt="logo" />
           </a>
+          {/* 首页菜单 */}
           <HeaderMenu></HeaderMenu>
         </div>
         <ul className="header__ul--rightcontentfloat">
+          {/* 搜索+创作者中心 */}
           <HeaderSearch></HeaderSearch>
           <HeaderImgMemberNotification></HeaderImgMemberNotification>
         </ul>

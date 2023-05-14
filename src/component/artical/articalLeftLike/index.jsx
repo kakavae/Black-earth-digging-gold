@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './index.css'
-import { Link, useSubmit } from 'react-router-dom'
+import { useSubmit } from 'react-router-dom'
 import { isDisplayContext } from '../../../context/app'
+import PubSub from 'pubsub-js'
 
 export default function ArticalLeftLike({ articalInfo, turnComment: turnCommentFather }) {
   const { id, likes, comments } = articalInfo
@@ -41,6 +42,12 @@ export default function ArticalLeftLike({ articalInfo, turnComment: turnCommentF
   const likeArtical = (event) => {
     console.log('likeaction')
     event.preventDefault()
+    /* 如果没有登录 等价于 userName为空 就弹出登录框 */
+    if (!userName) {
+      PubSub.publish('displayLoginRegister', true)
+      return
+    }
+
     submit({
       type: 'like',
       id

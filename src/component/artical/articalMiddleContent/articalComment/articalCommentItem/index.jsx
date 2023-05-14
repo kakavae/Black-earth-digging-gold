@@ -6,6 +6,8 @@ export default function ArticalCommentItem({ comment }) {
 
   const [userName, commentContent] = Object.entries(comment).length ? Object.entries(comment)[0] : []
 
+  /* 如果一直从token里面拿数据的话，数据更新不及时怎么办？ */
+  /* 或者说，用户修改基本信息之后你需要下发新的token给用户 */
   const imgUrl = commentContent.split('nbsp')[1]
 
   /* 数组对象的格式存储的评论，对象键值就是评论人用户名 */

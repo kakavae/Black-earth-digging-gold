@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './index.css'
 import { useState } from 'react'
 import HeaderCreatorDetail from '../../headerCreatorDetail'
 import useNotifacationList from '../../../../useHooks/headerImgMemberNotifacation'
-import { Link, redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { isDisplayContext } from '../../../../context/app/index.js'
+import PubSub from 'pubsub-js'
 
 export default function HeaderCreator() {
   // 控制创作者中心经过的背景颜色类----CSS就能解决
   const [creatorActiveBgc, setCreatorActiveBgc] = useState('')
   // 控制右侧的下拉框是否显示以及下拉的背景颜色 控制箭头的背景色以及旋转
   const [creatorActiveRight, setCreatorActiveRight] = useState('')
+
+  const { userInfo } = useContext(isDisplayContext)
 
   // 修改创作者中心的背景颜色
   const changeCreatorBgc = (flag) => {
@@ -42,6 +46,14 @@ export default function HeaderCreator() {
       className="headercreator__addgroup"
     >
       <Link to={'/creator'}
+        onClick={
+          userInfo.userName ? () => { } :
+            (e) => {
+              e.preventDefault()
+              PubSub.publish('displayLoginRegister', true)
+              return
+            }
+        }
         onMouseOver={changeCreatorBgc(true)}
         onMouseOut={changeCreatorBgc(false)}
         className={creatorActiveBgc}

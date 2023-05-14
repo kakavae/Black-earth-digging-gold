@@ -24,3 +24,16 @@
   font-size: 20px;
   font-weight: 500;
 }
+
+.creatorhomeheader__button {
+  background-color: var(--juejin-brand-1-normal);
+  border: none;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 14 px;
+}
+
+.creatorhomeheader__button:hover {
+  cursor: pointer;
+}

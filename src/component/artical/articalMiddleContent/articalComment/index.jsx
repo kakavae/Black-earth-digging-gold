@@ -17,6 +17,13 @@ export const action = async ({ request }) => {
       if (resData.code === 200) {
         return resData
       }
+      if (resData.code === 208) {
+        console.log(resData)
+        return {
+          ...resData,
+          msg: '请登录'
+        }
+      }
       return resData
     } catch (e) {
       console.log(e)
