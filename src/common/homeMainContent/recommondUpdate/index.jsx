@@ -7,18 +7,6 @@ import { useLoaderData } from 'react-router-dom'
 import { isDisplayContext } from '../../../context/app'
 import { default as processArticalList } from '../../../useHooks/recommondUpdate'
 
-// const processArticalList = (articalList = []) => {
-//   const newList = []
-//   articalList.forEach((item) => {
-//     newList.push({
-//       ...item,
-//       classification: item.classification.split(' '),
-//       url: '/post/' + item.id
-//     })
-//   })
-//   return newList
-// }
-
 /* 获取一个数组，根据返回的数组值渲染不同数量的组件，同时将渲染对象值传递给子组件 */
 export const loader = async () => {
   try {
@@ -50,26 +38,25 @@ export default function RecommondUpdate({ isDisplay }) {
   }, [articalList, setArticalListPlus])
 
   /* 需要取消监听的函数 */
-  const addList = () => {
-    window.addEventListener('scroll', async () => {
-      /* 滚上去的高度，整个页面的高度，可视区域的高度 */
-      // console.log(parseInt(document.body.clientHeight - window.scrollY), window.innerHeight)
-      if (parseInt(document.body.clientHeight - window.scrollY) <= window.innerHeight) {
-        /* 滚下来的时候会触发多次，导致多个请求任务积攒在一起，因为达到上面的条件在滚动过程中会有很多次 */
-        const newListData = await getArticleRecommendList()
-        if (newListData.code === 200) {
-          setArticalListPlus((preValue) => {
-            return [...preValue, ...processArticalList(newListData.data)]
-          })
-        }
+  const [flag, setFlag] = useState(true)
+  const addList = async () => {
+    /* 滚上去的高度，整个页面的高度，可视区域的高度 */
+    // console.log(parseInt(document.body.clientHeight - window.scrollY), window.innerHeight)
+    /* 为什么小于等于的时候获取了很多次数据---因为小于等于的这个事件在很短的情况下触发了多次，而你请求的数据还没有回来， */
+    console.log(document.body.clientHeight - window.scrollY, window.innerHeight)
+    if (flag && document.body.clientHeight - window.scrollY <= window.innerHeight + 10) {
+      setFlag(false)
+      /* 滚下来的时候会触发多次，导致多个请求任务积攒在一起，因为达到上面的条件在滚动过程中会有很多次 */
+      /* 尝试--限制，用一个变量限制，如果第一次触发了，就将这个变量改为false，后面的多次就算条件成立也不会触发 */
+      const newListData = await getArticleRecommendList()
+      setFlag(false)
+      if (newListData.code === 200) {
+        setArticalListPlus((preValue) => {
+          return [...preValue, ...processArticalList(newListData.data)]
+        })
       }
-    })
-    /* 组件卸载的时候取消监听 */
-    return () => {
-      window.removeEventListener('scroll', addList)
     }
   }
-
   /* 监听滚动事件，当滚动到还剩200px的时候，就开始加载新的列表数据
   加载新的列表数据的时候，不能再请求更新的列表数据，也就是不能同时发起多个请求
   在新的数据回来，添加到页面上之前，scroll都不能触发请求数据
@@ -77,7 +64,24 @@ export default function RecommondUpdate({ isDisplay }) {
   拿着一个变量，开始请求设为false，进不去条件，当DOM被更新之后才将这个变量设置为true，允许scroll再次触发事件
   */
 
-  useEffect(addList, [addList])
+  /* 
+    需要解决的问题：下拉到底部的时候，可能会请求两次数据，使用一个state来控制，因为state能够保存状态
+    函数触发，就改为false，让其他触发的任务进不了任务体
+
+    加了节流之后，下拉到底部，可能一次数据都没有请求，怎么解决？
+    原因：页面滚动到最底部之后就不会再触发scroll事件，最后一次触发的时候不满足设定的触发条件
+    给不等式右边+100px
+    不加节流的时候就不会出现这个问题
+    而且这里也不必出现节流的概念了，因为实际的任务代码---请求后台逻辑并不会每一次滚动都会触发，而是在特定条件下才会触发
+  */
+
+  useEffect(() => {
+    window.addEventListener('scroll', addList)
+    /* 组件卸载的时候取消监听 */
+    return () => {
+      window.removeEventListener('scroll', addList)
+    }
+  }, [])
 
   return (
     <div className='recommondupdate__div--container'>

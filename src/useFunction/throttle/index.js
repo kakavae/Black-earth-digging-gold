@@ -1,9 +1,9 @@
 export default function throttle(fn, delay) {
   let timer = null
-  return ()=>{
-    if(!timer) {
+  return () => {
+    if (!timer) {
       fn()
-      setTimeout(()=>{
+      timer = setTimeout(() => {
         window.clearTimeout(timer)
         timer = null
       }, delay)
